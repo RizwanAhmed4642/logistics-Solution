@@ -1,0 +1,77 @@
+﻿@model OcdlogisticsSolution.Common.ViewModels.HomePagePackagesViewModel
+
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <!--begin::Notice-->
+            <!--end::Notice-->
+            <!--begin::Card-->
+            <div class="card card-custom">
+                <div class="card-header">
+                    <div class="card-title">
+                        <h3 class="card-label">Add New Feature &amp; Benefit Modal</h3>
+                    </div>
+                </div>
+                <div class="card-body">
+                    @using (Html.BeginForm("AddHomePage_Package", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <div class="form-group">
+                            <img id="feature_modal_icon" src="https://upload.wikimedia.org/wikipedia/en/thumb/3/35/Information_icon.svg/768px-Information_icon.svg.png" width="50" />
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.file, htmlAttributes: new { @class = "control-label " })
+                            @Html.TextBoxFor(model => model.file, new { @class = "form-control", type = "file" })
+                            @Html.ValidationMessageFor(model => model.file, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label " })
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Cost, htmlAttributes: new { @class = "control-label " })
+                            @Html.TextBoxFor(model => model.Cost, new { @class = "form-control", type = "number" })
+                            @Html.ValidationMessageFor(model => model.Cost, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.DurationType, htmlAttributes: new { @class = "control-label " })
+                            @Html.DropDownListFor(model => model.DurationType, null, new { @class = "form-control", rows = 6 })
+                            @Html.ValidationMessageFor(model => model.DurationType, "", new { @class = "text-danger" })
+                        </div>
+
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.link, htmlAttributes: new { @class = "control-label " })
+                            @Html.TextBoxFor(model => model.link, new { @class = "form-control", type = "url" })
+                            @Html.ValidationMessageFor(model => model.link, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            <input type="submit" value="Create" class="btn btn-primary" />
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $('#file').change(function () {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#feature_modal_icon').attr("src", e.target.result);
+            }
+            reader.readAsDataURL($(this)[0].files[0]);
+        });
+    </script>
+}

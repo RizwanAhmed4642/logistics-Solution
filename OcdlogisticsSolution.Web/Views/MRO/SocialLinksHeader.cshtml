@@ -1,0 +1,147 @@
+﻿@model OcdlogisticsSolution.DomainModels.Models.Entity_Models.tbl_SocialHandler
+@if (Model != null)
+{
+
+    <section class="first-bar px-md-0">
+        <div class="container-fluid px-lg-0 px-md-3 px-sm-0">
+            <div class="row max-wid">
+                <div class="col col-md-3 p-0">
+                    <ul class="list-inline text-right cus-loc img-icon">
+                        <li class="list-inline-item d-block d-md-none "><a href=""><i class="fa fa-map-marker" aria-hidden="true"></i> </a></li>
+                    </ul>
+                    <div class=" d-none d-md-block">
+                        <p class="phone-s">
+                            <a href="">
+                                @if (!string.IsNullOrEmpty(Model.Phone))
+                                {<text>Call or Text </text>@Model.Phone}
+                            </a>
+                        </p>
+                        <ul class="list-inline bg-h-w">
+                            @if (!string.IsNullOrEmpty(Model.Facebook))
+                            {
+                                <li class="list-inline-item"><a href="@Model.Facebook" target="_blank"><i class="fa fa-facebook fb"></i> </a></li>
+                            }
+                            @if (!string.IsNullOrEmpty(Model.Instagram))
+                            {
+                                <li class="list-inline-item"><a href="@Model.Instagram" target="_blank"><i class="fa fa-instagram insta"></i> </a></li>
+
+                            }
+                            @if (!string.IsNullOrEmpty(Model.Twitter))
+                            {
+                                <li class="list-inline-item"><a href="@Model.Twitter" target="_blank"><i class="fa fa-twitter twit"></i> </a></li>
+
+                            }
+                            @if (!string.IsNullOrEmpty(Model.Pintrest))
+                            {
+                                <li class="list-inline-item"><a href="@Model.Pintrest" target="_blank"><i class="fa fa-pinterest pin"></i> </a></li>
+
+                            }
+                            @if (!string.IsNullOrEmpty(Model.Youtube))
+                            {
+                                <li class="list-inline-item"><a href="@Model.Youtube" target="_blank"><i class="fa fa-youtube yt"></i> </a></li>
+
+                            }
+
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="col px-xl-5">
+                    <div class="logo-sd">
+                        <a href="@Url.Action("MROIndex","MRO",new {area="" })"> <img src="@Model.HeaderImage110"></a>
+                        <br>
+                        <div class="input-group d-none d-md-flex">
+                            <input type="text" class="form-control" placeholder="Search">
+                            <div class="input-group-append">
+                                <button class="btn btn-success" type="submit"><img src="~/Assets/images/img/search.png" alt=""></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-md-3 p-0">
+                    <div class="phone-s curncy d-none d-md-block pr-lg-3">
+                        <div class="form-group">
+                            <span style="color:white" value="canada">CAD ($)</span>
+                        </div>
+                        <span class="main-flag">
+                            <span class="flag-image"><img src="~/Assets/images/img/flag/canada.png" class="flag-s"> </span>
+                            @*<div class="flag-drop">
+                                    <div class="flag-f"><img src="~/Assets/images/img/flag/pakistan.png" alt=""></div>
+                                    <div class="flag-f"><img src="~/Assets/images/img/flag/germany.png" alt=""></div>
+                                    <div class="flag-f"><img src="~/Assets/images/img/flag/uk.png" alt=""></div>
+                                    <div class="flag-f"><img src="~/Assets/images/img/flag/america.png" alt=""></div>
+                                    <div class="flag-f"><img src="~/Assets/images/img/flag/canada.png" alt=""></div>
+                                    <div class="flag-f"><img src="~/Assets/images/img/flag/france.png" alt=""></div>
+                                </div>*@
+                        </span>
+                    </div>
+                    <ul class="list-inline text-right img-icon">
+                        <li class="list-inline-item d-none d-md-inline-block">
+                            <a href="">
+                                <!-- <img src="images/img/dir-w.png" alt="">  -->
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item dropdown my-acct">
+                            <a class="dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"><i class="fa fa-user"></i></a>
+                            <div class="dropdown-menu cust_drop_accnt">
+                                <a class="dropdown-item" href="@Url.Action("Profile","Home",new {area="" })"><i class="fa fa-cog cust_acn_icn"></i> My Account </a>
+                                <a class="dropdown-item" href="#"><i class="fa fa-heart cust_acn_icn"></i> My Shopping List</a>
+                                <a class="dropdown-item" href="#"><i class="fa fa-shopping-cart cust_acn_icn"></i> My Orders</a>
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <a class="dropdown-item" href="/Account/LogOff"><i class="fa fa-user cust_acn_icn"></i>Logout</a>
+                                }
+                                else
+                                {
+                                    <a class="dropdown-item" href="@Url.Action("Login","Account",new {area="" })"><i class="fa fa-user cust_acn_icn"></i> Sign In/Sign Up</a>
+                                }
+                                <a class="dropdown-item" href="#"><i class="fa fa-question-circle cust_acn_icn"></i> Why do we need a trade card?</a>
+                            </div>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="@Url.Action("Cart","Product")">
+                                <i class="fa fa-shopping-cart"></i>
+                                <label class="badge badge-primary rounded-circle p-2" id="cartVisualCount" style="position: relative;left: -6px;top: -2px;font-size:1.1em">
+                                    @if (Session["Carts"] != null)
+                                    {
+                                        @:<text>@(((List<string>)Session["Carts"]).Count)</text>
+                                    }
+                                    else
+                                    {
+                                        @:<text>0</text>
+                                    }
+                                </label>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="after-header">
+        <div class="main navbar-inverse header-box ">
+            <div class="container-fluid p-0">
+                <nav class="navbar navbar-expand-md p0 navbar-dark">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar"> <span class="navbar-toggler-icon"></span> </button>
+                    <div class="collapse navbar-collapse navclose " id="collapsibleNavbar">
+                        <button type="button" class="close d-md-none d-block" data-dismiss="navclose">×</button>
+                        <div class="d-md-none d-block pink-log"> <a href="">SIGN IN/REGISTER TO SHOP TRADE <i class="fa fa-user ml-2"></i> </a> </div>
+                        <ul class="navbar-nav nav_ul_style max-wid">
+                            <li class="nav-item nav-f"> <a class="nav-link " href="@Url.Action("Index","Home",new {area="" })">RATS  </a> </li>
+                            <li class="nav-item nav-f"> <a class="nav-link " href="@Url.Action("Conference","MRO",new {area="" })">Conference</a> </li>
+                            <li class="nav-item nav-f"> <a class="nav-link " href="@Url.Action("WorkShop","MRO",new {area="" })">Workshops</a> </li>
+                            <li class="nav-item nav-f"> <a class="nav-link " href="@Url.Action("TradeShow","MRO",new {area="" })">Tradeshow</a> </li>
+                            <li class="nav-item nav-f"> <a class="nav-link " href="@Url.Action("Entertainment","MRO",new {area="" })">Entertainment</a> </li>
+                          @*  <li class="nav-item nav-f"> <a class="nav-link " href="@Url.Action("Advisory","MRO",new {area="" })">Advisory</a> </li>*@
+                            @*<li class="nav-item nav-f"> <a class="nav-link " href="@Url.Action("Archive","MRO",new {area="" })">Archive</a> </li>*@
+                            @*<li class="nav-item nav-f"> <a class="nav-link " href="@Url.Action("SponserShip","MRO",new {area="" })">SponserShip</a> </li>*@
+                    
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </section>
+}

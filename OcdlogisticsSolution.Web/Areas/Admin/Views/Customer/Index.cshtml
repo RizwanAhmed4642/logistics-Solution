@@ -1,0 +1,244 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_RatsLayout.cshtml";
+}
+
+<style>
+    .control-style:focus {
+        border: 1px solid #f7742c !important;
+    }
+</style>
+
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <div class="subheader py-2 py-lg-4 subheader-solid" id="kt_subheader">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <!--end::Info-->
+            <!--begin::Toolbar-->
+            <!--end::Toolbar-->
+        </div>
+    </div>
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--begin::Card-->
+                    <div class="card card-custom gutter-b example example-compact">
+                        <div class="card-header">
+                            <h1 class="card-title">
+                                Details
+                            </h1>
+
+                        </div>
+                        <!--begin::Form-->
+
+
+
+                        <div class="card-body">
+                            <div class="form-group row">
+                                <div class="container my-4">
+
+
+
+
+                                    <div class="row">
+
+                                        <!-- Grid column -->
+                                        <div class="col-xl-6 mb-4 mb-xl-2">
+
+
+
+                                            <!-- Description -->
+                                            <!-- Section: Live preview -->
+                                            <section>
+
+                                                <ul class="nav nav-tabs " id="myTab" role="tablist">
+                                                    <li class="nav-item waves-effect waves-light">
+                                                        <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="false"> Customer Profile</a>
+                                                    </li>
+                                                    <li class="nav-item waves-effect waves-light">
+                                                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Saved Shopping Details</a>
+                                                    </li>
+                                                    <li class="nav-item waves-effect waves-light">
+                                                        <a class="nav-link active" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="true">Order</a>
+                                                    </li>
+                                                </ul>
+                                                <br />
+                                                <br />
+                                                <div class="tab-content" id="myTabContent">
+                                                    <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                                        <form>
+                                                            <div class="form-row">
+                                                                <div class="form-group col-lg-12 col-md-8 col-sm-12 col-xs-12 ">
+                                                                    <label for="inputState">Customer Type</label>
+                                                                    <select id="inputState" class="form-control control-style">
+                                                                        <option selected>Choose...</option>
+                                                                        <option>...</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="form-group col-lg-12 col-md-8 col-sm-12 col-xs-12 ">
+                                                                    <label>First Name</label>
+                                                                    <input type="text" class="form-control control-style" placeholder="First Name">
+                                                                </div>
+                                                                <div class="form-group col-lg-12 col-md-8 col-sm-12 col-xs-12 ">
+                                                                    <label>Last Name</label>
+                                                                    <input type="text" class="form-control control-style" placeholder="Last Name">
+                                                                </div>
+
+                                                                <div class="form-group col-lg-12 col-md-8 col-sm-12 col-xs-12 ">
+                                                                    <label>Phone Number</label>
+                                                                    <input type="number" class="form-control control-style">
+                                                                </div>
+                                                                <div class="form-group col-lg-12 col-md-8 col-sm-12 col-xs-12 ">
+                                                                    <label>Email Address</label>
+                                                                    <input type="text" class="form-control control-style" placeholder="Email">
+                                                                </div>
+                                                                <div class="form-group col-lg-12 col-md-8 col-sm-12 col-xs-12 ">
+                                                                    <label>Instant Reward Balance</label>
+                                                                    <input type="text" class="form-control control-style" placeholder="">
+                                                                </div>
+                                                                <div class="form-group col-lg-12 col-md-8 col-sm-12 col-xs-12 ">
+                                                                    <label>Date Joined</label>
+                                                                    <input type="datetime" class="form-control control-style" placeholder="">
+                                                                </div>
+                                                                <div class="form-group col-lg-12 col-md-8 col-sm-12 col-xs-12 ">
+                                                                    <label>Last Order</label>
+                                                                    <input type="text" class="form-control control-style" placeholder="">
+                                                                </div>
+
+                                                                <div class="form-group col-lg-12 col-md-8 col-sm-12 col-xs-12 ">
+                                                                    <label>Last Appoinment</label>
+                                                                    <input type="text" class="form-control control-style" id="inputCity">
+                                                                </div>
+
+                                                                <div class="form-group col-lg-12 col-md-8 col-sm-12 col-xs-12 ">
+                                                                    <label>UpComing Appoinment</label>
+                                                                    <input type="text" class="form-control control-style">
+                                                                </div>
+                                                            </div>
+
+                                                            <button type="submit" class="btn btn-primary">Save</button>
+                                                        </form>
+                                                    </div>
+                                                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                                        <form>
+                                                            <div class="form-row">
+                                                                <div class="form-group col-lg-8 col-md-8 col-sm-12 col-xs-12 ">
+                                                                    <label for="inputState">Saved address</label>
+                                                                    <select id="inputState" class="form-control control-style">
+                                                                        <option selected>Choose...</option>
+                                                                        <option>...</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="col-lg-3" style="margin-top:25px">
+                                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="mdo">New Address</button>
+
+                                                                </div>
+                                                                <div class="form-group col-lg-12 col-md-8 col-sm-12 col-xs-12 ">
+                                                                    <label for="inputState1">Country</label>
+                                                                    <select id="inputState1" class="form-control control-style">
+                                                                        <option selected>Choose...</option>
+                                                                        <option>...</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="form-group col-lg-12 col-md-8 col-sm-12 col-xs-12 ">
+                                                                    <label>City</label>
+                                                                    <input type="text" class="form-control control-style" placeholder="City">
+                                                                </div>
+                                                                <div class="form-group col-lg-12 col-md-8 col-sm-12 col-xs-12 ">
+                                                                    <label>Postal Code/ZIP</label>
+                                                                    <input type="text" class="form-control control-style" placeholder="Postal Code">
+                                                                </div>
+                                                                <div class="form-group col-lg-12 col-md-8 col-sm-12 col-xs-12 ">
+                                                                    <label for="inputState1">Province</label>
+                                                                    <select id="inputState1" class="form-control control-style">
+                                                                        <option selected>Choose...</option>
+                                                                        <option>...</option>
+                                                                    </select>
+                                                                </div>
+                                                                <h1>Receiver Details</h1>
+                                                                <div class="form-group col-lg-12 col-md-8 col-sm-12 col-xs-12 ">
+                                                                    <label>First Name</label>
+                                                                    <input type="text" class="form-control control-style" placeholder="First Name">
+                                                                </div>
+                                                                <div class="form-group col-lg-12 col-md-8 col-sm-12 col-xs-12 ">
+                                                                    <label>Last Name</label>
+                                                                    <input type="text" class="form-control control-style" placeholder="Last Name">
+                                                                </div>
+
+                                                                <div class="form-group col-lg-12 col-md-8 col-sm-12 col-xs-12 ">
+                                                                    <label>Phone Number</label>
+                                                                    <input type="number" class="form-control control-style">
+                                                                </div>
+                                                                <div class="form-group col-lg-12 col-md-8 col-sm-12 col-xs-12 ">
+                                                                    <label>Special Instruction</label>
+<textarea class="form-control control-style" rows="4"></textarea>
+                                                                </div>
+
+
+                                                            </div>
+
+                                                            <button type="submit" class="btn btn-primary">Save</button>
+                                                            <button type="submit" class="btn btn-primary">Delete</button>
+                                                        </form>
+                                                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <form>
+                                                                            <div class="form-group">
+                                                                                <label for="recipient-name" class="col-form-label">Add New Address</label>
+                                                                                <input type="text" class="form-control" id="recipient-name">
+                                                                            </div>
+
+                                                                        </form>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                        <button type="button" class="btn btn-primary">Save</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="tab-pane fade active show" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                                                        Content Here
+
+                                                    </div>
+                                                </div>
+
+                                            </section>
+                                            <!-- Section: Live preview -->
+
+                                        </div>
+                                        <!-- Grid column -->
+                                        <!-- Grid column -->
+                                        <!-- Grid column -->
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!--end::Form-->
+                    </div>
+                    <!--end::Card-->
+
+                </div>
+            </div>
+        </div>
+        <!--end::Container-->
+    </div>
+</div>

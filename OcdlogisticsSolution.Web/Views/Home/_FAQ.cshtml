@@ -1,0 +1,35 @@
+﻿@model  IEnumerable<OcdlogisticsSolution.DomainModels.Models.Entity_Models.tbl_FAQ>
+@foreach (var item in Model.OrderBy(x => x.Id))
+{
+    if ((OcdlogisticsSolution.Common.ViewModels.Pages)item.Type == OcdlogisticsSolution.Common.ViewModels.Pages.Home)
+    {
+        <div class="double-acordion-main">
+            <h2 class=" main-click-accordion">@item.HeadingName</h2>
+            <div class="double-acordion-question otherhide">
+                @Html.Action("_FAQ_Questions", new { id = item.Id })
+            </div>
+        </div>
+    }
+    else if ((OcdlogisticsSolution.Common.ViewModels.Pages)item.Type == OcdlogisticsSolution.Common.ViewModels.Pages.Education)
+    {
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                    <button class="d-flex align-items-center justify-content-between btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        @item.HeadingName
+                        <span class="fa-stack fa-sm">
+                            <i class="fa fa-angle-down"></i>
+                        </span>
+                    </button>
+                </h2>
+            </div>
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionFaq" style="">
+                <div class="card-body">
+                    <ul>
+                        @Html.Action("_FAQ_Questions", new { id = item.Id })
+                    </ul>
+                </div>
+            </div>
+        </div>
+    }
+}

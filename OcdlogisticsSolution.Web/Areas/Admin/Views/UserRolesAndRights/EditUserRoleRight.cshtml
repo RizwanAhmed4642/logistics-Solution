@@ -1,0 +1,234 @@
+﻿@model OcdlogisticsSolution.Web.Admin.Data.UserRoleRightModel
+
+
+@{
+    ViewBag.Title = "EditUserRoleRight";
+}
+
+<style>
+    .checkbx {
+        width: 30px;
+        height: 20px;
+        margin-top: 10px;
+    }
+</style>
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <div class="subheader py-2 py-lg-4 subheader-solid" id="kt_subheader">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-2 mr-5">Inventory</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+            <!--begin::Toolbar-->
+            <div class="d-flex align-items-center">
+                <!--begin::Actions-->
+                <a href="#" class="btn btn-light font-weight-bold btn-sm">Actions</a>
+                <!--end::Actions-->
+                <!--begin::Dropdown-->
+                <div class="dropdown dropdown-inline" data-toggle="tooltip" title="Quick actions" data-placement="left">
+                    <a href="#" class="btn btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="svg-icon svg-icon-success svg-icon-2x">
+                            <!--begin::Svg Icon | path:assets/media/svg/icons/Files/File-plus.svg-->
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <polygon points="0 0 24 0 24 24 0 24" />
+                                    <path d="M5.85714286,2 L13.7364114,2 C14.0910962,2 14.4343066,2.12568431 14.7051108,2.35473959 L19.4686994,6.3839416 C19.8056532,6.66894833 20,7.08787823 20,7.52920201 L20,20.0833333 C20,21.8738751 19.9795521,22 18.1428571,22 L5.85714286,22 C4.02044787,22 4,21.8738751 4,20.0833333 L4,3.91666667 C4,2.12612489 4.02044787,2 5.85714286,2 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
+                                    <path d="M11,14 L9,14 C8.44771525,14 8,13.5522847 8,13 C8,12.4477153 8.44771525,12 9,12 L11,12 L11,10 C11,9.44771525 11.4477153,9 12,9 C12.5522847,9 13,9.44771525 13,10 L13,12 L15,12 C15.5522847,12 16,12.4477153 16,13 C16,13.5522847 15.5522847,14 15,14 L13,14 L13,16 C13,16.5522847 12.5522847,17 12,17 C11.4477153,17 11,16.5522847 11,16 L11,14 Z" fill="#000000" />
+                                </g>
+                            </svg>
+                            <!--end::Svg Icon-->
+                        </span>
+                    </a>
+
+                </div>
+                <!--end::Dropdown-->
+            </div>
+            <!--end::Toolbar-->
+        </div>
+    </div>
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--begin::Card-->
+                    <div class="card card-custom gutter-b example example-compact">
+                        <div class="card-header">
+                            <h3 class="card-title">Creat UserRole</h3>
+
+                        </div>
+                        @using (Html.BeginForm())
+                        {
+                            @Html.HiddenFor(x => x.Id)
+                            @Html.AntiForgeryToken()
+                            @Html.HiddenFor(x => x.AspNetRoles.Id)
+                            <div class="card-body">
+
+                                <div class="form-group row">
+                                    <div class="col-lg-8 ">
+                                        <label>Add RoleName:</label>
+                                        @Html.TextBoxFor(x => x.AspNetRoles.Name, new { @class = "form-control", Placeholder = "Invetory Name", Required = "Required" })
+                                        <span class="form-text text-muted">Please Add RoleName</span>
+                                    </div>
+
+
+                                </div>
+                                <div class="form-group row" style="margin-top:40px;">
+                                    <div class="col-lg-4 ">
+                                        <label style="background-color:cadetblue;color:white;font:bolder;border-radius:10px;padding:8px;"><h3>Table Name</h3></label><br /><br />
+
+                                        <label><h4>Event</h4></label><br /><br />
+                                        <label><h4>User</h4></label><br /><br />
+                                        <label><h4>Role & Permission </h4></label><br /><br />
+                                        <label><h4>Event Type</h4></label><br /><br />
+                                        <label><h4>Subscription Mail</h4></label><br /><br />
+                                        <label><h4>Membership</h4></label><br /><br />
+                                        <label><h4>Social Accounts</h4></label><br /><br />
+                                        <label><h4>Team Profile</h4></label><br /><br />
+
+                                    </div>
+                                    <div class="col-lg-2 ">
+                                        <label style="background-color:cadetblue;color:white;font:bolder;border-radius:10px;padding:8px;"><h6>Allow To Add</h6></label>
+                                        <br />
+                                        @Html.CheckBoxFor(x => x.tbl_Rights.CreateEvent, new { @class = "control-label  checkbx AllowToSeeEventList" })<br /><br />
+                                        @Html.CheckBoxFor(x => x.tbl_Rights.AlllowToCreateUser, new { @class = "control-label  checkbx AllowToSeeUserList" })<br /><br />
+                                        @Html.CheckBoxFor(x => x.tbl_Rights.AllowToCreateRolesAndRights, new { @class = "control-label  checkbx AllowToSeeRoles_PermissionList" })<br /><br />
+                                        @Html.CheckBoxFor(x => x.tbl_Rights.AlllowToCreateEventType, new { @class = "control-label  checkbx AllowToSeeEventTypeList" })<br /><br />
+                                        @Html.CheckBoxFor(x => x.tbl_Rights.MailCreate, new { @class = "control-label  checkbx MailList" })<br /><br />
+                                        @Html.CheckBoxFor(x => x.tbl_Rights.MembershipCreate, new { @class = "control-label  checkbx MembershipList" })<br /><br />
+                                        @Html.CheckBox("a", new { @class = "control-label checkbx", disabled = "disabled" })<br /><br />
+                                        @Html.CheckBoxFor(x => x.tbl_Rights.TeamProfileCreate, new { @class = "control-label  checkbx TeamProfileList" })
+                                    </div>
+                                    <div class="col-lg-2 ">
+                                        <label style="background-color:cadetblue;color:white;font:bolder;border-radius:10px;padding:8px;"><h6>Allow To Update</h6></label>
+                                        <br />
+                                        @Html.CheckBoxFor(x => x.tbl_Rights.EditEvent, new { @class = "control-label  checkbx AllowToSeeEventList" })<br /><br />
+                                        @Html.CheckBoxFor(x => x.tbl_Rights.AllowToUpdateUser, new { @class = "control-label  checkbx AllowToSeeUserList" })<br /><br />
+                                        @Html.CheckBoxFor(x => x.tbl_Rights.AllowToUpdateRolesAndRights, new { @class = "control-label  checkbx AllowToSeeRoles_PermissionList" })<br /><br />
+                                        @Html.CheckBoxFor(x => x.tbl_Rights.AllowToUpdateEventType, new { @class = "control-label  checkbx AllowToSeeEventTypeList" })<br /><br />
+                                        @Html.CheckBox("a", new { @class = "control-label checkbx", disabled = "disabled" })<br /><br />
+                                        @Html.CheckBoxFor(x => x.tbl_Rights.MembershipEdit, new { @class = "control-label  checkbx MembershipList" })<br /><br />
+                                        @Html.CheckBoxFor(x => x.tbl_Rights.SocialHandlersEdit, new { @class = "control-label  checkbx SocialHandlersEdit" })<br /><br />
+                                        @Html.CheckBoxFor(x => x.tbl_Rights.TeamProfileEdit, new { @class = "control-label  checkbx TeamProfileList" })
+                                    </div>
+                                    <div class="col-lg-2 ">
+                                        <label style="background-color:cadetblue;color:white;font:bolder;border-radius:10px;padding:8px;"><h6>Allow To Delete</h6></label>
+                                        <br />
+                                        @Html.CheckBoxFor(x => x.tbl_Rights.Delete, new { @class = "control-label   checkbx AllowToSeeEventList" })<br /><br />
+                                        @Html.CheckBoxFor(x => x.tbl_Rights.AllowToDeleteUser, new { @class = "control-label   checkbx AllowToSeeUserList" })<br /><br />
+                                        @Html.CheckBoxFor(x => x.tbl_Rights.AllowToDeleteRolesAndRights, new { @class = "control-label  checkbx AllowToSeeRoles_PermissionList" })<br /><br />
+                                        @Html.CheckBoxFor(x => x.tbl_Rights.AllowToDeleteEventType, new { @class = "control-label   checkbx AllowToSeeEventTypeList" })<br /><br />
+                                        @Html.CheckBox("a", new { @class = "control-label checkbx", disabled = "disabled" })<br /><br />
+                                        @Html.CheckBoxFor(x => x.tbl_Rights.MembershipDelete, new { @class = "control-label   checkbx MembershipList" })<br /><br />
+                                        @Html.CheckBox("a", new { @class = "control-label checkbx", disabled = "disabled" })<br /><br />
+                                        @Html.CheckBoxFor(x => x.tbl_Rights.TeamProfileDelete, new { @class = "control-label   checkbx TeamProfileList" })
+                                    </div>
+                                    <div class="col-lg-2 ">
+                                        <label style="background-color:cadetblue;color:white;font:bolder;border-radius:10px;padding:8px;"><h6>Allow To List</h6></label>
+                                        <br />
+                                        @Html.CheckBoxFor(x => x.tbl_Rights.EventsList, new { @class = "control-label  checkbx", onclick = "enabledisable('AllowToSeeEventList')", id = "AllowToSeeEventList" })<br /><br />
+                                        @Html.CheckBoxFor(x => x.tbl_Rights.AllowToSeeUserList, new { @class = "control-label  checkbx", onclick = "enabledisable('AllowToSeeUserList')", id = "AllowToSeeUserList" })<br /><br />
+                                        @Html.CheckBoxFor(x => x.tbl_Rights.AllowToListRolesAndRights, new { @class = "control-label  checkbx ", onclick = "enabledisable('AllowToSeeRoles_PermissionList')", id = "AllowToSeeRoles_PermissionList" })<br /><br />
+                                        @Html.CheckBoxFor(x => x.tbl_Rights.AllowToSeeEventTypeList, new { @class = "control-label  checkbx", onclick = "enabledisable('AllowToSeeEventTypeList')", id = "AllowToSeeEventTypeList" })<br /><br />
+                                        @Html.CheckBoxFor(x => x.tbl_Rights.MailList, new { @class = "control-label  checkbx", onclick = "enabledisable('MailList')", id = "MailList" })<br /><br />
+                                        @Html.CheckBoxFor(x => x.tbl_Rights.MembershipList, new { @class = "control-label  checkbx", onclick = "enabledisable('MembershipList')", id = "MembershipList" })<br /><br />
+                                        @Html.CheckBox("a", new { @class = "control-label checkbx", disabled = "disabled" })<br /><br />
+                                        @Html.CheckBoxFor(x => x.tbl_Rights.TeamProfileList, new { @class = "control-label  checkbx", onclick = "enabledisable('TeamProfileList')", id = "TeamProfileList" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <button type="submit" class="btn btn-primary mr-2">Update</button>
+                                        <button type="reset" class="btn btn-secondary"><a href="@Url.Action("List", "UserRolesAndRights")">Cancel</a></button>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                        <!--end::Form-->
+                    </div>
+                    <!--end::Card-->
+
+                </div>
+            </div>
+        </div>
+        <!--end::Container-->
+    </div>
+</div>
+
+
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            if ($('#AllowToSeeEventList').prop("checked")) {
+                $('.AllowToSeeEventList').removeAttr("disabled");
+            } else {
+                $('.AllowToSeeEventList').attr("disabled", true);
+
+            }
+
+            if ($('#AllowToSeeUserList').prop("checked")) {
+                $('.AllowToSeeUserList').removeAttr("disabled");
+            } else {
+                $('.AllowToSeeUserList').attr("disabled", true);
+
+            }
+
+            if ($('#AllowToSeeRoles_PermissionList').prop("checked")) {
+                $('.AllowToSeeRoles_PermissionList').prop("disabled", false);
+            } else {
+                $('.AllowToSeeRoles_PermissionList').attr("disabled", true);
+
+            }
+
+            if ($('#AllowToSeeEventTypeList').prop("checked")) {
+                $('.AllowToSeeEventTypeList').removeAttr("disabled");
+            } else {
+                $('.AllowToSeeEventTypeList').attr("disabled", true);
+
+            }
+            if ($('#MailList').prop("checked")) {
+                $('.MailList').removeAttr("disabled");
+            } else {
+                $('.MailList').attr("disabled", true);
+
+            }
+            if ($('#MembershipList').prop("checked")) {
+                $('.MembershipList').removeAttr("disabled");
+            } else {
+                $('.MembershipList').attr("disabled", true);
+
+            }
+            if ($('#TeamProfileList').prop("checked")) {
+                $('.TeamProfileList').removeAttr("disabled");
+            } else {
+                $('.TeamProfileList').attr("disabled", true);
+
+            }
+        })
+        function enabledisable(chvalue) {
+            debugger
+            if ($('#' + chvalue).prop("checked")) {
+                $('.' + chvalue).removeAttr("disabled");
+            } else {
+                $('.' + chvalue).attr("disabled", true);
+
+            }
+        }
+
+    </script>
+
+
+}

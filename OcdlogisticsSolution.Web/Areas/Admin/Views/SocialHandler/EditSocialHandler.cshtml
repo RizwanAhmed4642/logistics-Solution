@@ -1,0 +1,853 @@
+﻿@model OcdlogisticsSolution.DomainModels.Models.Entity_Models.tbl_SocialHandler
+@{
+    ViewBag.Title = "EditSocialHandler";
+    Layout = "~/Areas/Admin/Views/Shared/_layout.cshtml";
+
+}
+
+<style>
+    .collapsible {
+        background-color: white;
+        color: #f7742c;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+        height: 100px;
+        border-radius: 10px;
+        color: #f7742c;
+        font-size: x-large;
+        font-weight: bold;
+    }
+
+        .active, .collapsible:hover {
+            color: white;
+            background-color: #f7742c;
+        }
+
+    .content {
+        display: none;
+        overflow: hidden;
+        background-color: #f1f1f1;
+        /*font-size: large;*/
+    }
+</style>
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+
+    <div class="container">
+        @using (Html.BeginForm("EditTeamProfile", "SocialHandler", FormMethod.Post, new { @class = "form", enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
+
+            if (ViewBag.message != null)
+            {
+                <div class="alert alert-success alert-dismissable">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> @ViewBag.message</strong>
+                </div>
+            }
+            <div class="form-horizontal">
+                @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
+
+                <button type="button" class="collapsible" style="padding-left: 65px;">Company Details</button>
+                <div class="content">
+                    <div class="card card-custom" style="width:100%;">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group ">
+                                        @Html.Label("Company Name")
+                                        @Html.TextBoxFor(m => m.CompanyName, new { @class = "form-control", placeholder = "OCD Logistics", required = "required" })
+
+                                        @Html.ValidationMessageFor(m => m.CompanyName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.Label("Business Slogan")
+
+                                        @Html.TextBoxFor(m => m.CusinessSlogan, new { @class = "form-control", placeholder = "We building the relation" })
+                                        @Html.ValidationMessageFor(m => m.CusinessSlogan, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group ">
+                                        @Html.Label("Legal Business Name")
+                                        @Html.TextBoxFor(m => m.LegalBusinessName, new { @class = "form-control", placeholder = "Write legal business name" })
+
+                                        @Html.ValidationMessageFor(m => m.LegalBusinessName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.Label("Address")
+
+                                        @Html.TextBoxFor(m => m.Adress, new { @class = "form-control", placeholder = "Adress", required = "required" })
+                                        @Html.ValidationMessageFor(m => m.Adress, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group ">
+                                        @Html.Label("Business URL")
+                                        @Html.TextBoxFor(m => m.BusinessName, new { @class = "form-control", placeholder = "www.exemple.com", required = "required" })
+
+                                        @Html.ValidationMessageFor(m => m.BusinessName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <br />
+                <button type="button" class="collapsible" style="padding-left: 65px;">Social Handles</button>
+                <div class="content">
+                    <div class="card card-custom" style="width:100%;">
+                        <div class="card-body">
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group ">
+                                        @Html.Label("Twitter")
+
+                                        @Html.TextBoxFor(m => m.Twitter, new { @class = "form-control", placeholder = "Twitter" })
+                                        @Html.ValidationMessageFor(m => m.Twitter, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.Label("Facebook")
+
+                                        @Html.TextBoxFor(m => m.Facebook, new { @class = "form-control", placeholder = "Facebook" })
+                                        @Html.ValidationMessageFor(m => m.Facebook, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group ">
+                                        @Html.Label("Instagram")
+
+                                        @Html.TextBoxFor(m => m.Instagram, new { @class = "form-control", placeholder = "Instagram" })
+                                        @Html.ValidationMessageFor(m => m.Instagram, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.Label("LinkedIn")
+
+                                        @Html.TextBoxFor(m => m.LinkedIn, new { @class = "form-control", placeholder = "LinkedIn" })
+                                        @Html.ValidationMessageFor(m => m.LinkedIn, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group ">
+                                        @Html.Label("Youtube")
+
+                                        @Html.TextBoxFor(m => m.Youtube, new { @class = "form-control", placeholder = "Youtube" })
+                                        @Html.ValidationMessageFor(m => m.Youtube, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.Label("Pinterest")
+
+                                        @Html.TextBoxFor(m => m.Pintrest, new { @class = "form-control", placeholder = "Pinterest" })
+                                        @Html.ValidationMessageFor(m => m.Pintrest, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group ">
+                                        @Html.Label("Snapchat")
+
+                                        @Html.TextBoxFor(m => m.Snapchat, new { @class = "form-control", placeholder = "Snapchat" })
+                                        @Html.ValidationMessageFor(m => m.Snapchat, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group ">
+                                        @Html.Label("Tiktok")
+
+                                        @Html.TextBoxFor(m => m.Tiktok, new { @class = "form-control", placeholder = "Snapchat" })
+                                        @Html.ValidationMessageFor(m => m.Tiktok, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <br />
+                <button type="button" class="collapsible" style="padding-left: 65px;">Communication</button>
+                <div class="content">
+                    <div class="card card-custom" style="width:100%;">
+                        <div class="card-body">
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group ">
+                                        @Html.Label("Email")
+                                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
+
+                                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.Label("Phone Number")
+
+                                        @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", placeholder = "Phone Number" })
+                                        @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group ">
+                                        @Html.Label("Text Message")
+
+                                        @Html.TextBoxFor(m => m.TextMessage, new { @class = "form-control", placeholder = "Text Message" })
+                                        @Html.ValidationMessageFor(m => m.TextMessage, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <br />
+                <button type="button" class="collapsible" style="padding-left: 65px;">Payment Methods</button>
+                <div class="content">
+                    <div class="card card-custom" style="width:100%;">
+                        <div class="card-body">
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group ">
+                                        @Html.Label("MasterCard", new { @class = "col-lg-8" })
+
+                                        @Html.CheckBoxFor(m => m.MasterCard, new { @class = " col-lg-2" })
+                                        @*@Html.RadioButtonFor(m => m.MasterCard, "False", new { @class = " col-lg-2" })*@
+                                        @Html.ValidationMessageFor(m => m.MasterCard, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.Label("Visa", new { @class = "col-lg-8" })
+
+                                        @Html.CheckBoxFor(m => m.VisaBit, new { @class = "col-lg-2" })
+                                        @*@Html.RadioButtonFor(m => m.VisaBit, "False", new { @class = "col-lg-2" })*@
+                                        @Html.ValidationMessageFor(m => m.VisaBit, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group ">
+                                        @Html.Label("Discover", new { @class = "col-lg-8" })
+
+                                        @Html.CheckBoxFor(m => m.Discover, new { @class = "col-lg-2" })
+                                        @*@Html.RadioButtonFor(m => m.Discover, "False", new { @class = "col-lg-2" })*@
+                                        @Html.ValidationMessageFor(m => m.Discover, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.Label("Amercian Express", new { @class = "col-lg-8" })
+
+                                        @Html.CheckBoxFor(m => m.AmercianExpress, new { @class = "col-lg-2" })
+                                        @*@Html.RadioButtonFor(m => m.AmercianExpress, "False", new { @class = "col-lg-2" })*@
+                                        @Html.ValidationMessageFor(m => m.AmercianExpress, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group ">
+                                        @Html.Label("Paypal", new { @class = "col-lg-8" })
+
+                                        @Html.CheckBoxFor(m => m.Paypal, new { @class = "col-lg-2" })
+                                        @*@Html.RadioButtonFor(m => m.Paypal, "False", new { @class = "col-lg-2" })*@
+                                        @Html.ValidationMessageFor(m => m.Paypal, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <br />
+                <button type="button" class="collapsible" style="padding-left: 65px;">Security</button>
+                <div class="content">
+                    <div class="card card-custom" style="width:100%;">
+                        <div class="card-body">
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group ">
+                                        @Html.Label("SSl", new { @class = "col-lg-8" })
+
+                                        @Html.CheckBoxFor(m => m.SSl, new { @class = "col-lg-2" })
+                                        @*@Html.RadioButtonFor(m => m.SSl, "False", new { @class = "col-lg-2" })*@
+                                        @Html.ValidationMessageFor(m => m.SSl, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.Label("Norten", new { @class = "col-lg-8" })
+
+                                        @Html.CheckBoxFor(m => m.Norten, new { @class = "col-lg-2" })
+                                        @*   @Html.RadioButtonFor(m => m.Norten, "False", new { @class = "col-lg-2" })*@
+                                        @Html.ValidationMessageFor(m => m.Norten, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <br />
+                <button type="button" class="collapsible" style="padding-left: 65px;">Branding</button>
+                <div class="content">
+                    <div class="card card-custom" style="width:100%;">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group ">
+                                        @Html.Label("Primer Color 1")
+                                        @Html.TextBoxFor(m => m.PrimerColor, new { @class = "form-control", placeholder = "Write primer color 1 code" })
+
+                                        @Html.ValidationMessageFor(m => m.PrimerColor, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.Label("Secondary Color 1")
+
+                                        @Html.TextBoxFor(m => m.SecondaryColor, new { @class = "form-control", placeholder = "Write secondary color 1 code" })
+                                        @Html.ValidationMessageFor(m => m.SecondaryColor, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group ">
+                                        @Html.Label("Primer Color 2")
+                                        @Html.TextBoxFor(m => m.PrimerColor2, new { @class = "form-control", placeholder = "Write primer color 2 code" })
+
+                                        @Html.ValidationMessageFor(m => m.PrimerColor2, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.Label("Secondary Color 2")
+
+                                        @Html.TextBoxFor(m => m.SecondaryColor2, new { @class = "form-control", placeholder = "Write secondary color 2 code" })
+                                        @Html.ValidationMessageFor(m => m.SecondaryColor2, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group ">
+                                        @Html.Label("Primer Color 3")
+                                        @Html.TextBoxFor(m => m.PrimerColor3, new { @class = "form-control", placeholder = "Write primer color 3 code" })
+
+                                        @Html.ValidationMessageFor(m => m.PrimerColor3, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.Label("Secondary Color 3")
+
+                                        @Html.TextBoxFor(m => m.SecondaryColor3, new { @class = "form-control", placeholder = "Write secondary color 3 code" })
+                                        @Html.ValidationMessageFor(m => m.SecondaryColor3, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group ">
+                                        @Html.Label("Secondary Color 4")
+                                        @Html.TextBoxFor(m => m.SecondaryColor4, new { @class = "form-control", placeholder = "Write secondary color 4 code" })
+
+                                        @Html.ValidationMessageFor(m => m.SecondaryColor4, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.Label("Secondary Color 5")
+
+                                        @Html.TextBoxFor(m => m.SecondaryColor5, new { @class = "form-control", placeholder = "Write secondary color 5 code" })
+                                        @Html.ValidationMessageFor(m => m.SecondaryColor5, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label class="col-xl-3 col-lg-3 col-form-label text-right">Logo</label>
+                                <div class="col-lg-9 col-xl-6">
+                                    <div class="image-input image-input-outline" id="kt_image_1">
+                                        @if (Model != null)
+                                        {
+                                            if (Model.HeaderImage110 != null)
+                                            {
+                                                <div class="image-input-wrapper" style="background-image: url(@Model.HeaderImage110)"></div>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <div class="image-input-wrapper" style="background-image: url(/Areas/Admin/Assets/media/users/blank.png)"></div>
+                                        }
+                                        <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
+                                            <i class="fa fa-pen icon-sm text-muted"></i>
+                                            <input type="file" name="header" accept=".png, .jpg, .jpeg" />
+                                            <input type="hidden" name="profile_avatar_remove" />
+                                        </label>
+                                        <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
+                                            <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                        </span>
+                                    </div>
+                                    <span class="form-text text-muted">Allowed file types: png, jpg, jpeg. Image demensions 500*500</span>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label class="col-xl-3 col-lg-3 col-form-label text-right">Emblem</label>
+                                <div class="col-lg-9 col-xl-6">
+                                    <div class="image-input image-input-outline" id="kt_image_2">
+                                        @if (Model != null)
+                                        {
+                                            if (Model.FooterImage80 != null)
+                                            {
+                                                <div class="image-input-wrapper" style="background-image: url(@Model.FooterImage80)"></div>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <div class="image-input-wrapper" style="background-image: url(/Areas/Admin/Assets/media/users/blank.png)"></div>
+                                        }
+                                        <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
+                                            <i class="fa fa-pen icon-sm text-muted"></i>
+                                            <input type="file" name="footer" accept=".png, .jpg, .jpeg" />
+                                            <input type="hidden" name="profile_avatar_remove" />
+                                        </label>
+                                        <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
+                                            <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                        </span>
+                                    </div>
+                                    <span class="form-text text-muted">Allowed file types: png, jpg, jpeg. Image demensions 50*50</span>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <br />
+                <button type="button" class="collapsible" style="padding-left: 65px;">Font</button>
+                <div class="content">
+                    <div class="card card-custom" style="width:100%;">
+                        <div class="card-body">
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group ">
+                                        @Html.Label("TitalBar Color")
+                                        @Html.TextBoxFor(m => m.TitalBarColor, new { @class = "form-control" })
+
+                                        @Html.ValidationMessageFor(m => m.TitalBarColor, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @Html.Label("TitalBar Size")
+
+                                        @Html.TextBoxFor(m => m.TitalBarSize, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.TitalBarSize, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @Html.Label("TitalBar Font")
+
+                                        @Html.TextBoxFor(m => m.TitalBarFont, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.TitalBarFont, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group ">
+                                        @Html.Label("Header Color")
+                                        @Html.TextBoxFor(m => m.HeaderColor, new { @class = "form-control" })
+
+                                        @Html.ValidationMessageFor(m => m.HeaderColor, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @Html.Label("Header Size")
+
+                                        @Html.TextBoxFor(m => m.HeaderSize, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.HeaderSize, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @Html.Label("Header Font")
+
+                                        @Html.TextBoxFor(m => m.HeaderFont, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.HeaderFont, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group ">
+                                        @Html.Label("Body Color")
+                                        @Html.TextBoxFor(m => m.BodyColor, new { @class = "form-control" })
+
+                                        @Html.ValidationMessageFor(m => m.BodyColor, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @Html.Label("Body Size")
+
+                                        @Html.TextBoxFor(m => m.BodySize, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.BodySize, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @Html.Label("Body Font")
+
+                                        @Html.TextBoxFor(m => m.BodyFont, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.BodyFont, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group ">
+                                        @Html.Label("Sub Header Color")
+                                        @Html.TextBoxFor(m => m.SubHeaderColor, new { @class = "form-control" })
+
+                                        @Html.ValidationMessageFor(m => m.SubHeaderColor, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @Html.Label("Sub Header Size")
+
+                                        @Html.TextBoxFor(m => m.SubHeaderSize, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.SubHeaderSize, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @Html.Label("Sub Header Font")
+
+                                        @Html.TextBoxFor(m => m.SubHeaderFont, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.SubHeaderFont, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group ">
+                                        @Html.Label("Body Content Color")
+                                        @Html.TextBoxFor(m => m.BodyContentColor, new { @class = "form-control" })
+
+                                        @Html.ValidationMessageFor(m => m.BodyContentColor, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @Html.Label("Body Content Size")
+
+                                        @Html.TextBoxFor(m => m.BodyContentSize, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.BodyContentSize, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @Html.Label("Body Content Font")
+
+                                        @Html.TextBoxFor(m => m.BodyContentFont, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.BodyContentFont, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group ">
+                                        @Html.Label("Slogan Color")
+                                        @Html.TextBoxFor(m => m.SloganColor, new { @class = "form-control" })
+
+                                        @Html.ValidationMessageFor(m => m.SloganColor, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @Html.Label("Slogan Size")
+
+                                        @Html.TextBoxFor(m => m.SloganSize, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.SloganSize, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @Html.Label("Slogan Font")
+
+                                        @Html.TextBoxFor(m => m.SloganFont, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.SloganFont, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group ">
+                                        @Html.Label("Quote Color")
+                                        @Html.TextBoxFor(m => m.QuoteColor, new { @class = "form-control" })
+
+                                        @Html.ValidationMessageFor(m => m.QuoteColor, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @Html.Label("Quote Size")
+
+                                        @Html.TextBoxFor(m => m.QuoteSize, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.QuoteSize, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @Html.Label("Quote Font")
+
+                                        @Html.TextBoxFor(m => m.QuoteFont, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.QuoteFont, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group ">
+                                        @Html.Label("Website Color")
+                                        @Html.TextBoxFor(m => m.WebsiteColor, new { @class = "form-control" })
+
+                                        @Html.ValidationMessageFor(m => m.WebsiteColor, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @Html.Label("Website Size")
+
+                                        @Html.TextBoxFor(m => m.WebsiteSize, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.WebsiteSize, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @Html.Label("Website Font")
+
+                                        @Html.TextBoxFor(m => m.WebsiteFont, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.WebsiteFont, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <br />
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-12">
+                        <input type="submit" value="Submit" style="background-color:#f7742c; outline:none;border-radius:20px; border-color:#f7742c; color:white; width:150px; height:50px; font-size:x-large; float:right;" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+@section scripts{
+    <script src="~/Areas/Admin/Assets/js/pages/crud/file-upload/image-input.js"></script>
+
+    <script src="~/Areas/Admin/Assets/js/pages/crud/forms/widgets/bootstrap-datetimepicker.js"></script>
+    <script src="~/Areas/Admin/Assets/js/pages/widgets.js"></script>
+    <script>
+
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
+        }
+        $('.food').on("click", function () {
+
+            if ($(this).val == 1) {
+                $('#foodtext').attr('hidden', false);
+
+            }
+        })
+
+        //calendar Script....................
+
+        var KTCalendarExternalEvents = function () {
+
+            var initExternalEvents = function () {
+                $('#kt_calendar_external_events .fc-draggable-handle').each(function () {
+                    // store data so the calendar knows to render an event upon drop
+                    $(this).data('event', {
+                        title: $.trim($(this).text()), // use the element's text as the event title
+                        stick: true, // maintain when user navigates (see docs on the renderEvent method)
+                        classNames: [$(this).data('color')],
+                        description: 'Lorem ipsum dolor eius mod tempor labore'
+                    });
+                });
+            }
+
+            var initCalendar = function () {
+                var todayDate = moment().startOf('day');
+                var YM = todayDate.format('YYYY-MM');
+                var YESTERDAY = todayDate.clone().subtract(1, 'day').format('YYYY-MM-DD');
+                var TODAY = todayDate.format('YYYY-MM-DD');
+                var TOMORROW = todayDate.clone().add(1, 'day').format('YYYY-MM-DD');
+
+                var calendarEl = document.getElementById('kt_calendar');
+                var containerEl = document.getElementById('kt_calendar_external_events');
+
+                var Draggable = FullCalendarInteraction.Draggable;
+
+                new Draggable(containerEl, {
+                    itemSelector: '.fc-draggable-handle',
+                    eventData: function (eventEl) {
+                        return $(eventEl).data('event');
+                    }
+                });
+
+                var calendar = new FullCalendar.Calendar(calendarEl, {
+                    plugins: ['interaction', 'dayGrid', 'timeGrid', 'list'],
+
+                    isRTL: KTUtil.isRTL(),
+                    header: {
+                        left: 'prev,next today',
+                        center: 'title',
+                        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                    },
+
+                    height: 800,
+                    contentHeight: 780,
+                    aspectRatio: 3,  // see: https://fullcalendar.io/docs/aspectRatio
+
+                    nowIndicator: true,
+                    now: TODAY + 'T09:25:00', // just for demo
+
+                    views: {
+                        dayGridMonth: { buttonText: 'month' },
+                        timeGridWeek: { buttonText: 'week' },
+                        timeGridDay: { buttonText: 'day' }
+                    },
+
+                    defaultView: 'dayGridMonth',
+                    defaultDate: TODAY,
+
+                    droppable: true, // this allows things to be dropped onto the calendar
+                    editable: true,
+                    eventLimit: true, // allow "more" link when too many events
+                    navLinks: true,
+                    events: [
+                        {
+                            title: 'All Day Event',
+                            start: YM + '-01',
+                            description: 'Toto lorem ipsum dolor sit incid idunt ut',
+                            className: "fc-event-danger fc-event-solid-warnin"
+                        }
+
+                    ],
+
+                    drop: function (arg) {
+                        // is the "remove after drop" checkbox checked?
+                        if ($('#kt_calendar_external_events_remove').is(':checked')) {
+                            // if so, remove the element from the "Draggable Events" list
+                            $(arg.draggedEl).remove();
+                        }
+                    },
+
+                    eventRender: function (info) {
+                        var element = $(info.el);
+
+                        if (info.event.extendedProps && info.event.extendedProps.description) {
+                            if (element.hasClass('fc-day-grid-event')) {
+                                element.data('content', info.event.extendedProps.description);
+                                element.data('placement', 'top');
+                                KTApp.initPopover(element);
+                            } else if (element.hasClass('fc-time-grid-event')) {
+                                element.find('.fc-title').append('<div class="fc-description">' + info.event.extendedProps.description + '</div>');
+                            } else if (element.find('.fc-list-item-title').lenght !== 0) {
+                                element.find('.fc-list-item-title').append('<div class="fc-description">' + info.event.extendedProps.description + '</div>');
+                            }
+                        }
+                    }
+                });
+
+                calendar.render();
+            }
+
+            return {
+                //main function to initiate the module
+                init: function () {
+                    initExternalEvents();
+                    initCalendar();
+                }
+            };
+        }();
+        $('.Radioispaid1').on("click", function () {
+            debugger
+            $('#pricediv').css("display", "inline")
+        })
+        $('.Radioispaid2').on("click", function () {
+            debugger
+            $('#pricediv').css("display", "none")
+        })
+        jQuery(document).ready(function () {
+            //  KTCalendarExternalEvents.init();
+            $('#kt_datetimepicker_custom').datepicker();
+
+        });
+    </script>
+}
+

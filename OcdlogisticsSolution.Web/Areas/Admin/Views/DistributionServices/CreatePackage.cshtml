@@ -1,0 +1,61 @@
+﻿@model OcdlogisticsSolution.Common.ViewModels.PackageViewModel
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card box-shadow border-0 rounded">
+                <h4 class="p-4 d-flex text-right font-weight-light border-bottom bg-light">
+                    Create or Edit Distribution Service Package
+                </h4>
+                <div class="card-body">
+                    @using (Html.BeginForm("CreatePackage", "DistributionServices"))
+                    {
+                        @Html.HiddenFor(x => x.Id)
+                        <input type="hidden" name="returnUrl" value="@Request.QueryString["returnUrl"]" />
+                        @Html.AntiForgeryToken()
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Label, htmlAttributes: new { @class = "control-label" })
+                                @Html.EditorFor(model => model.Label, new { htmlAttributes = new { @class = "form-control col-12" } })
+                                @Html.ValidationMessageFor(model => model.Label, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label" })
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control col-12" } })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Cost, htmlAttributes: new { @class = "control-label" })
+                                @Html.EditorFor(model => model.Cost, new { htmlAttributes = new { @class = "form-control col-12" } })
+                                @Html.ValidationMessageFor(model => model.Cost, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.DurationType, "Duration Type", htmlAttributes: new { @class = "control-label" })
+                                @Html.DropDownListFor(model => model.DurationType, null, new { @class = "form-control col-12" })
+                                @Html.ValidationMessageFor(model => model.DurationType, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Features, "Features", htmlAttributes: new { @class = "control-label" })
+                                @Html.TextBoxFor(model => model.Features, null, new { @class = "form-control col-12" })
+                                <small class="form-text text-muted">Please, list comman sperated values. </small>
+                                @Html.ValidationMessageFor(model => model.Features, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <div class="text-right">
+                                    @if (!string.IsNullOrWhiteSpace(Model.Id))
+                                    {
+                                        <input type="submit" value="Save & Apply Changes" class="btn btn-primary" />
+                                    }
+                                    else
+                                    {
+                                        <input type="submit" value="Create" class="btn btn-primary" />
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,144 @@
+﻿@model OcdlogisticsSolution.DomainModels.Models.Entity_Models.tbl_SocialHandler
+
+
+
+<!-- search bar & social icon -->
+<section class="first-bar px-md-0">
+    <div class="container-fluid px-lg-0 px-md-3 px-sm-0">
+        <div class="row max-wid">
+            <div class="col col-md-3 p-0">
+                <ul class="list-inline text-right cus-loc img-icon">
+                    <li class="list-inline-item d-block d-md-none "><a href=""><i class="fa fa-map-marker" aria-hidden="true"></i> </a></li>
+                </ul>
+                @*@Html.Action("SocialLinksHeader", "Home")*@
+                <div class=" d-none d-md-block">
+                    <p class="phone-s">
+                        <a href="">
+                            @if (!string.IsNullOrEmpty(Model.Phone))
+                            {
+                                <text>Call or Text </text><a href="tel:@Model.Phone">@Model.Phone</a>
+                            }
+                        </a>
+                    </p>
+                    <ul class="list-inline bg-h-w">
+                        @if (!string.IsNullOrEmpty(Model.Facebook))
+                        {
+                            <li class="list-inline-item"><a href="@Model.Facebook" target="_blank"><i class="fa fa-facebook fb"></i> </a></li>
+                        }
+                        @if (!string.IsNullOrEmpty(Model.Instagram))
+                        {
+                            <li class="list-inline-item"><a href="@Model.Instagram" target="_blank"><i class="fa fa-instagram insta"></i> </a></li>
+
+                        }
+                        @if (!string.IsNullOrEmpty(Model.Twitter))
+                        {
+                            <li class="list-inline-item"><a href="@Model.Twitter" target="_blank"><i class="fa fa-twitter twit"></i> </a></li>
+
+                        }
+                        @if (!string.IsNullOrEmpty(Model.Pintrest))
+                        {
+                            <li class="list-inline-item"><a href="@Model.Pintrest" target="_blank"><i class="fa fa-pinterest pin"></i> </a></li>
+
+                        }
+                        @if (!string.IsNullOrEmpty(Model.Youtube))
+                        {
+                            <li class="list-inline-item"><a href="@Model.Youtube" target="_blank"><i class="fa fa-youtube yt"></i> </a></li>
+
+                        }
+                    </ul>
+                </div>
+
+            </div>
+            <div class="col px-xl-5">
+                <div class="logo-sd">
+                    <a href="@Url.Action("Index","Home")"> <img src="@Model.HeaderImage110"></a>
+                    <br>
+                    <div class="input-group d-none d-md-flex">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <div class="input-group-append">
+                            <button class="btn btn-success" type="submit"><img src="~/Assets/images/img/search.png" alt=""></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-md-3 p-0">
+                <div class="phone-s curncy d-none d-md-block pr-lg-3">
+                    <div class="form-group">
+                        <select class="form-control" id="sell">
+                            <option value="canada">CAD ($)</option>
+
+                        </select>
+                    </div>
+
+                    <span class="main-flag">
+                        <span class="flag-image"><img src="~/Assets/images/img/flag/canada.png" class="flag-s"> </span>
+
+
+                    </span>
+                </div>
+                <ul class="list-inline text-right img-icon">
+                    <li class="list-inline-item d-none d-md-inline-block">
+                        <a href="">
+                            <!-- <img src="images/img/dir-w.png" alt="">  -->
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li class="list-inline-item dropdown my-acct">
+                        <a class="dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"><i class="fa fa-user"></i></a>
+                        <div class="dropdown-menu cust_drop_accnt">
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <a class="dropdown-item" href="@Url.Action("Index", "Panel", new { area = "Admin" })"><i class="fa fa-question-circle cust_acn_icn"></i>Dashboard </a>
+                            }
+
+                            <a href="#" class="dropdown-item"><i class="fa fa-heart  cust_acn_icn "></i> My Favourits</a>
+                            <a class="dropdown-item" href="@Url.Action("OurTeam","Home")"><i class="fa fa-question-circle cust_acn_icn"></i>Our Team</a>
+                            <a class="dropdown-item" href="@Url.Action("Partner","Home")"><i class="fa fa-question-circle cust_acn_icn"></i>Partner</a>
+                            <a class="dropdown-item" href="@Url.Action("Contact","Home")"><i class="fa fa-question-circle cust_acn_icn"></i>Contact Us</a>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+
+                                <a class="dropdown-item" href="/Account/LogOff"><i class="fa fa-user cust_acn_icn"></i>Logout</a>
+                            }
+                            else
+                            {
+                                <a class="dropdown-item" href="@Url.Action("Login","Account",new {area="" })"><i class="fa fa-cog cust_acn_icn"></i>Login</a>
+
+                            }
+                        </div>
+                    </li>
+
+
+
+                    
+                    <li class="list-inline-item position-relative">
+                        <a href="#" id="btnTargetCart">
+                            <img src="~/Assets/monday_attachments/cart-img.png" />
+                        </a>
+                        <label class="badge badge-primary rounded-circle p-2 position-absolute" id="cartVisualCount" style=" top: 13px; right: -4px;">
+                            @if (Session["Carts"] != null)
+                            {
+                                @:<count>@(((List<OcdlogisticsSolution.Common.ViewModels.CartItem>)Session["Carts"]).Count)</count>
+                            }
+                            else
+                            {
+                                @:<count>0</count>
+                            }
+                        </label>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-12 d-md-none d-block p-0">
+                <div class="logo-sd">
+                    <div class="input-group mb-lg-1">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <div class="input-group-append">
+                            <button class="btn btn-success" type="submit"><img src="~/Assets/images/img/search.png" alt=""></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- mege menu -->

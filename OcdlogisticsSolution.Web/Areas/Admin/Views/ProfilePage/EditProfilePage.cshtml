@@ -1,0 +1,314 @@
+﻿@model OcdlogisticsSolution.DomainModels.Models.Entity_Models.tbl_ProfilePage
+@{
+    ViewBag.Title = "EditProfilePage";
+    Layout = "~/Areas/Admin/Views/Shared/_layout.cshtml";
+
+}
+
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Subheader-->
+    
+
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            @if (ViewBag.error != null)
+            {
+                <div class="alert alert-success alert-dismissable">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> @ViewBag.error</strong>
+                </div>
+            }
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--begin::Card-->
+                    <div class="card card-custom gutter-b example example-compact">
+                        <div class="card-header">
+                            <h3 class="card-title">Customize Profile page</h3>
+
+                        </div>
+                        <!--begin::Form-->
+                        @using (Html.BeginForm("EditProfilePage", "ProfilePage", new { area = "" }, FormMethod.Post, new { @class = "form", @enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="card-body">
+                        <div class="form-group row">
+                            @*<div class="col-lg-6">
+                @Html.Label("Backgroungd Color")
+                @Html.TextBoxFor(m => m.BackGroungdColor, new { @class = "form-control", type = "color", id = "example-color-input" })
+                @Html.ValidationMessageFor(m => m.BackGroungdColor, "", new { @class = "text-danger" })
+            </div>*@
+                            <div class="col-lg-6">
+                                @Html.Label("Expert Image Text")
+
+                                @Html.TextBoxFor(m => m.ExpertImageText, new { @class = "form-control", placeholder = "Expert Image Text" })
+                                @Html.ValidationMessageFor(m => m.ExpertImageText, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-6">
+                                @Html.Label("Seminar Image Text")
+
+                                @Html.TextBoxFor(m => m.SeminarImageText, new { @class = "form-control", placeholder = "Seminar Image Text" })
+                                @Html.ValidationMessageFor(m => m.SeminarImageText, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-6">
+                                @Html.Label("Quote")
+
+                                @Html.TextBoxFor(m => m.ProfilePageQuote, new { @class = "form-control", placeholder = "Profile page quote" })
+                                @Html.ValidationMessageFor(m => m.ProfilePageQuote, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            @*<div class="col-lg-6">
+                @Html.Label("Backgroungd Color")
+                @Html.TextBoxFor(m => m.BackGroungdColor, new { @class = "form-control", type = "color", id = "example-color-input" })
+                @Html.ValidationMessageFor(m => m.BackGroungdColor, "", new { @class = "text-danger" })
+            </div>*@
+                            <div class="col-lg-6">
+                                <div class="d-flex justify-content-between">
+                                    <label for="Banner_Colour">Banner Colour</label>
+
+                                </div>
+                                <a href=# class="close" id="clearcolor"><small style="color:black">Clear Color</small></a>
+
+                                @Html.TextBoxFor(m => m.BackGroungdColorBanner, new { @class = "form-control", type = "color", id = "example-color-input" })
+                                @Html.ValidationMessageFor(m => m.BackGroungdColorBanner, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="d-flex justify-content-between">
+                                    <label for="Banner_Colour">Body Colour</label>
+
+                                </div>
+                            
+                                <a href=# class="close" id="clearcolor1"><small style="color:black">Clear Color</small></a>
+                                @Html.TextBoxFor(m => m.BackGroungdColorbody, new { @class = "form-control", type = "color", id = "example-color-input1" })
+                                @Html.ValidationMessageFor(m => m.BackGroungdColorbody, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="d-flex justify-content-between">
+                                    <label for="Banner_Colour">Semenar Colour</label>
+
+                                </div>
+                             
+                                <a href=# class="close" id="clearcolor2"><small style="color:black">Clear Color</small></a>
+                                @Html.TextBoxFor(m => m.BackGroungdColorFootr, new { @class = "form-control", type = "color", id = "example-color-input2" })
+                                @Html.ValidationMessageFor(m => m.BackGroungdColorFootr, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-xl-3 col-lg-3 col-form-label " style="text-align:center">Expert Image</label>
+                            <div class="col-lg-3 col-xl-3">
+                                <div class="image-input image-input-outline" id="kt_image_1" style="height:300px;width:100%">
+                                    @if (Model.ProfilePageExpertImage != null)
+                                    {
+                                        <div class="image-input-wrapper" style="background-image: url('@Model.ProfilePageExpertImage');height:250px;width:100%"></div>
+                                    }
+                                    else
+                                    {
+                                        <div class="image-input-wrapper" style="background-image: url(/Areas/Admin/Assets/media/users/blank.png);height:250px;width:100%"></div>
+
+                                    }
+                                    <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
+                                        <i class="fa fa-pen icon-sm text-muted"></i>
+                                        <input type="file" name="expert" accept=".png, .jpg, .jpeg" />
+                                        <input type="hidden" name="profile_avatar_remove" />
+                                    </label>
+                                    <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
+                                        <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                    </span>
+                                </div>
+                                <span class="form-text text-muted">Allowed file types: png, jpg, jpeg. Image must be in square size. Ideal is 540 x 540 px.</span>
+                            </div>
+                            <label class="col-xl-3 col-lg-3 col-form-label " style="text-align:center">Seminar Image</label>
+                            <div class="col-lg-3 col-xl-3">
+                                <div class="image-input image-input-outline" id="kt_image_2" style="height:300px;width:100%">
+                                    @if (Model.ProfilePageSeminarImage != null)
+                                    {
+                                        <div class="image-input-wrapper" style="background-image: url('@Model.ProfilePageSeminarImage');height:250px;width:100%"></div>
+                                    }
+                                    else
+                                    {
+                                        <div class="image-input-wrapper" style="background-image: url(/Areas/Admin/Assets/media/users/blank.png);height:250px;width:100%"></div>
+
+                                    }
+                                    <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
+                                        <i class="fa fa-pen icon-sm text-muted"></i>
+                                        <input type="file" name="seminar" accept=".png, .jpg, .jpeg" />
+                                        <input type="hidden" name="profile_avatar_remove" />
+                                    </label>
+                                    <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
+                                        <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                    </span>
+                                </div>
+                                <span class="form-text text-muted">Allowed file types: png, jpg, jpeg. Image must be in square size. Ideal is 540 x 540 px.</span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-xl-3 col-lg-3 col-form-label " style="text-align:center">BackGround Img 1</label>
+                            <div class="col-lg-3 col-xl-3">
+                                <div class="image-input image-input-outline" id="kt_image_3" style="height:300px;width:100%">
+                                    @if (Model.bckimg1 != null)
+                                    {
+                                        <div class="image-input-wrapper" style="background-image: url('@Model.bckimg1');height:250px;width:100%"></div>
+                                    }
+                                    else
+                                    {
+                                        <div class="image-input-wrapper" style="background-image: url(/Areas/Admin/Assets/media/users/blank.png);height:250px;width:100%"></div>
+
+                                    }
+                                    <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
+                                        <i class="fa fa-pen icon-sm text-muted"></i>
+                                        <input type="file" name="backimg1" accept=".png, .jpg, .jpeg" />
+                                        <input type="hidden" name="profile_avatar_remove" />
+                                    </label>
+                                    <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
+                                        <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                    </span>
+                                </div>
+                                <span class="form-text text-muted">Allowed file types: png, jpg, jpeg. Image must be in square size. Ideal is 540 x 540 px.</span>
+                            </div>
+                            <label class="col-xl-3 col-lg-3 col-form-label " style="text-align:center">BackGround Img 2</label>
+                            <div class="col-lg-3 col-xl-3">
+                                <div class="image-input image-input-outline" id="kt_image_4" style="height:300px;width:100%">
+                                    @if (Model.bckimg2 != null)
+                                    {
+                                        <div class="image-input-wrapper" style="background-image: url('@Model.bckimg2');height:250px;width:100%"></div>
+                                    }
+                                    else
+                                    {
+                                        <div class="image-input-wrapper" style="background-image: url(/Areas/Admin/Assets/media/users/blank.png);height:250px;width:100%"></div>
+
+                                    }
+                                    <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
+                                        <i class="fa fa-pen icon-sm text-muted"></i>
+                                        <input type="file" name="backimg2" accept=".png, .jpg, .jpeg" />
+                                        <input type="hidden" name="profile_avatar_remove" />
+                                    </label>
+                                    <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
+                                        <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                    </span>
+                                </div>
+                                <span class="form-text text-muted">Allowed file types: png, jpg, jpeg. Image must be in square size. Ideal is 540 x 540 px.</span>
+                            </div>
+
+                            <label class="col-xl-3 col-lg-3 col-form-label " style="text-align:center">BackGround Img 3</label>
+                            <div class="col-lg-3 col-xl-3">
+                                <div class="image-input image-input-outline" id="kt_image_5" style="height:300px;width:100%">
+                                    @if (Model.bckimg3 != null)
+                                    {
+                                        <div class="image-input-wrapper" style="background-image: url('@Model.bckimg3');height:250px;width:100%"></div>
+                                    }
+                                    else
+                                    {
+                                        <div class="image-input-wrapper" style="background-image: url(/Areas/Admin/Assets/media/users/blank.png);height:250px;width:100%"></div>
+
+                                    }
+                                    <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
+                                        <i class="fa fa-pen icon-sm text-muted"></i>
+                                        <input type="file" name="backimg3" accept=".png, .jpg, .jpeg" />
+                                        <input type="hidden" name="profile_avatar_remove" />
+                                    </label>
+                                    <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
+                                        <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                    </span>
+                                </div>
+                                <span class="form-text text-muted">Allowed file types: png, jpg, jpeg. Image must be in square size. Ideal is 540 x 540 px.</span>
+                            </div>
+                        </div>
+                        @*<div class="form-group row">
+
+            <label class="col-xl-3 col-lg-3 col-form-label" style="text-align:center">Benner Image</label>
+            <div class="col-lg-9 col-xl-9">
+                <div class="image-input image-input-outline" style="height:300px;width:100%" id="kt_image_4">
+                    @if (Model.ProfilePageBannermage != null)
+                    {
+                        <div class="image-input-wrapper" style="background-image: url(@Model.ProfilePageBannermage);height:300px;width:100%"></div>
+                    }
+                    else
+                    {
+                        <div class="image-input-wrapper" style="background-image: url(/Assets/images/Noimage1024x512.png);height:300px;width:100%"></div>
+
+                    }
+                    <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
+                        <i class="fa fa-pen icon-sm text-muted"></i>
+                        <input type="file" name="bennner" accept=".png, .jpg, .jpeg" />
+                        <input type="hidden" name="profile_avatar_remove" />
+                    </label>
+                    <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
+                        <i class="ki ki-bold-close icon-xs text-muted"></i>
+                    </span>
+                </div>
+                <span class="form-text text-muted">Allowed file types: png, jpg, jpeg. Image size is 1920 x 700 px.</span>
+            </div>
+        </div>*@
+                    </div>
+                            <div class="card-footer">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <button type="submit" class="btn btn-primary mr-2">Update</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        }
+                        <!--end::Form-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+</div>
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            var avatar1 = new KTImageInput('kt_image_1');
+            var avatar2 = new KTImageInput('kt_image_2');
+            var avatar3 = new KTImageInput('kt_image_3');
+            var avatar4 = new KTImageInput('kt_image_4');
+            var avatar5 = new KTImageInput('kt_image_5');
+
+
+            avatar2.on('cancel', function (imageInput) {
+            });
+            avatar2.on('change', function (imageInput) {
+            });
+            avatar2.on('remove', function (imageInput) {
+            });
+            avatar1.on('cancel', function (imageInput) {
+            });
+            avatar1.on('change', function (imageInput) {
+            });
+            avatar1.on('remove', function (imageInput) {
+            });
+            avatar3.on('cancel', function (imageInput) {
+            });
+            avatar3.on('change', function (imageInput) {
+            });
+            avatar3.on('remove', function (imageInput) {
+            });
+            avatar5.on('cancel', function (imageInput) {
+            });
+            avatar5.on('change', function (imageInput) {
+            });
+            avatar5.on('remove', function (imageInput) {
+            });
+        });
+        $('#clearcolor').click(function (e) {
+            $('#example-color-input').val("");
+            e.preventDefault();
+        })
+        $('#clearcolor1').click(function (e) {
+            $('#example-color-input1').val("");
+            e.preventDefault();
+        })
+        $('#clearcolor2').click(function (e) {
+            $('#example-color-input2').val("");
+            e.preventDefault();
+        })
+    </script>
+
+}

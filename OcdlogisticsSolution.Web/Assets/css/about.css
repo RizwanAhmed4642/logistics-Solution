@@ -1,0 +1,220 @@
+@font-face {
+    /* font-family: "Segoe UI"; */
+
+    font-family: 'sofia';
+    src: url("./fonts/Sofia\ Pro\ Regular.ttf");
+    font-weight: normal/bold/inherit;
+    font-display: block;
+}
+@font-face {
+    font-family: 'centuryGot';
+    src: url("./fonts/CenturyGothic.ttf");
+    font-weight: normal/bold/inherit;
+    font-display: block;
+}
+@font-face {
+    font-family: 'azoSan';
+    src: url("./fonts/CenturyGothic.ttf");
+    font-weight: normal/bold/inherit;
+    font-display: block;
+}
+class my-custom-font {
+    font-family: 'sofia', 'centuryGot', 'azoSan';
+}
+h1,h2,h3,h4,h5,h6{
+    font-family: "sofia";
+}
+p {
+    font-family: "sofia";
+}
+.banner h2{
+    margin: auto;
+    height: 58px;
+    padding: 17px 0px;
+    color: #000000 !important;
+    font-size: 18px;
+    Font-Family: "sofia";
+}
+.head-title {
+    color: black !important;
+    Font-Family: "sofia";
+}
+.head-title ul {
+    text-transform: uppercase;
+}
+.content {
+    margin-top: 15px;
+}
+.img {
+    width: 100%;
+    /* text-align: center; */
+    /* border: 1px solid; */
+    max-height: 540px;
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: xx-large; */
+}
+.img p {
+    font-size: xx-large;
+}
+/* .cnt-div {
+    display: flex;
+    justify-content: space-between;
+} */
+.cnt-spn {
+    margin-right: 20px;
+    padding: 9px 0px;
+    Font-Family: "azoSan";
+    font-size: x-large;
+}
+.cnt-btn {
+    background-color: black;
+    color: white !important;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    padding: 5px 30px;
+    margin-top: 3px;
+    white-space: nowrap;
+    border: 2px solid black;
+}
+.cnt-btn:hover {
+    background-color: #f7742c;
+    color: white;
+    border: 2px solid black;
+}
+.parallax-window {
+    min-height: 500px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("../images/OCD THINK TANK brand pics (3)/73.png");
+}
+.parallax {
+    min-height: 500px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("../images/img/lapi-hand.jpg");
+}
+.slogan {
+    Font-Family: "centuryGot" !important;
+    font-size: 24px;
+    color: #f7742c;
+}
+
+.cdeck {
+    text-align: center;
+    margin-bottom: 25px;
+}
+.card-title {
+    width: 50%;
+    margin: auto;
+    height: auto;
+    padding: 10px 0px;
+    background: #f7742c;
+}
+.card-title h4 {
+    color: #ffffff !important;
+}
+.btnCard {
+    margin-top: 10px;
+}
+.btn-black:hover {
+    background-color: #f7742c;
+    color: white;
+    /* border: 2px solid black; */
+}
+.boletLine {
+    text-align: center;
+    color: #f7742c !important;
+    /* font-size: xx-large; */
+}
+.ul-items {
+    padding-left: 157px;
+}
+.ul-btn {
+    text-align: right;
+}
+/* modal */
+.modal-header {
+    background: #000000;
+}
+.modal-title {
+    color: #ffffff !important;
+}
+.modelBoxTitle {
+    text-transform: uppercase;
+}
+.close {
+    color: #ffffff;
+}
+.close:hover {
+    color: #ffffff;
+}
+.Model-bole {
+    color: #f7742c !important;
+}
+.about_side_text p {
+    max-height: 260px;
+    overflow: hidden;
+}
+/* .modal-footer {
+    background: #000000;
+} */
+@media (max-width: 720px) {
+    .ul-items {
+        padding-left: 0px;
+    }
+    .ul-btn {
+        display: revert;
+        /* justify-content: flex-end; */
+    }
+}
+@media (max-width: 375px) {
+    .ul-items {
+        padding-left: 0px;
+    }
+    .ul-btn {
+        display: revert;
+        /* justify-content: flex-end; */
+    }
+    .cnt-spn {
+        margin-right: 20px;
+        padding: 9px 0px;
+        Font-Family: "azoSan";
+        font-size: large;
+    }
+    
+}
+@media (min-width: 330px) and (max-width: 575px) {
+    .cnt-btn {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+    .img {
+        width: 100%;
+        height: auto;
+        border: none;
+    }
+    .btn-black {
+        padding: 5px 14px;
+    }
+    /* video {
+        width: 345px !important;
+    } */
+}
+@media (min-width: 320px) {
+    /* video {
+        width: 290px ;
+    } */
+}
+@media (min-width: 720px) and (max-width: 1024px) {
+    /* video {
+        width: 433px;
+    } */
+}

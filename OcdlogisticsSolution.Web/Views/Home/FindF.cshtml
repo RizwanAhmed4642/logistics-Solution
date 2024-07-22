@@ -1,0 +1,140 @@
+﻿@model OcdlogisticsSolution.DomainModels.Models.Entity_Models.Tbl_FindF
+@{
+    ViewBag.Title = "FindF";
+    Layout = "~/Views/Shared/_OcdLogisticsLayout.cshtml";
+}
+
+<section>
+    <ul class="breadcrumb cust_crumb about_breadCrums">
+        <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+        <li><a class="active" href="#">Find Professional</a></li>
+    </ul>
+    <div class="container">
+        <div class="row ">
+            <!-- Banner Section Strats -->
+            <div class="col-lg-6 col-md-12 col-sm-12 pt-5 pb-4">
+                <div class="about_side_img">
+                    <iframe width="560" height="315" src="@Model.VedioPath" frameborder="0"
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 pt-5 pb-4 ">
+                <div class="about_side_img rit-img">
+                    <img class="" src="@Model.ImgPath">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="fp_locate_bar">
+        <div class="row no-gutters">
+            <div class=" col-xl-6 col-lg-12 col-md-12 col-sm-12 pt-4 pb-4">
+                <form class="form-inline cont_text fp-input" action="/action_page.php">
+                    <div class="col-xl-6 col-sm-6">
+                        <div class="mb-3">
+                            <label for="email">YOUR LOCATION</label>
+                            <input type="email" class="form-control" placeholder="POSTAL/ZIP CODE" id="email">
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-sm-6">
+                        <div class="mb-3">
+                            <label for="pwd">DISTANCE</label>
+                            <input type="password" class="form-control" placeholder="25KM" id="pwd">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 pt-4 pb-4 ">
+                <div class=" fp_what_services">
+                    <div class="curncy cust_drop_accnt float-left text-left  m-2  find-select">
+                        <div class="form-group ">
+                            <select class="form-control f-16" id="sell">
+                                <option value="germany">@Model.ButtonSideText</option>
+                                @*<option value="germany">What Services Can We Help You Find ? </option>
+                                <option value="germany">What Services Can We Help You Find ? </option>
+                                <option value="germany">What Services Can We Help You Find ? </option>
+                                <option value="germany">What Services Can We Help You Find ? </option>
+                                <option value="germany">What Services Can We Help You Find ? </option>*@
+
+                            </select>
+                        </div>
+                    </div>
+                    <a href="" class="btn btn-sol fp_btn_wite_bg float-left mr-lg-5">Find US </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Location And Distance Section END -->
+
+    <div class="container">
+        <div class="row">
+            <!-- MAP Section Starts -->
+            <div class="col-lg-5 col-md-12 col-sm-12 pt-4 pb-4 ">
+                <div class="about_side_text">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">@Model.BoxHeading</h4>
+                            <p class="card-text">@Model.BoxContent</p>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="pt-5 text-left">@Model.BoxButonText</h3>
+                        <a href="" class="btn btn-sol ml-sm-3 text-center">Availablity</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-7 col-md-12 col-sm-12 pt-4 pb-4 order-lg-2 order-1">
+                <div class=" w-100">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d13596.227846362062!2d74
+                    .37047654999999!3d31.5774858!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v15899
+                    04921591!5m2!1sen!2s" width="100" height="300" frameborder="0" style="border:0;"
+                            allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                </div>
+                <div class="d-block text-center about_side_text">
+                    <h3 class="pt-4 text-left">@Model.MapBelowText</h3>
+                    <a href="" class="btn btn-sol ml-sm-3">SHOP</a>
+                </div>
+            </div>
+            <!-- MAP Section END -->
+        </div>
+    </div>
+    <div class="banner-bg-find mb-0">
+        <div class="ban-overlay fp_certified_sec"></div>
+        <div class="container rel">
+            <div class="row">
+                <div class="col-lg-6 col-md-12 col-sm-12">
+                    <div class="">
+                        <a href="">
+                            <div class="banner-text-ab pt-4">
+                                <h3>@Model.OCDTeamHeading</h3>
+                                <p class="pt-md-4">
+                                    @Model.OCDTeamContent
+                                </p>
+
+                            </div>
+                        </a>
+                        <a href="" class="btn btn-sol fp_btn_wite_bg bor-white">Learn More </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12">
+                    <div class="">
+                        <a href="">
+                            <div class="banner-text-ab pt-4">
+                                <h3>@Model.PartnerHeading</h3>
+                                <p class="pt-md-4">
+                                   @Model.PartnerContent
+                                </p>
+                            </div>
+                        </a>
+                        <a href="" class="btn btn-sol fp_btn_wite_bg bor-white">Learn More </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+

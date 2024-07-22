@@ -1,0 +1,88 @@
+﻿@model OcdlogisticsSolution.Common.ViewModels.BrandViewModel
+@{
+    ViewBag.Title = "Add Brand";
+}
+
+<div class="col-lg-9">
+    @using (Html.BeginForm("AddNewBrand", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="box-shadow m-2 rounded">
+            <div class="card border-0">
+                <div class="card-header">
+                    <div class="card-title mb-0">
+                        <div class="d-flex align-content-center justify-content-between">
+                            <span>Brand Detail</span>
+                        </div>
+                        <div class="text-success">
+                            @if (!string.IsNullOrWhiteSpace(Request.QueryString["SuccessMsg"]))
+                            {
+                                @:<text>@Request.QueryString["SuccessMsg"]</text>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div style="min-height:400px" class="card-body p-0 mt-4">
+                    <div class="form-group col-lg-12">
+                        <label>Brand Name</label>
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control control-style" })
+                        @Html.ValidationMessageFor(x => x.Name, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label>Brand Description</label>
+                        @Html.TextAreaFor(m => m.Description, new { @class = "form-control control-style", rows = 6 })
+                        @Html.ValidationMessageFor(x => x.Description, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label>Trademark</label>
+                        @Html.TextBoxFor(m => m.TradeMarkImg, new { type = "file", @class = "form-control", accept = "image/*" })
+                        @Html.ValidationMessageFor(x => x.TradeMarkImg, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-12 form-group">
+                        <h3 class="font-weight-normal">Business Information</h3>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label>Business Name</label>
+                        @Html.TextBoxFor(m => m.Business.Name, new { @class = "form-control control-style" })
+                        @Html.ValidationMessageFor(x => x.Business.Name, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label>Business Email</label>
+                        @Html.TextBoxFor(m => m.Business.Email, new { @class = "form-control control-style" })
+                        @Html.ValidationMessageFor(x => x.Business.Email, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label>Business Contact number</label>
+                        @Html.TextBoxFor(m => m.Business.PhoneNumber, new { @class = "form-control control-style" })
+                        @Html.ValidationMessageFor(x => x.Business.PhoneNumber, "", new { @class = "text-danger" })
+                    </div>
+                    <h4 class="form-group col-12">
+                        Point of Contract Person
+                    </h4>
+                    <div class="form-group col-lg-12">
+                        <label>Person Name</label>
+                        @Html.TextBoxFor(m => m.Business.Person.Name, new { @class = "form-control control-style" })
+                        @Html.ValidationMessageFor(x => x.Business.Person.Name, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label>Email</label>
+                        @Html.TextBoxFor(m => m.Business.Person.Email, new { @class = "form-control control-style" })
+                        @Html.ValidationMessageFor(x => x.Business.Person.Email, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label>Contact Number</label>
+                        @Html.TextBoxFor(m => m.Business.Person.ContactNumber, new { @class = "form-control control-style" })
+                        @Html.ValidationMessageFor(x => x.Business.Person.ContactNumber, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label>Designation</label>
+                        @Html.TextBoxFor(m => m.Business.Person.Designation, new { @class = "form-control control-style" })
+                        @Html.ValidationMessageFor(x => x.Business.Person.Designation, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-lg-12 text-right">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

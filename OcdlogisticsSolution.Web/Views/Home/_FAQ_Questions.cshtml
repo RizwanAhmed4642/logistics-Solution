@@ -1,0 +1,33 @@
+﻿@model  IEnumerable<OcdlogisticsSolution.DomainModels.Models.Entity_Models.tbl_FAQ_Questions>
+
+@foreach (var item in Model)
+{
+    if ((OcdlogisticsSolution.Common.ViewModels.Pages)item.tbl_FAQ.Type == OcdlogisticsSolution.Common.ViewModels.Pages.Home)
+    {
+        <div class="card">
+            <div class="card-headerFaq" id="headingOne_@item.Id">
+                <div class="collapsed w-100" data-toggle="collapse" data-target="#collapseOne_@item.Id" aria-expanded="false" aria-controls="collapseOne_@item.Id">
+                    <span class="fa-stack fa-sm">
+                        <i class="fa fa-plus"></i>
+                    </span>
+                    <h2 class="mb-0 Faq-b">
+                        <button class="Faq-q d-flex align-items-center justify-content-between btn btn-link ">
+                            @item.Question
+                        </button>
+                    </h2>
+                </div>
+            </div>
+            <div id="collapseOne_@item.Id" class="collapse" aria-labelledby="headingOne" data-parent="#accordionFaq">
+                <div class="card-body">
+                    <p>@item.Answer</p>
+                </div>
+            </div>
+        </div>
+    }
+    else if ((OcdlogisticsSolution.Common.ViewModels.Pages)item.tbl_FAQ.Type == OcdlogisticsSolution.Common.ViewModels.Pages.Education)
+    {
+        @:<li>@item.Answer</li>
+    }
+}
+
+

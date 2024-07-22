@@ -1,0 +1,228 @@
+﻿<!DOCTYPE html>
+<!--
+Template Name: Transporting
+Version: 1.0.0
+Author: Kamleshyadav
+Website: http://himanshusofttech.com/
+Purchase: http://themeforest.net/user/kamleshyadav
+-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<!-- Begin Head -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OCD Logistics</title>
+    <link rel="stylesheet" href="~/Assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Assets/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="~/Assets/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="~/Assets/css/slick.css">
+    <link rel="stylesheet" href="~/Assets/css/slick-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/Assets/css/animate.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="~/Assets/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="~/Assets/css/style.css">
+    <link href="~/Assets/css/footer.css" rel="stylesheet" />
+    <link href="~/Assets/css/ocdHome.css" rel="stylesheet" />
+    <link href="~/Areas/AdminDashboard/assets/SweetAlertBosttrap/sweetalert.css" rel="stylesheet" />
+
+
+    <!-- footer css -->
+    <link rel="stylesheet" type="text/css" href="~/Assets/css/responsive.css">
+</head>
+<body>
+    <!--Page main section start-->
+    <div>
+        <section class="first-bar2 alert alert-dismissible">
+            <div class="max-wid rel">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+            </div>
+            <div class="container">
+                <a href="">
+                    <p class="text-center"><i class="fa fa-bullhorn " aria-hidden="true"></i>Please note - Covid Update Here Building the Community within the Community </p>
+                </a>
+            </div>
+        </section>
+        <img src="~/Assets/images/img/angle-up.png" class="fixed-caret" alt="">
+        <!-- notification -->
+        @Html.Action("SocialLinksHeader", "Home")
+        <section class="after-header">
+            <div class="main navbar-inverse header-box ">
+                <div class="container-fluid p-0">
+                    <nav class="navbar navbar-expand-md p0 navbar-dark">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar"> <span class="navbar-toggler-icon"></span> </button>
+                        <div class="collapse navbar-collapse navclose " id="collapsibleNavbar">
+                            <button type="button" class="close d-md-none d-block" data-dismiss="navclose">×</button>
+                            <div class="d-md-none d-block pink-log"> <a href="">SIGN IN/REGISTER TO SHOP TRADE <i class="fa fa-user ml-2"></i> </a> </div>
+                            <ul class="navbar-nav nav_ul_style max-wid">
+                                <li class="nav-item nav-f"> <a class="nav-link " href="#">Logistics  </a> </li>
+                                <li class="nav-item nav-f"> <a class="nav-link " href="#">Storage</a> </li>
+                                <li class="nav-item nav-f"> <a class="nav-link " href="#">Moving  </a> </li>
+                                <li class="nav-item nav-f"> <a class="nav-link " href="#">Supplies </a> </li>
+                                <li class="nav-item nav-f"> <a class="nav-link " href="#">Our MarketPlace </a> </li>
+
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </section>
+
+        <!-- text slider -->
+        <section class="third-row">
+            <div class="main-name-silder cus-arrow">
+                <div>
+                    <div class="text-g"><a href="@Url.Action("About","Home")"><h3>About</h3><br class="d-block d-md-none">- Learn More -</a></div>
+                </div>
+                <div>
+                    <div class="text-g"><a href="@Url.Action("Educat","Education")"><h3>education</h3><br class="d-block d-md-none">- Level Up -</a></div>
+                </div>
+                <div>
+                    <div class="text-g"><a href="#"><h3>Events</h3><br class="d-block d-md-none">- Save the Date -</a></div>
+                </div>
+            </div>
+        </section>
+
+        <div>
+            @RenderBody()
+        </div>
+        <section class="footer">
+            <div class="shop-cart-block">
+                <div class="container">
+                    <i class="fa fa-angle-down" aria-hidden="true"></i> Shopping Cart <i class="fa fa-angle-up" aria-hidden="true"></i>
+                </div>
+            </div>
+            <div class="subscribe-block">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-8 col-sm-12 col-12">
+                            <div class="d-block w-100 float-left">
+                                <div class="wid-same txt-uper">Sign up for promotions</div>
+                                <div class="wid-same input-frm"><input type="text" class="from-control" placeholder="E-mail Address" id="Email"></div>
+                                <div class="wid-same"><button type="button" class="btn btn-subcribe" id="EmailButton">Subscribe</button></div>
+                            </div>
+                            <div class="d-block w-100 float-left">
+                                <label class="checkbox-cus">
+                                    I'm not a robot
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-sm-12 col-12 text-center">
+                            <button type="button" class="btn btn-shop">Shop Now</button>
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-sm-12 col-12 text-center">
+                            <button type="button" class="btn btn-shop">Directory</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- FOOTER Start -->
+            <div class="footer_pageLinks_main">
+                <div class="container">
+                    <div class="row pb-3 pt-4">
+                        <div id="accordion" style="width: 100%; display: contents;">
+                            <button class="accordion">ABOUT US</button>
+                            <div>
+                                <ul class="footer-links-c">
+                                    <li><a href="#">Why Us</a></li>
+                                    <li><a href="#">Opportunities</a></li>
+                                    <li><a href="#">Affiliates</a></li>
+                                    <li><a href="#">Prefferd Partners</a></li>
+                                    <li><a href="#">Charity</a></li>
+                                    <li><a href="#">Sell on OCD-Logistics</a></li>
+                                    <li><a href="#">Brand Ambassadors</a></li>
+                                    <li><a href="@Url.Action("OurTeam","Home")">Our Team</a></li>
+                                    <li><a href="#">Blog</a></li>
+                                </ul>
+                            </div>
+                            <button class="accordion">SERVICES</button>
+                            <div>
+                                <ul class="footer-links-c">
+                                    <li><a href="@Url.Action("Login","Account")">Login</a></li>
+                                    <li><a href="@Url.Action("Register","Account")">Sign Up</a></li>
+                                    <li><a href="#">Logistics</a></li>
+                                    <li><a href="#">Education</a></li>
+                                    <li><a href="#">Finance </a></li>
+                                    <li><a href="#">The OCD Application</a></li>
+                                    <li><a href="#">The OCD Marketplace</a></li>
+                                </ul>
+                            </div>
+                            <button class="accordion">INFORMATION</button>
+                            <div>
+                                <ul class="footer-links-c">
+                                    <li><a href="#">FAQ's</a></li>
+                                    <li><a href="@Url.Action("Contact","ContactUs")">Contact Us</a></li>
+                                    <li><a href="#">Directory</a></li>
+                                    <li><a href="#">Events</a></li>
+                                    <li><a href="#">Track My Order</a></li>
+                                    <li><a href="#">Instant Rewards</a></li>
+                                    <li><a href="#">Advertise With Us</a></li>
+                                    <li><a href="#">Site Map</a></li>
+                                </ul>
+                            </div>
+                            <button class="accordion">CONDITIONS</button>
+                            <div>
+                                <ul class="footer-links-c">
+                                    <li><a href="#">Terms & Conditions</a></li>
+                                    <li><a href="#">Privacy Policy</a></li>
+                                    <li><a href="#">Privacy Settings</a></li>
+                                    <li><a href="#">Privacy Cookies</a></li>
+                                    <li><a href="#">Term of Sales</a></li>
+                                    <li><a href="#">Refund Policy</a></li>
+                                    <li><a href="#">Shipping Policy</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- FOOTER END -->
+            <!-- Logo Portion Start -->
+            @Html.Action("SocialLinksFooter", "Home")
+        </section>
+    </div>
+    <!--Page main section end-->
+    <script src="~/Areas/AdminDashboard/assets/SweetAlertBosttrap/sweetalert.js"></script>
+    <script src="~/Assets/js/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="~/Assets/js/slick.js"></script>
+    <script src="~/Assets/js/contact.js"></script>
+    <script src="~/Assets/js/team.js"></script>
+    @*<script src="~/Assets/js/my.js"></script>*@
+    <script src="~/Assets/js/popper.min.js"></script>
+    <script src="~/Assets/js/bootstrap.min.js"></script>
+    <script src="~/Assets/js/main.js"></script>
+    <script src="~/Assets/js/wow.js"></script>
+    <script>
+        $('#EmailButton').on("click", function () {
+            var email = $("#Email").val();
+            if (email == "") {
+               // alert("Please enter email First");
+                swal("Alert!", "Please Enter Email First", "")
+                return;
+            }
+            $.ajax({
+                url: '/EmailSubscription/AddSubscriptionEmail',
+                method: "POST",
+                data: { data: email },
+                success: function (data) {
+                    swal("Good job!", "Successfully Subscribe...!", "success")
+                   // alert("Successfully Subscribe...")
+                }
+            })
+        });
+    </script>
+
+    @Scripts.Render("~/bundles/jqueryval")
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

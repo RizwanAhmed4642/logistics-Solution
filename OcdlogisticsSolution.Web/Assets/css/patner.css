@@ -1,0 +1,97 @@
+@font-face {
+    /* font-family: "Segoe UI"; */
+
+    font-family: 'sofia';
+    src: url("./fonts/Sofia\ Pro\ Regular.ttf");
+    font-display: block;
+}
+@font-face {
+    font-family: 'centuryGot';
+    src: url("./fonts/CenturyGothic.ttf");
+    font-weight: normal/bold/inherit;
+    font-display: block;
+}
+@font-face {
+    font-family: 'azoSan';
+    src: url("./fonts/AzoSans-Light.ttf");
+    font-weight: normal/bold/inherit;
+    font-display: block;
+}
+class my-custom-font {
+    font-family: 'sofia', 'centuryGot', 'AzoSan';
+}
+  
+*{
+    font-family: "sofia";
+}
+.spacer {
+    height: 50px;
+}
+/* .jumbotron {
+    height: auto;
+    color: white;
+    background-image: url("https://images.unsplash.com/photo-1438109491414-7198515b166b?q=80&fm=jpg&s=cbdabf7a79c087a0b060670a6d79726c");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 0 !important;
+} */
+.myContainer {
+    position: relative;
+    background-image: url(../images/img/bg.jpg);
+    width: 100%;
+    height: auto;
+    background-size: cover;
+}
+.title {
+    height: 100px;
+    color: black;
+    background: white;
+    text-align: center;
+    padding: 20px 0px
+}
+.banner {
+    color: white !important;
+}
+.content p {
+    color: white;
+    font-family: "centuryGot";
+}
+.sub-title h2 {
+    color: white !important;
+}
+/* .title-first h3 {
+    color: red;
+} */
+.form-control {
+    background: black;
+    opacity: 0.8;
+}
+form label {
+    color: white;
+}
+.btn-form {
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    font-size: 10px;
+    border-radius: 10px;
+    text-transform: capitalize;
+    padding: 10px 30px;
+    margin-top: 3px;
+    white-space: nowrap;
+    border: 2px solid black;
+}
+.btn-form:hover {
+    background-color: #f7742c;
+    color: white;
+    border: 2px solid black;
+}
+.ban-img {
+    width: 100%;
+    margin-bottom: 10px;
+}
+.ban-img img {
+    width: 100%;
+    margin-bottom: 8px;
+}

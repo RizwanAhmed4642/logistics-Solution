@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Archive";
+    Layout = "~/Views/Shared/_MROLayout.cshtml";
+}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 pt-4 pb-4">
+                <div class="event-icons">
+                    <ul class="list-inline">
+                        <li id="click-social-icon" class="list-inline-item">
+                            <i class="fa fa-plus"></i>
+                        </li>
+                        <li class="list-inline-item"><a href="" target="_blank"><i class="fa fa-facebook fb"></i> </a></li>
+                        <li class="list-inline-item"><a href="" target="_blank"><i class="fa fa-twitter twit"></i> </a></li>
+                        <li class="list-inline-item"><a href="" target="_blank"><i class="fa fa-linkedin"></i> </a></li>
+                    </ul>
+                    <div class="extra-social-icon">
+                        <ul>
+                            <li><a href="https://www.facebook.com" target="_blank"><img src="" alt="" class="fa fa-facebook fb"> Facebook</a></li>
+                            <li><a href="https://www.linkedin.com" target="_blank"><img src="" alt="" class="fa fa-linkedin"> Linkdin</a></li>
+                            <li><a href="https://www.gmail.com" target="_blank"><img src="" alt="" class="fa fa-envelope"> Email</a></li>
+                            <li><a href="https://www.twitter.com" target="_blank"><img src="" alt="" class="fa fa-twitter twit"> Twitter</a></li>
+                            <li><a href="https://www.pintrest.com" target="_blank"><img src="" alt="" class="fa fa-pinterest pin"> Pintrest</a></li>
+                            <li><a href="https://www.reddit.com" target="_blank"><img src="" alt="" class="fa fa-reddit-alien"> Reddit</a></li>
+                            <li><a href="https://www.gmail.com" target="_blank"><img src="" alt="" class="fa fa-envelope"> Gmail</a></li>
+                            <li><a href="https://web.whatsapp.com" target="_blank"><img src="" alt="" class="fa fa-whatsapp"> WhatsApp</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <h1>Previous Papers and Technical Information.</h1>
+                    <p><strong><a href="@Url.Action("MRO2014","MRO",new {area="" })">MRO 2014</a></strong></p>
+                    <p><strong><a href="@Url.Action("MRO2016","MRO",new {area="" })">MRO 2016</a></strong></p>
+                    <p><strong><a href="@Url.Action("MRO2018","MRO",new {area="" })">MRO 2018</a></strong></p>
+
+                </div>
+
+            </div>
+        </div>
+    </div>

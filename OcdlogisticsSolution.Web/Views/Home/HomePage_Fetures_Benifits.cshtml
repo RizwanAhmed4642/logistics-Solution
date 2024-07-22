@@ -1,0 +1,31 @@
+﻿@model IEnumerable<OcdlogisticsSolution.DomainModels.Models.Entity_Models.tbl_Home_Page_Feature_Benifites>
+
+
+@foreach (var item in Model)
+{
+
+    <div class="col-lg-4 col-md-6">
+        <div class="fet-card">
+            <div class="fet-info">
+                <div class="fet-icon">
+                    <img src="@item.Icon" alt="@item.Heading">
+                </div>
+            </div>
+            <div class="fet-content">
+                <div class="fet-title"><h3>@item.Heading</h3></div>
+                <div class="content d-none">@item.Content</div>
+                @if (@item.Content.Length > 122)
+                {
+                    <p>@item.Content.Substring(0, 122)</p>
+                }
+                else
+                {
+                    <p>@item.Content</p>
+                }
+            </div>
+        </div>
+    </div>
+
+}
+
+

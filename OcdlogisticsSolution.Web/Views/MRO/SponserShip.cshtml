@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "SponserShip";
+    Layout = "~/Views/Shared/_MROLayout.cshtml";
+}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 pt-4 pb-4">
+                <div class="event-icons">
+                    <ul class="list-inline">
+                        <li id="click-social-icon" class="list-inline-item">
+                            <i class="fa fa-plus"></i>
+                        </li>
+                        <li class="list-inline-item"><a href="" target="_blank"><i class="fa fa-facebook fb"></i> </a></li>
+                        <li class="list-inline-item"><a href="" target="_blank"><i class="fa fa-twitter twit"></i> </a></li>
+                        <li class="list-inline-item"><a href="" target="_blank"><i class="fa fa-linkedin"></i> </a></li>
+                    </ul>
+                    <div class="extra-social-icon">
+                        <ul>
+                            <li><a href="https://www.facebook.com" target="_blank"><img src="" alt="" class="fa fa-facebook fb"> Facebook</a></li>
+                            <li><a href="https://www.linkedin.com" target="_blank"><img src="" alt="" class="fa fa-linkedin"> Linkdin</a></li>
+                            <li><a href="https://www.gmail.com" target="_blank"><img src="" alt="" class="fa fa-envelope"> Email</a></li>
+                            <li><a href="https://www.twitter.com" target="_blank"><img src="" alt="" class="fa fa-twitter twit"> Twitter</a></li>
+                            <li><a href="https://www.pintrest.com" target="_blank"><img src="" alt="" class="fa fa-pinterest pin"> Pintrest</a></li>
+                            <li><a href="https://www.reddit.com" target="_blank"><img src="" alt="" class="fa fa-reddit-alien"> Reddit</a></li>
+                            <li><a href="https://www.gmail.com" target="_blank"><img src="" alt="" class="fa fa-envelope"> Gmail</a></li>
+                            <li><a href="https://web.whatsapp.com" target="_blank"><img src="" alt="" class="fa fa-whatsapp"> WhatsApp</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <p>
+                        We are so proud of all our volunteers and supporters who make this event possible,&nbsp;which allow us to give back to our community not only in knowledge and networking opportunities, but also by offering&nbsp;
+                        <strong>Education&nbsp;Grants</strong>
+                        as a good portion of its proceeds.
+                    </p>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                        <input name="cmd" type="hidden" value="_s-xclick">
+                        <input name="hosted_button_id" type="hidden" value="BVJ5PNUF72E48">
+                        <input alt="PayPal - The safer, easier way to pay online!" border="0" name="submit"
+                               src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" type="image">
+                        <img alt="" border="0" height="1" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1">
+                    </form>
+                    <p>
+                        Click the
+                        <a href="@Url.Action("SPONSORSHIP","Home",new {area="" })">Link</a>
+                        for RATS
+                        <a href="@Url.Action("SPONSORSHIP","Home",new {area="" })">Gold Sponsors</a>
+                        &nbsp;programs.&nbsp;
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+

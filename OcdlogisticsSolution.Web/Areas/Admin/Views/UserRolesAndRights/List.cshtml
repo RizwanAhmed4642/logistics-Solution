@@ -1,0 +1,169 @@
+﻿
+@{
+    ViewBag.Title = "List";
+}
+@using Microsoft.AspNet.Identity
+@using OcdlogisticsSolution.DomainModels.Models.Entity_Models
+@{
+    var userId = User.Identity.GetUserId();
+    OcdlogisticsEntities db = new OcdlogisticsEntities();
+    var CurrentUser = db.AspNetUsers.Find(userId);
+}
+@if (!(User.IsInRole("Admin") || CurrentUser.AspNetUserRoles.Any(x => x.AspNetRoles.tblRights.AllowToUpdateRolesAndRights)))
+{
+    <style>
+        .d-editRole {
+            display: none !important
+        }
+    </style>
+}
+
+@if (!(User.IsInRole("Admin") || CurrentUser.AspNetUserRoles.Any(x => x.AspNetRoles.tblRights.AllowToDeleteRolesAndRights)))
+{
+    <style>
+        .d-deleteRole {
+            display: none !important
+        }
+    </style>
+}
+
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Subheader-->
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <!--begin::Notice-->
+            <!--end::Notice-->
+            <!--begin::Card-->
+            <div class="card card-custom">
+                <div class="card-header">
+                    <div class="card-title">
+
+                        <h3 class="card-label">User Role List</h3>
+                    </div>
+
+                </div>
+                <div class="card-body">
+                    <!--begin: Datatable-->
+                    <table class="table table-bordered table-hover table-checkable" id="kt_datatable" style="margin-top: 13px !important">
+                        <thead>
+                            <tr>
+                                <th>Role Name</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+
+                    </table>
+                    <!--end: Datatable-->
+                </div>
+            </div>
+            <!--end::Card-->
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+</div>
+
+<!--begin: RoleDeletable Form-->
+@using (Html.BeginForm("DeleteRole", "UserRolesAndRights", FormMethod.Post, new { id = "deletableRoleForm" }))
+{
+    <input type="hidden" name="id" id="deletableRoleId" />
+}
+<!--end: RoleDeletable Form-->
+
+
+
+@section scripts{
+    <script src="~/Areas/Admin/Assets/SweetAlertBosttrap/sweetalert.js"></script>
+
+    <script>
+        //import swal from 'sweetalert';
+
+        $(document).ready(function () {
+            GetList();
+        });
+
+        function GetList() {
+
+            var FetchItems = "/Rat/AdminDashboard/UserRolesAndRights/GetList";
+
+            var oTable = $('#kt_datatable').DataTable({
+                "iDisplayLength": 50,
+                "bServerSide": true,
+                "bDestroy": true,
+                "async": false,
+                "sAjaxSource": FetchItems,
+                "bProcessing": false,
+                "aoColumns": [
+                    { "mData": "Name" },
+                    {
+                        "mData": "Id",
+                        "mRender": function (data, type, row, meta) {
+                            var CommitteeID = row.Id;
+                            var str = '<a class="btn btn-sm btn-primary d-editRole"  href="/AdminDashboard/UserRolesAndRights/EditUserRoleRight/' + CommitteeID + '"><i class="fas fa-edit"></i>Edit</a> ';
+                            //str += '<a class="btn btn-sm btn-danger"  onclick="archiveFunction()"  "><i class="fas fa-trash-alt"></i> Delete </a>';
+                            //str += '<a class="btn btn-sm btn-danger" style="margin-left:5px" id="getid" value="' + CommitteeID +'" onclick=swaldel()><i class="fas fa-trash-alt"></i>Delete</a>';
+                            str += '<a class="btn btn-sm btn-danger d-deleteRole" style="margin-left:5px" onclick="swaldel(\'' + CommitteeID + '\')" ><i class="fas fa-trash-alt"></i>Delete</a>';
+                            return str;
+
+                        },
+
+                        "bSearchable": true,
+                        "bSortable": true
+                    }
+                ],
+                "fnServerData": function (sSource, aoData, fnCallback, oSettings) {
+                    oSettings.jqXHR = $.ajax({
+                        "dataType": 'json',
+                        "type": "GET",
+                        "url": sSource,
+                        "data": aoData,
+                        "success": fnCallback,
+                        "error": function (e) {
+                            console.log(e.message);
+                        }
+                    });
+                }
+            });
+        }
+
+        function swaldel(DelID) {
+            debugger
+            swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this imaginary file!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonClass: "btn-danger",
+                confirmButtonText: "Yes, delete it!",
+                cancelButtonText: "No, cancel plx!",
+                closeOnConfirm: false,
+                closeOnCancel: false
+            }, function (isConfirm) {
+                if (isConfirm) {
+                    swal("Deleted!", "Your record has been deleted.", "success");
+                    $('#deletableRoleId').val(DelID)
+                    $('#deletableRoleForm').submit();
+                }
+                else {
+                    swal("Cancelled", "Your record is safe :)", "error");
+                }
+
+            });
+        }
+
+
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+
+
+}
+
+
+
+
+

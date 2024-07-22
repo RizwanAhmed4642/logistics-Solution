@@ -1,0 +1,133 @@
+﻿
+@{
+    ViewBag.Title = "TeamProfileList";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Subheader-->
+    
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <!--begin::Notice-->
+            <!--end::Notice-->
+            <!--begin::Card-->
+            <div class="card card-custom">
+                <div class="card-header">
+                    <div class="card-title">
+
+                        <h3 class="card-label">Team Members</h3>
+                    </div>
+                   
+                </div>
+                <div class="card-body">
+                    <!--begin: Datatable-->
+                    <table class="table table-bordered table-hover table-checkable" id="kt_datatable" style="margin-top: 13px !important">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Conttect No.</th>
+                                <th>Position</th>
+                                <th>Image</th>
+
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                    </table>
+                    <!--end: Datatable-->
+                </div>
+            </div>
+            <!--end::Card-->
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+</div>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            GetList();
+        });
+
+        function swaldel(DelID) {
+            swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this imaginary file!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonClass: "btn-danger",
+                confirmButtonText: "Yes, delete it!",
+                cancelButtonText: "No, cancel plx!",
+                closeOnConfirm: false,
+                closeOnCancel: false
+            }, function (isConfirm) {
+                if (isConfirm) {
+                    swal("Deleted!", "Your record has been deleted.", "success");
+
+                    window.location.href = '/Admin/TeamProfile/Delete?id=' + DelID;
+
+                }
+                else {
+                    swal("Cancelled", "Your record is safe :)", "error");
+                }
+
+            });
+        }
+
+        function GetList() {
+
+            var FetchItems = "/Admin/TeamProfile/GetList";
+
+            var oTable = $('#kt_datatable').DataTable({
+                "iDisplayLength": 50,
+                "bServerSide": true,
+                "bDestroy": true,
+                "async": false,
+                "sAjaxSource": FetchItems,
+                "bProcessing": false,
+                "aoColumns": [
+                    { "mData": "ProfileName" },
+                    { "mData": "ContactNumber" },
+                    { "mData": "Position" },
+                    {
+                        "mData": "TeamImage",
+                        "render": function (data, type, full, meta) {
+                            return "<img src=\"" + data + "\" height=\"60\"/>";
+                        },
+                    },
+                    {
+                        "mData": "ProfileId",
+                        "mRender": function (data, type, row, meta) {
+                            var CommitteeID = row.ProfileId;
+                            var str = '<a class="btn btn-sm btn-warning"  href="/Admin/TeamProfile/EditTeamProfile?TeamProfileId=' + CommitteeID + '"><i class="fas fa-edit"></i >Edit</a>';
+                            str += '<a class="btn btn-sm btn-primary" style="margin-left:5px"  href="/Admin/TeamProfile/Detail?id=' + CommitteeID + '"><i class="fas fa-info"></i>Detail</a>';
+                            str += '<a class="btn btn-sm btn-danger" style="margin-left:5px" onclick="swaldel(' + CommitteeID + ')" ><i class="fas fa-trash-alt"></i>Delete</a>';
+                            return str;
+                        },
+                        "bSearchable": false,
+                        "bSortable": false
+                    }
+                ],
+                "fnServerData": function (sSource, aoData, fnCallback, oSettings) {
+                    oSettings.jqXHR = $.ajax({
+                        "dataType": 'json',
+                        "type": "GET",
+                        "url": sSource,
+                        "data": aoData,
+                        "success": fnCallback,
+                        "error": function (e) {
+                            console.log(e.message);
+                        }
+                    });
+                }
+            });
+        }
+    </script>
+
+}
+
+

@@ -1,0 +1,147 @@
+﻿
+@{
+    ViewBag.Title = "EmailList";
+}
+
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-4 subheader-solid" id="kt_subheader">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-2">
+                <!--begin::Page Title-->
+                <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Subscribers Email List </h5>
+                <!--end::Page Title-->
+                <!--begin::Actions-->
+                @*<div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-4 bg-gray-200"></div>
+                    <span class="text-muted font-weight-bold mr-4">#XRS-45670</span>
+                    <a href="#" class="btn btn-light-warning font-weight-bolder btn-sm">Add New</a>*@
+                <!--end::Actions-->
+            </div>
+            <!--end::Info-->
+            <!--begin::Toolbar-->
+            <!--end::Toolbar-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <!--begin::Notice-->
+            <!--end::Notice-->
+            <!--begin::Card-->
+            <div class="card card-custom">
+                <div class="card-header">
+                    <div class="card-title">
+
+                        <h3 class="card-label">Subscribers Email List</h3>
+                    </div>
+                    @*<div class="card-toolbar">
+                            <div class="dropdown dropdown-inline mr-2">
+                                <button type="button" class="btn btn-light-primary font-weight-bolder dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="la la-download"></i>Export
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+                                    <ul class="nav flex-column nav-hover">
+                                        <li class="nav-header font-weight-bolder text-uppercase text-primary pb-2">Choose an option:</li>
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                <i class="nav-icon la la-print"></i>
+                                                <span class="nav-text">Print</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                <i class="nav-icon la la-copy"></i>
+                                                <span class="nav-text">Copy</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                <i class="nav-icon la la-file-excel-o"></i>
+                                                <span class="nav-text">Excel</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                <i class="nav-icon la la-file-text-o"></i>
+                                                <span class="nav-text">CSV</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                <i class="nav-icon la la-file-pdf-o"></i>
+                                                <span class="nav-text">PDF</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="#" class="btn btn-primary font-weight-bolder">
+                                <i class="la la-plus"></i>New Record
+                            </a>
+                        </div>*@
+                </div>
+                <div class="card-body">
+                    <!--begin: Datatable-->
+                    <table class="table table-bordered table-hover table-checkable" id="kt_datatable" style="margin-top: 13px !important">
+                        <thead>
+                            <tr>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                    </table>
+                    <!--end: Datatable-->
+                </div>
+            </div>
+            <!--end::Card-->
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+</div>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            GetList();
+        });
+
+     
+
+        function GetList() {
+
+            var FetchItems = "/AdminDashboard/MailList/GetList";
+
+            var oTable = $('#kt_datatable').DataTable({
+                "iDisplayLength": 50,
+                "bServerSide": true,
+                "bDestroy": true,
+                "async": false,
+                "sAjaxSource": FetchItems,
+                "bProcessing": false,
+                "aoColumns": [
+                    { "mData": "email" },
+                   
+                ],
+                "fnServerData": function (sSource, aoData, fnCallback, oSettings) {
+                    oSettings.jqXHR = $.ajax({
+                        "dataType": 'json',
+                        "type": "GET",
+                        "url": sSource,
+                        "data": aoData,
+                        "success": fnCallback,
+                        "error": function (e) {
+                            console.log(e.message);
+                        }
+                    });
+                }
+            });
+        }
+    </script>
+
+}
+
+
+

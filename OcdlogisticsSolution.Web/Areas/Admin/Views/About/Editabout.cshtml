@@ -1,0 +1,874 @@
+﻿@model OcdlogisticsSolution.DomainModels.Models.Entity_Models.tbl_AboutUs
+@{
+    ViewBag.Title = "Editabout";
+    Layout = "~/Areas/Admin/Views/Shared/_layout.cshtml";
+}
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <style>
+        .collapsible {
+            background-color: white;
+            color: #f4b223;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            height: 100px;
+            border-radius: 10px;
+            color: #f4b223;
+            font-size: x-large;
+            font-weight: bold;
+        }
+
+            .active, .collapsible:hover {
+                color: white;
+                background-color: #f4b223;
+            }
+
+        .content {
+            display: none;
+            overflow: hidden;
+            background-color: #f1f1f1;
+            /*font-size: large;*/
+        }
+
+        .help-tip {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            text-align: center;
+            background-color: #BCDBEA;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            font-size: 14px;
+            line-height: 26px;
+            cursor: default;
+        }
+
+            .help-tip:before {
+                content: '?';
+                font-weight: bold;
+                color: #fff;
+            }
+
+            .help-tip:hover video {
+                display: block;
+                transform-origin: 100% 0%;
+                -webkit-animation: fadeIn 0.3s ease-in-out;
+                animation: fadeIn 0.3s ease-in-out;
+            }
+
+            .help-tip video { /* The tooltip */
+                display: none;
+                text-align: left;
+                background-color: #1E2021;
+                padding: 20px;
+                width: 300px;
+                position: absolute;
+                border-radius: 3px;
+                box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+                right: -4px;
+                color: #FFF;
+                font-size: 13px;
+                line-height: 1.4;
+            }
+
+                .help-tip video:before { /* The pointer of the tooltip */
+                    position: absolute;
+                    content: '';
+                    width: 0;
+                    height: 0;
+                    border: 6px solid transparent;
+                    border-bottom-color: #1E2021;
+                    right: 10px;
+                    top: -12px;
+                }
+
+                .help-tip video:after { /* Prevents the tooltip from being hidden */
+                    width: 100%;
+                    height: 40px;
+                    content: '';
+                    position: absolute;
+                    top: -40px;
+                    left: 0;
+                }
+
+        /* CSS animation */
+
+        @@-webkit-keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.6);
+            }
+
+            100% {
+                opacity: 100%;
+                transform: scale(1);
+            }
+        }
+
+        @@keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 100%;
+            }
+        }
+    </style>
+    <!--begin::Subheader-->
+
+
+    <div class="container">
+        @if (ViewBag.message != null)
+        {
+            <div class="alert alert-success alert-dismissable">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> @ViewBag.message</strong>
+            </div>
+        }
+
+        @using (Html.BeginForm("EditAbout", "About", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <br /><br /><br />
+            <button type="button" class="collapsible" style="padding-left: 65px;">Section One</button>
+            <div class="content">
+                <div class="card card-custom" style="width:100%;">
+                    <div class="card-body">
+
+                        <div class="form-group row">
+                            <h5 class="col-xl-3 col-lg-3 col-form-label text-right"><b>MainSliderImg Image 540*540 Square</b></h5>
+                            <div class="col-lg-9 col-xl-6" style="width:200px;">
+                                <div class="image-input image-input-outline" id="kt_image_1">
+                                    @if (Model.MainSliderImg != null)
+                                    {
+                                        <div class="image-input-wrapper" style="background-image: url(@Model.MainSliderImg);width:200px;height:200px"></div>
+
+                                    }
+                                    else
+                                    {
+                                        <div class="image-input-wrapper" style="background-image: url(/Areas/AdminDashboard/Assets/media/users/blank.png) ;width:200px;height:200px"></div>
+
+                                    }
+                                    <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
+                                        <i class="fa fa-pen icon-sm text-muted"></i>
+                                        <input type="file" name="EmpFile1" accept=".png, .jpg, .jpeg" />
+                                        <input type="hidden" name="EmpFile1" />
+                                    </label>
+                                    <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
+                                        <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                    </span>
+                                </div>
+                                <span class="form-text text-muted">Allowed file types: png, jpg, jpeg.</span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <h5><b>SliderOverlayColor</b></h5>
+
+                                @Html.TextBoxFor(m => m.SliderOverlayColor, new { @class = "form-control", type = "color", id = "example-color-input" })
+                                @Html.ValidationMessageFor(m => m.SliderOverlayColor, "", new { @class = "text-danger" })
+
+                            </div>
+                            <div class="col-lg-6">
+                                <h5><b>SliderOverlayHeading</b></h5>
+
+
+                                @Html.TextBoxFor(m => m.SliderOverlayHeading, new { @class = "form-control", placeholder = "Enter SliderOverlayHeading" })
+                                @Html.ValidationMessageFor(m => m.SliderOverlayHeading, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <h5><b>SliderOverlayContent</b></h5>
+                                @Html.TextAreaFor(m => m.SliderOverlayContent, new { @class = "form-control", placeholder = "Enter side text for Button", @rows = "10" })
+                                @Html.ValidationMessageFor(m => m.SliderOverlayContent, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+                        <br />
+                        <br />
+                        <br />
+                        @*<h1 style="text-align:center"><b>Second Paragraph</b></h1>*@
+                        <br />
+                        <hr />
+                        <br />
+                        <br />
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <h5><b>MainSliderBelowHeading</b></h5>
+                                @Html.TextBoxFor(m => m.MainSliderBelowHeading, new { @class = "form-control", placeholder = "Enter MainSliderBelowHeading" })
+                                @Html.ValidationMessageFor(m => m.MainSliderBelowHeading, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="col-lg-6">
+                                <h5><b> Select Vedio </b></h5>
+                                <input type="file" name="EmpFile2" value="" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <h5><b>VideoHeading</b></h5>
+
+
+
+                                @Html.TextBoxFor(m => m.VideoHeading, new { @class = "form-control", placeholder = "Enter VideoHeading" })
+                                @Html.ValidationMessageFor(m => m.VideoHeading, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-6">
+                                <h5><b>VideoContentFooter</b></h5>
+
+
+
+                                @Html.TextBoxFor(m => m.VideoContentFooter, new { @class = "form-control", placeholder = "Enter VideoContentFooter", @rows = "10" })
+                                @Html.ValidationMessageFor(m => m.VideoContentFooter, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <h5><b> VideoContent </b></h5>
+
+                                @*@Html.Label("Vedio Title")*@
+
+                                @Html.TextAreaFor(m => m.VideoContent, new { @class = "form-control", placeholder = "Enter VideoContent", @rows = "10" })
+                                @Html.ValidationMessageFor(m => m.VideoContent, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-6">
+                                <h5><b>AttentionDetailHeading</b></h5>
+
+                                @Html.TextBoxFor(m => m.AttentionDetailHeading, new { @class = "form-control", placeholder = "Enter AttentionDetailHeading" })
+                                @Html.ValidationMessageFor(m => m.AttentionDetailHeading, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <h5><b>AttentionDetailContent</b></h5>
+
+                                @Html.TextAreaFor(m => m.AttentionDetailContent, new { @class = "form-control", placeholder = "Enter AttentionDetailContent", @rows = "10" })
+                                @Html.ValidationMessageFor(m => m.AttentionDetailContent, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-6">
+                                <h5><b>AttentíonDetailFooter</b></h5>
+
+                                @Html.TextBoxFor(m => m.AttentíonDetailFooter, new { @class = "form-control", placeholder = "Enter AttentíonDetailFooter" })
+                                @Html.ValidationMessageFor(m => m.AttentíonDetailFooter, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <h5 class="col-xl-3 col-lg-3 col-form-label text-right"><b>AttentíonDetailImgPath 540*540 Square</b></h5>
+                            <div class="col-lg-9 col-xl-6">
+                                <div class="image-input image-input-outline" id="kt_image_2">
+                                    @if (Model.AttentíonDetailImgPath != null)
+                                    {
+                                        <div class="image-input-wrapper" style="background-image: url(@Model.AttentíonDetailImgPath);width:200px;height:200px "></div>
+
+                                    }
+                                    else
+                                    {
+                                        <div class="image-input-wrapper" style="background-image: url(/Areas/AdminDashboard/Assets/media/users/blank.png);width:200px;height:200px"></div>
+
+                                    }
+                                    <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
+                                        <i class="fa fa-pen icon-sm text-muted"></i>
+                                        <input type="file" name="EmpFile3" accept=".png, .jpg, .jpeg" />
+                                        <input type="hidden" name="EmpFile3" />
+                                    </label>
+                                    <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
+                                        <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                    </span>
+                                </div>
+                                <span class="form-text text-muted">Allowed file types: png, jpg, jpeg.</span>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                    <div class="form-group row">
+                        <h5 class="col-xl-3 col-lg-3 col-form-label text-right"><b>FirstFullScreenImgPath 1920*700</b></h5>
+                        <div class="col-lg-9 col-xl-6">
+                            <div class="image-input image-input-outline" id="kt_image_3">
+                                @if (Model.FirstFullScreenImgPath != null)
+                                {
+                                    <div class="image-input-wrapper" style="background-image: url(@Model.FirstFullScreenImgPath);width:200px;height:200px"></div>
+
+                                }
+                                else
+                                {
+                                    <div class="image-input-wrapper" style="background-image: url(/Areas/AdminDashboard/Assets/media/users/blank.png);width:200px;height:200px"></div>
+
+                                }
+                                <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
+                                    <i class="fa fa-pen icon-sm text-muted"></i>
+                                    <input type="file" name="EmpFile4" accept=".png, .jpg, .jpeg" />
+                                    <input type="hidden" name="EmpFile4" />
+                                </label>
+                                <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
+                                    <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                </span>
+                            </div>
+                            <span class="form-text text-muted">Allowed file types: png, jpg, jpeg.</span>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <br />
+            <br />
+            <button type="button" class="collapsible" style="padding-left: 65px;">Section Two</button>
+            <div class="content">
+                <div class="card card-custom" style="width:100%;">
+                    <div class="card-body">
+                        <h1 style="text-align:center"><b>First Paragraph</b></h1>
+                        <br />
+                        <hr />
+                        <br />
+                        <br />
+                        <div class="form-group row">
+
+                            <div class="col-lg-6">
+                                <h5><b> FirstFullScreenBelowContent</b></h5>
+
+
+
+                                @Html.TextAreaFor(m => m.FirstFullScreenBelowContent, new { @class = "form-control", placeholder = "Enter FirstFullScreenBelowContent", @rows = "10" })
+                                @Html.ValidationMessageFor(m => m.FirstFullScreenBelowContent, "", new { @class = "text-danger" })
+                            </div>
+
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <h5><b> FirstFullScreenBelowHeading</b></h5>
+
+
+
+                                @Html.TextBoxFor(m => m.FirstFullScreenBelowHeading, new { @class = "form-control", placeholder = "Enter FirstFullScreenBelowHeading" })
+                                @Html.ValidationMessageFor(m => m.FirstFullScreenBelowHeading, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-6">
+                                <h5><b> FirstFullScreenBelowFooter</b></h5>
+
+                                @*@Html.Label("Side Button Text")*@
+                                @Html.TextBoxFor(m => m.FirstFullScreenBelowFooter, new { @class = "form-control", placeholder = "Enter FirstFullScreenBelowFooter " })
+
+                                @Html.ValidationMessageFor(m => m.FirstFullScreenBelowFooter, "", new { @class = "text-danger" })
+                            </div>
+
+                        </div>
+                        <div class="form-group row">
+                            <h5 class="col-xl-3 col-lg-3 col-form-label text-right"><b>FirstFullScreenBelowImgPath 540*540 Square</b></h5>
+                            <div class="col-lg-9 col-xl-6">
+                                <div class="image-input image-input-outline" id="kt_image_4">
+                                    @if (Model.FirstFullScreenBelowImgPath != null)
+                                    {
+                                        <div class="image-input-wrapper" style="background-image: url(@Model.FirstFullScreenBelowImgPath);width:200px;height:200px"></div>
+
+                                    }
+                                    else
+                                    {
+                                        <div class="image-input-wrapper" style="background-image: url(/Areas/AdminDashboard/Assets/media/users/blank.png);width:200px;height:200px"></div>
+
+                                    }
+                                    <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
+                                        <i class="fa fa-pen icon-sm text-muted"></i>
+                                        <input type="file" name="EmpFile5" accept=".png, .jpg, .jpeg" />
+                                        <input type="hidden" name="EmpFile5" />
+                                    </label>
+                                    <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
+                                        <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                    </span>
+                                </div>
+                                <span class="form-text text-muted">Allowed file types: png, jpg, jpeg.</span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <h5 class="col-xl-3 col-lg-3 col-form-label text-right"><b>FirstFullScreenBelowSecondImgPath 540*540 Square </b></h5>
+                            <div class="col-lg-9 col-xl-6">
+                                <div class="image-input image-input-outline" id="kt_image_5">
+                                    @if (Model.FirstFullScreenBelowSecondImgPath != null)
+                                    {
+                                        <div class="image-input-wrapper" style="background-image: url(@Model.FirstFullScreenBelowSecondImgPath);width:200px;height:200px"></div>
+
+                                    }
+                                    else
+                                    {
+                                        <div class="image-input-wrapper" style="background-image: url(/Areas/AdminDashboard/Assets/media/users/blank.png);width:200px;height:200px"></div>
+
+                                    }
+                                    <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
+                                        <i class="fa fa-pen icon-sm text-muted"></i>
+                                        <input type="file" name="EmpFile6" accept=".png, .jpg, .jpeg" />
+                                        <input type="hidden" name="EmpFile6" />
+                                    </label>
+                                    <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
+                                        <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                    </span>
+                                </div>
+                                <span class="form-text text-muted">Allowed file types: png, jpg, jpeg.</span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <h5><b> FirstFullScreenBelowSecondHeading</b></h5>
+
+                                @*@Html.Label("Side Button Text")*@
+                                @Html.TextBoxFor(m => m.FirstFullScreenBelowSecondHeading, new { @class = "form-control", placeholder = "Enter FirstFullScreenBelowSecondHeading " })
+
+                                @Html.ValidationMessageFor(m => m.FirstFullScreenBelowSecondHeading, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-6">
+                                <h5><b> FirstFullScreenBelowSecondFooter</b></h5>
+
+                                @*@Html.Label("Side Button Text")*@
+                                @Html.TextBoxFor(m => m.FirstFullScreenBelowSecondFooter, new { @class = "form-control", placeholder = "Enter FirstFullScreenBelowSecondFooter " })
+
+                                @Html.ValidationMessageFor(m => m.FirstFullScreenBelowSecondFooter, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <h5><b> FirstFullScreenBelowSecondContent</b></h5>
+
+                                @*@Html.Label("Side Button Text")*@
+                                @Html.TextAreaFor(m => m.FirstFullScreenBelowSecondContent, new { @class = "form-control", placeholder = "Enter FirstFullScreenBelowSecondContent", @rows = "10" })
+
+                                @Html.ValidationMessageFor(m => m.FirstFullScreenBelowSecondContent, "", new { @class = "text-danger" })
+                            </div>
+
+
+                        </div>
+
+                        <div class="form-group row">
+                            <h5 class="col-xl-3 col-lg-3 col-form-label text-right"><b>SecondFullScreenImgPath 1920*700 Square</b></h5>
+                            <div class="col-lg-9 col-xl-6">
+                                <div class="image-input image-input-outline" id="kt_image_6">
+                                    @if (Model.SecondFullScreenImgPath != null)
+                                    {
+                                        <div class="image-input-wrapper" style="background-image: url(@Model.SecondFullScreenImgPath);width:200px;height:200px"></div>
+
+                                    }
+                                    else
+                                    {
+                                        <div class="image-input-wrapper" style="background-image: url(/Areas/AdminDashboard/Assets/media/users/blank.png);width:200px;height:200px"></div>
+
+                                    }
+                                    <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
+                                        <i class="fa fa-pen icon-sm text-muted"></i>
+                                        <input type="file" name="EmpFile7" accept=".png, .jpg, .jpeg" />
+                                        <input type="hidden" name="EmpFile7" />
+                                    </label>
+                                    <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
+                                        <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                    </span>
+                                </div>
+                                <span class="form-text text-muted">Allowed file types: png, jpg, jpeg.</span>
+                            </div>
+                        </div>
+
+                        <br /><br />
+                        @*<h1 style="text-align:center"><b>Second Paragraph</b></h1>*@
+                        <br />
+                        <hr />
+                        <br />
+                        <br />
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <h5><b>  SecondFullScreenBelowContent </b></h5>
+
+
+
+                                @Html.TextAreaFor(m => m.SecondFullScreenBelowContent, new { @class = "form-control", placeholder = "Enter SecondFullScreenBelowContent ", @rows = "10" })
+                                @Html.ValidationMessageFor(m => m.SecondFullScreenBelowContent, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-6">
+                                <h5><b>  SecondFullScreenBelowHeading </b></h5>
+
+                                @Html.TextBoxFor(m => m.SecondFullScreenBelowHeading, new { @class = "form-control", placeholder = "Enter SecondFullScreenBelowHeading" })
+                                @Html.ValidationMessageFor(m => m.SecondFullScreenBelowHeading, "", new { @class = "text-danger" })
+                            </div>
+
+
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <h5><b>SecondFullScreenbelowfooter</b></h5>
+
+                                @Html.TextBoxFor(m => m.SecondFullScreenbelowfooter, new { @class = "form-control", placeholder = "Enter  SecondFullScreenbelowfooter" })
+                                @Html.ValidationMessageFor(m => m.SecondFullScreenbelowfooter, "", new { @class = "text-danger" })
+                            </div>
+
+                        </div>
+                        <div class="form-group row">
+                            <h5 class="col-xl-3 col-lg-3 col-form-label text-right"><b> SecondFullScreenbelowImgPath Img 540*540 Square</b></h5>
+                            <div class="col-lg-9 col-xl-6">
+                                <div class="image-input image-input-outline" id="kt_image_7">
+                                    @if (Model.SecondFullScreenbelowImgPath != null)
+                                    {
+                                        <div class="image-input-wrapper" style="background-image: url(@Model.SecondFullScreenbelowImgPath);width:200px;height:200px"></div>
+
+                                    }
+                                    else
+                                    {
+                                        <div class="image-input-wrapper" style="background-image: url(/Areas/AdminDashboard/Assets/media/users/blank.png);width:200px;height:200px"></div>
+
+                                    }
+                                    <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
+                                        <i class="fa fa-pen icon-sm text-muted"></i>
+                                        <input type="file" name="EmpFile8" accept=".png, .jpg, .jpeg" />
+                                        <input type="hidden" name="EmpFile8" />
+                                    </label>
+                                    <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
+                                        <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                    </span>
+                                </div>
+                                <span class="form-text text-muted">Allowed file types: png, jpg, jpeg.</span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <h5 class="col-xl-3 col-lg-3 col-form-label text-right"><b> SecondFullScreenbelowSecondImgPath Img 540*540 Square</b></h5>
+                            <div class="col-lg-9 col-xl-6">
+                                <div class="image-input image-input-outline" id="kt_image_8">
+                                    @if (Model.SecondFullScreenbelowSecondImgPath != null)
+                                    {
+                                        <div class="image-input-wrapper" style="background-image: url(@Model.SecondFullScreenbelowSecondImgPath);width:200px;height:200px"></div>
+
+                                    }
+                                    else
+                                    {
+                                        <div class="image-input-wrapper" style="background-image: url(/Areas/AdminDashboard/Assets/media/users/blank.png);width:200px;height:200px"></div>
+
+                                    }
+                                    <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
+                                        <i class="fa fa-pen icon-sm text-muted"></i>
+                                        <input type="file" name="EmpFile9" accept=".png, .jpg, .jpeg" />
+                                        <input type="hidden" name="EmpFile9" />
+                                    </label>
+                                    <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
+                                        <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                    </span>
+                                </div>
+                                <span class="form-text text-muted">Allowed file types: png, jpg, jpeg.</span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                @*@Html.Label("Content")*@
+                                <h5><b>SecondFullScreenbelowSecondContent</b></h5>
+
+                                @Html.TextAreaFor(m => m.SecondFullScreenbelowSecondContent, new { @class = "form-control", placeholder = "Enter SecondFullScreenbelowSecondContent", @rows = "10" })
+                                @Html.ValidationMessageFor(m => m.SecondFullScreenbelowSecondContent, "", new { @class = "text-danger" })
+                                <small style="color:red">Please Enter List in Seprated Commas</small>
+                            </div>
+                            <div class="col-lg-6">
+                                <h5><b>  SecondFullScreenbelowSecondHeading </b></h5>
+
+                                @*@Html.Label("Heading")*@
+
+                                @Html.TextBoxFor(m => m.SecondFullScreenbelowSecondHeading, new { @class = "form-control", placeholder = "Enter SecondFullScreenbelowSecondHeading" })
+                                @Html.ValidationMessageFor(m => m.SecondFullScreenbelowSecondHeading, "", new { @class = "text-danger" })
+                            </div>
+
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <h5><b>SecondFullScreenbelowSecondFooter</b></h5>
+
+                                @*@Html.Label("Side Button Text ")*@
+
+                                @Html.TextAreaFor(m => m.SecondFullScreenbelowSecondFooter, new { @class = "form-control", placeholder = "Enter SecondFullScreenbelowSecondFooter" })
+                                @Html.ValidationMessageFor(m => m.SecondFullScreenbelowSecondFooter, "", new { @class = "text-danger" })
+                            </div>
+
+                        </div>
+                        <div class="form-group row">
+                            <h5 class="col-xl-3 col-lg-3 col-form-label text-right"><b>ThirdFullScreenImg 1920*700</b></h5>
+                            <div class="col-lg-9 col-xl-6">
+                                <div class="image-input image-input-outline" id="kt_image_9">
+                                    @if (Model.ThirdFullScreenImg != null)
+                                    {
+                                        <div class="image-input-wrapper" style="background-image: url(@Model.ThirdFullScreenImg);width:200px;height:200px"></div>
+
+                                    }
+                                    else
+                                    {
+                                        <div class="image-input-wrapper" style="background-image: url(/Areas/AdminDashboard/Assets/media/users/blank.png);width:200px;height:200px"></div>
+
+                                    }
+                                    <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
+                                        <i class="fa fa-pen icon-sm text-muted"></i>
+                                        <input type="file" name="EmpFile10" accept=".png, .jpg, .jpeg" />
+                                        <input type="hidden" name="EmpFile10" />
+                                    </label>
+                                    <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
+                                        <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                    </span>
+                                </div>
+                                <span class="form-text text-muted">Allowed file types: png, jpg, jpeg.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br /><br />
+            <button type="button" class="collapsible" style="padding-left: 65px;">Section Three</button>
+            <div class="content">
+                <div class="card card-custom" style="width:100%;">
+                    <div class="card-body">
+                        <h1 style="text-align:center"><b>First Paragraph</b></h1>
+                        <br />
+                        <hr />
+                        <br />
+                        <br />
+                        <div class="form-group row">
+                            <h5 class="col-xl-3 col-lg-3 col-form-label text-right"><b>ThirdFullScreenBelowImg 540*540 Square</b></h5>
+                            <div class="col-lg-9 col-xl-6">
+                                <div class="image-input image-input-outline" id="kt_image_10">
+                                    @if (Model.ThirdFullScreenBelowImg != null)
+                                    {
+                                        <div class="image-input-wrapper" style="background-image: url(@Model.ThirdFullScreenBelowImg);width:200px;height:200px"></div>
+
+                                    }
+                                    else
+                                    {
+                                        <div class="image-input-wrapper" style="background-image: url(/Areas/AdminDashboard/Assets/media/users/blank.png);width:200px;height:200px"></div>
+
+                                    }
+                                    <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
+                                        <i class="fa fa-pen icon-sm text-muted"></i>
+                                        <input type="file" name="EmpFile11" accept=".png, .jpg, .jpeg" />
+                                        <input type="hidden" name="EmpFile11" />
+                                    </label>
+                                    <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
+                                        <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                    </span>
+                                </div>
+                                <span class="form-text text-muted">Allowed file types: png, jpg, jpeg.</span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+
+                                <h5><b> Every Action Begins With an Idea Heading</b></h5>
+
+                                @Html.TextBoxFor(m => m.ThirdFullScreenBelowFirstLayoverColor, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.ThirdFullScreenBelowFirstLayoverColor, "", new { @class = "text-danger" })
+
+                            </div>
+                            <div class="col-lg-6">
+
+                                <h5><b> ThirdFullScreenBelowFirstLayoverContent</b></h5>
+
+                                @Html.TextBoxFor(m => m.ThirdFullScreenBelowFirstLayoverContent, new { @class = "form-control", placeholder = "Enter ThirdFullScreenBelowFirstLayoverContent", @row = "20" })
+                                @Html.ValidationMessageFor(m => m.ThirdFullScreenBelowFirstLayoverContent, "", new { @class = "text-danger" })
+                            </div>
+
+                        </div>
+
+
+                        <br /><br /><br />
+                        @*<h1 style="text-align:center"><b>Second Paragraph</b></h1>*@
+                        <br />
+                        <hr />
+                        <br />
+                        <br />
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+
+                                <h5><b>Every Action Begins With an Idea Content</b></h5>
+                                @Html.TextAreaFor(m => m.ThirdFullScreenBelowSecondLayoverColor, new { @class = "form-control", @rows = "10" })
+                                @Html.ValidationMessageFor(m => m.ThirdFullScreenBelowSecondLayoverColor, "", new { @class = "text-danger" })
+
+
+                            </div>
+                            <div class="col-lg-6">
+                                @*@Html.Label("Heading")*@
+                                <h5><b>ThirdFullScreenBelowSecondLayoverContent</b></h5>
+
+                                @Html.TextBoxFor(m => m.ThirdFullScreenBelowSecondLayoverContent, new { @class = "form-control", placeholder = "Enter ThirdFullScreenBelowSecondLayoverContent " })
+                                @Html.ValidationMessageFor(m => m.ThirdFullScreenBelowSecondLayoverContent, "", new { @class = "text-danger" })
+                            </div>
+
+
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <h5><b>ThirdFullScreenBelowFooterText</b></h5>
+                                @Html.TextBoxFor(m => m.ThirdFullScreenBelowFooterText, new { @class = "form-control", placeholder = "Enter ThirdFullScreenBelowFooterText" })
+                                @Html.ValidationMessageFor(m => m.ThirdFullScreenBelowFooterText, "", new { @class = "text-danger" })
+                            </div>
+
+                        </div>
+
+                        <div class="form-group row">
+                            <h5 class="col-xl-3 col-lg-3 col-form-label text-right"><b>FullScreenBelowSecondImg 540*540 Square</b></h5>
+                            <div class="col-lg-9 col-xl-6">
+                                <div class="image-input image-input-outline" id="kt_image_11">
+                                    @if (Model.FullScreenBelowSecondImg != null)
+                                    {
+                                        <div class="image-input-wrapper" style="background-image: url(@Model.FullScreenBelowSecondImg);width:200px;height:200px"></div>
+
+                                    }
+                                    else
+                                    {
+                                        <div class="image-input-wrapper" style="background-image: url(/Areas/AdminDashboard/Assets/media/users/blank.png);width:200px;height:200px"></div>
+
+                                    }
+                                    <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
+                                        <i class="fa fa-pen icon-sm text-muted"></i>
+                                        <input type="file" name="EmpFile12" accept=".png, .jpg, .jpeg" />
+                                        <input type="hidden" name="EmpFile12" />
+                                    </label>
+                                    <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
+                                        <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                    </span>
+                                </div>
+                                <span class="form-text text-muted">Allowed file types: png, jpg, jpeg.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @*<br /><br />
+                <button type="button" class="collapsible" style="padding-left: 65px;">Section Four</button>*@
+
+            <br /><br />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-12">
+                    <input type="submit" value="Update" style="background-color:#f4b223; outline:none;border-radius:20px; border-color:#f4b223; color:white; width:180px; height:50px; font-size:x-large; float:right;" />
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+
+
+<!--end::Container-->
+<!--end::Entry-->
+
+@section scripts{
+    <script>
+
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
+        }
+
+        jQuery(document).ready(function () {
+
+        });
+      
+  
+        $(document).ready(function () {
+            var avatar1 = new KTImageInput('kt_image_1');
+            var avatar2 = new KTImageInput('kt_image_2');
+            var avatar3 = new KTImageInput('kt_image_3');
+            var avatar4 = new KTImageInput('kt_image_4');
+            var avatar5 = new KTImageInput('kt_image_5');
+            var avatar6 = new KTImageInput('kt_image_6');
+            var avatar7 = new KTImageInput('kt_image_7');
+            var avatar8 = new KTImageInput('kt_image_8');
+            var avatar9 = new KTImageInput('kt_image_9');
+            var avatar10 = new KTImageInput('kt_image_10');
+            var avatar11 = new KTImageInput('kt_image_11');
+
+
+            avatar2.on('cancel', function (imageInput) {
+            });
+            avatar2.on('change', function (imageInput) {
+            });
+            avatar2.on('remove', function (imageInput) {
+            });
+            avatar1.on('cancel', function (imageInput) {
+            });
+            avatar1.on('change', function (imageInput) {
+            });
+            avatar1.on('remove', function (imageInput) {
+            });
+            avatar3.on('cancel', function (imageInput) {
+            });
+            avatar3.on('change', function (imageInput) {
+            });
+            avatar3.on('remove', function (imageInput) {
+            });
+            avatar5.on('cancel', function (imageInput) {
+            });
+            avatar5.on('change', function (imageInput) {
+            });
+            avatar5.on('remove', function (imageInput) {
+            });
+            avatar6.on('cancel', function (imageInput) {
+            });
+            avatar6.on('change', function (imageInput) {
+            });
+            avatar6.on('remove', function (imageInput) {
+            });
+            avatar7.on('cancel', function (imageInput) {
+            });
+            avatar7.on('change', function (imageInput) {
+            });
+            avatar7.on('remove', function (imageInput) {
+            });
+            avatar8.on('cancel', function (imageInput) {
+            });
+            avatar8.on('change', function (imageInput) {
+            });
+            avatar8.on('remove', function (imageInput) {
+            });
+            avatar9.on('cancel', function (imageInput) {
+            });
+            avatar9.on('change', function (imageInput) {
+            });
+            avatar9.on('remove', function (imageInput) {
+            });
+            avatar10.on('cancel', function (imageInput) {
+            });
+            avatar10.on('change', function (imageInput) {
+            });
+            avatar10.on('remove', function (imageInput) {
+            });
+            avatar11.on('cancel', function (imageInput) {
+            });
+            avatar11.on('change', function (imageInput) {
+            });
+            avatar11.on('remove', function (imageInput) {
+            });
+        });
+
+
+
+
+    </script>
+
+}
+
+
+

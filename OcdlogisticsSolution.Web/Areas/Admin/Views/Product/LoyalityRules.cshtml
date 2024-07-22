@@ -1,0 +1,144 @@
+﻿@using OcdlogisticsSolution.DomainModels.Models.Entity_Models
+
+@{
+    OcdlogisticsEntities db = new OcdlogisticsEntities();
+
+    ViewBag.Title = "Loyality Rules ";
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+}
+
+<div class="col-lg-9">
+    <div class="box-shadow m-2 rounded">
+        <div class="card border-0">
+            <div class="card-header">
+                <div class="card-title">
+                    Loyality Rules 
+                    <div class="text-success">
+                        @if (!string.IsNullOrWhiteSpace(Request.QueryString["SuccessMsg"]))
+                        {
+                            @:<text>@Request.QueryString["SuccessMsg"]</text>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                @using (Html.BeginForm("CreateCategory", "Product", FormMethod.Post))
+                {
+                    <div class="form-group">
+                        <div class="d-flex">
+                            @Html.TextBox("Name", "", new { @class = "form-control", placeholder = "Category Name" })
+                            <button type="submit" class="btn btn-primary ml-2">Create</button>
+                        </div>
+                        @if (!string.IsNullOrWhiteSpace(Request.QueryString["Error"]))
+                        {
+                            <small class="text-danger">
+                                @Request.QueryString["Error"]
+                            </small>
+                        }
+                    </div>
+                }
+                <div class="card">
+                    <div class="card-header d-flex bg-light">
+                        <small class="flex-grow-1 text-muted text-center">Loyality Rules List</small>
+                    </div>
+                    <div style="height:400px" class="card-body p-0">
+                        @if (db.tbl_ProductType.Count() > 0)
+                        {
+                            <table class="table table-hover ">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th class="text-center">Products</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                @foreach (var item in db.tbl_ProductType)
+                                {
+                                    <tr>
+                                        <td>
+                                            <span id="@item.Id">@item.Name</span>
+                                        </td>
+                                        <td class="text-center">
+                                            @item.tbl_Product.Count
+                                        </td>
+                                        <td>
+                                            <div class="d-flex justify-content-end">
+                                                @if (item.tbl_Product.Count <= 0)
+                                                {
+                                                    using (Html.BeginForm("RemoveCategory", "Product", new { id = item.Id }))
+                                                    {
+                                                        <button type="submit" class="btn mr-1 btn-danger btn-sm d-flex" onclick="return confirm('are you sure, you want to delete {@item.Name} category?')"><i class="material-icons">delete</i> Remove</button>
+                                                    }
+                                                }
+                                                <a href="#" class="btn btn-primary btn-sm d-flex edit-entity" data-id="@item.Id" data-target="#@item.Id"><i class="material-icons">edit</i> &nbsp;Edit</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </table>
+                        }
+                        else
+                        {
+                            <div class="p-3">
+                                <small class="text-muted ">There is no  category created yet.</small>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!--Custom Edit Models-->
+
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    @using (Html.BeginForm("UpdateCategory", "Product"))
+    {
+        <input type="hidden" name="UpdateField_Id" id="UpdateField_Id" />
+        <input type="hidden" name="EntityType" value="1" />
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Update Category</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <input type="text" name="name" id="txtUpdateCategName" class="form-control text-left" />
+                    </div>
+                    @if (!string.IsNullOrWhiteSpace(Request.QueryString["UpdateError"]))
+                    {
+                        @:<small class="text-danger">@Request.QueryString["UpdateError"]</small>
+                    }
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<script>
+    $(function () {
+
+        if (getParameterByName('UpdateError') && getParameterByName('UpdateError').length > 0) {
+            $('#exampleModalCenter').modal()
+        }
+
+        $('.edit-entity').click(function (e) {
+            var target_Name = $(this).attr('data-target')
+            $('#txtUpdateCategName').val($(target_Name).text())
+            $('#exampleModalCenter').modal()
+            $('#UpdateField_Id').val($(this).attr('data-id'));
+            e.preventDefault();
+            return false;
+        });
+    });
+</script>
+

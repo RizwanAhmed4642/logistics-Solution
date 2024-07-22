@@ -1,0 +1,119 @@
+@font-face {
+    /* font-family: "Segoe UI"; */
+
+    font-family: 'sofia';
+    src: url("./fonts/Sofia/Pro/Regular.ttf");
+    font-display: block;
+}
+@font-face {
+    font-family: 'centuryGot';
+    src: url("./fonts/CenturyGothic.ttf");
+    font-weight: normal/bold/inherit;
+    font-display: block;
+}
+@font-face {
+    font-family: 'azoSan';
+    src: url("./fonts/AzoSans-Light.ttf");
+    font-weight: normal/bold/inherit;
+    font-display: block;
+}
+class my-custom-font {
+    font-family: 'sofia', 'centuryGot', 'azoSan';
+}
+* {
+    font-family: "sofia";
+}
+h1,h2,h3,h4,h5,h6,p{
+    font-family: "sofia";
+}
+.spacer {
+    height: 50px;
+}
+.banner {
+    height: 2rem;
+    text-align: center;
+    padding: 0px 0px;
+    font-size: -webkit-xxx-large;
+    color: #000000 !important;
+}
+@media (max-width: 720px) {
+    .banner {
+        height: 2rem;
+        text-align: center;
+        padding: 7px 0px;
+        font-size: large;
+    }
+}
+.myContainer {
+    background-color: gray;
+    width: 100%;
+    height: auto;
+}
+.proImg {
+    width: 100%;
+    height: 540px;
+    background: #ffffff;
+    display: flex;
+    /* justify-content: center;
+    align-items: center;
+    font-size: xx-large; */
+    margin-bottom: 10px;
+    /* border: 1px solid; */
+}
+.p-info {
+    margin: auto;
+    width: 90%;
+   
+}
+.profile-social-cart {
+    height: 150px;
+    background: none;
+}
+.cdeck {
+    margin-bottom: 25px;
+}
+
+.proInfo {
+    width: 100%;
+    height: 100px;
+    background: #ffffff;
+    padding: 20px;
+}
+.projectName {
+    width: 100%;
+    /* border: 1px solid black; */
+    height: 730px;
+    overflow: auto;
+    background: #ffffff;
+}
+.form-control {
+    border: 1px solid black;
+}
+.card-title {
+    width: 50%;
+    margin: auto;
+    height: auto;
+    padding: 10px 0px;
+    background: #f7742c;
+}
+.last-banner {
+    color: #fc8e4f !important;
+}
+
+#tabs button {
+    border-left: 8px solid black;
+}
+#tabs button:after {
+    background: #f7742c;
+    padding: 0px 10px;
+}
+
+@media (min-width: 320px) and (max-width: 1024px){
+    .proImg, .img {
+        height: auto !important;
+        border: none !important;
+    }
+    .projectName {
+        height: 638px;
+    }
+}

@@ -1,0 +1,20 @@
+﻿@model IEnumerable<OcdlogisticsSolution.DomainModels.Models.Entity_Models.tbl_HomePage_Packages>
+
+@foreach (var item in Model)
+{
+    <div class="carousel-item ">
+        <div class="col-lg-3 col-md-6 col-xl-3 col-sm-6 col-6">
+            <div class="t-p-s-box-3 pkg-cust">
+                <a href="@item.link">
+                    <div class="tab-p-img-3">
+                        <img src="../@item.Icon" alt="">
+                        <div class="bg-trans"></div>
+                        <!-- <div class="sale-text">Jacked at home</div> -->
+                    </div>
+                    <div class="company-name ">@item.Name</div>
+                    <div class="company-name ">Starting from $@item.Cost @item.tbl_Duration.Name</div>
+                </a>
+            </div>
+        </div>
+    </div>
+}

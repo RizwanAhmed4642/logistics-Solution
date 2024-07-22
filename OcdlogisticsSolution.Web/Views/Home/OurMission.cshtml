@@ -1,0 +1,83 @@
+﻿
+@model OcdlogisticsSolution.DomainModels.Models.Entity_Models.Tbl_Misson
+<div class="banner-bg-about" style="background-image:url(@Model.ImgUrl)">
+    <div class="ban-overlay"></div>
+    <div class="container rel">
+        <div class="banner-main-bx">
+            <a href="">
+                <div class="banner-text-ab">
+                    <h3>@Model.Heading</h3>
+                    <p>
+                        @Model.Contents
+                    </p>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<!-- Our Mission Details -->
+<section>
+    <div class="container padi-tb-50">
+        <!-- <div class="cati-head-text"> -->
+        <!-- <h1></h1> -->
+        <!-- </div> -->
+        <div class="row" style="display: flex;">
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="col-md-12 col-sm-12 col-lg-12">
+                    <div class="content-vd">
+                        <br>
+                        <div class="quesAns">
+                            <h3>@Model.BelowHeading</h3>
+                            <br>
+                            <!-- <h4>"Every problem has a solution."</h4> -->
+                            <p>
+                                @Model.BlowContents
+                            </p>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-lg-12">
+                            <div class="cati-head-text">
+                                <button class="btn btn-sol" data-toggle="modal" data-target="#CompanyVision">Learn more</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Model Vision -->
+                <div class="modal fade" id="CompanyVision" tabindex="-1" role="dialog" aria-labelledby="CompanyVisionTitle" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="CompanyVisionTitle">@Model.BelowHeading</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>
+                                    @Model.BlowContents
+                                </p>
+
+                                <h2 class="Model-bole">“Some people call it OCD, we call it attention to detail.”</h2>
+                            </div>
+                            <div class="modal-footer">
+                                <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                                <!-- <a href="#" target="_blank"><button type="button" class="btn btn-black">Upcoming Events</button></a> -->
+                                <button type="button" class="btn btn-black" data-dismiss="modal">Continue</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Model Vision -->
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="vid">
+                    <video controls width="100%" poster="~/Icons/ocd-web-video-banner.jpg" height="315" src=@Model.VedioUrl>
+                    </video>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,779 @@
+﻿@using OcdlogisticsSolution.Web.Models
+@using Microsoft.Owin.Security
+@using OcdlogisticsSolution.Web.Models
+@using OcdlogisticsSolution.DomainModels.Models.Entity_Models
+@{
+    Layout = "~/Views/Shared/_OcdLogisticsLayout.cshtml";
+    var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
+    var count = 0;
+    var applicationUser = (ApplicationUser)ViewBag.Person;
+    double subtotal = 0; double totalCharges = 0;
+    OcdlogisticsEntities ocdlogisticsEntities = new OcdlogisticsEntities();
+
+    if (Session["Carts"] == null)
+    {
+        Session["Carts"] = new List<OcdlogisticsSolution.Common.ViewModels.CartItem>();
+    }
+
+    var cart = (List<OcdlogisticsSolution.Common.ViewModels.CartItem>)Session["Carts"];
+}
+
+<section class="after-header">
+    <ul class="breadcrumb cust_crumb about_breadCrums">
+        <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+        <li><a class="active" href="#">Checkout</a></li>
+    </ul>
+    <div class="container ">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7 text-center p-0 mt-3 mb-2">
+                <div class="card p-3 pt-4 pb-0 mt-3 mb-3">
+                    <h2 id="heading">Welcome Back</h2>
+                    <!-- <p>Fill all form field to go to next step</p> -->
+                    <div id="msform">
+                        <!-- progressbar -->
+                        <ul id="progressbar">
+                            <li class="active" id="account"><strong>Customer Information</strong></li>
+                            <li class="active" id="personal"><strong>Shipping &amp; Payment</strong></li>
+
+                            <li id="confirm"><strong>Order Conformation</strong></li>
+                        </ul>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 66%;"></div>
+                        </div> <br> <!-- fieldsets -->
+                        <fieldset style="display: none; position: relative; opacity: 0;"></fieldset>
+                        <fieldset style="display: block; opacity: 1;">
+
+                            <div class="check_sec2">
+
+                                <p class="bold"> Customer Information</p>
+                                <ul class="check_sec1_prt2_ul">
+                                    <li>
+                                        @if (!string.IsNullOrEmpty(applicationUser.FirstName))
+                                        {
+                                            @applicationUser.FirstName @applicationUser.LastName
+                                        }
+                                        else
+                                        {
+                                            @applicationUser.UserName
+                                        }
+                                    </li>
+                                    @*<li>Omar Kiani-CEO.</li>*@
+                                    <li>OCD Think Tank Inc.</li>
+                                    <li>@applicationUser.PhoneNumber</li>
+                                    <li>@applicationUser.Email</li>
+                                </ul>
+                            </div>
+                            <p class="bold text-left"> Delivery Details</p>
+                            <div class="accordion md-accordion" id="accordionExs2" role="tablist" aria-multiselectable="true">
+
+                                <div class="form-card">
+                                    <div class="card mb-2">
+                                        <div class="custom-control custom-radio opacity2 ss11 w-100">
+                                            <input type="radio" class="custom-control-input cust-radio" id="customRadiost1" name="example1">
+                                            <label class="custom-control-label" for="customRadiost1"> Ship to me</label>
+                                        </div>
+                                        <!-- Card header -->
+                                        <div class="card-header" role="tab" id="headingOne_b">
+                                            <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne_b" aria-expanded="true" aria-controls="collapseOne_b">
+
+                                            </a>
+                                        </div>
+
+                                        <!-- Card body -->
+                                        <div id="collapseOne_b" class="collapse" role="tabpanel" aria-labelledby="headingOne_b" data-parent="#accordionEx">
+                                            <div class="card-body custom-btn-width">
+
+
+                                                <div class="col-12">
+                                                    <div class="row">
+                                                        <div class="col-9">
+                                                            <div class="check_sec2">
+                                                                <p class="bold">Shipping</p>
+                                                                <ul class="check_sec1_prt2_ul">
+                                                                    <li>Attention: Omar Kiani.</li>
+                                                                    <li>Business Name: OCD Think Tank Inc.</li>
+                                                                    <br>
+                                                                    <li>2114 Warry Way Sw</li>
+                                                                    <li>Edmontion,Albert</li>
+                                                                    <li>Canada, T6W0N9</li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-3">
+                                                            <div class="checkout_sec3_edit text-right mt-md-5 check_btn_sec"><a href="#"> Edit</a></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <textarea class="form-control" rows="5" id="comment" placeholder="Special Delivery Instruction"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- pick in store start -->
+
+                                    <div class="card mb-2 check_sec1_prt2">
+                                        <div class="custom-control custom-radio opacity2 ss11 w-100">
+                                            <input type="radio" class="custom-control-input cust-radio" id="customRadiost2" name="example1">
+                                            <label class="custom-control-label" for="customRadiost2">  Pickup In Store</label>
+                                        </div>
+                                        <!-- Card header -->
+                                        <div class="card-header" role="tab" id="headingOne_c">
+                                            <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne_c" aria-expanded="true" aria-controls="collapseOne_c">
+
+                                            </a>
+                                        </div>
+
+                                        <!-- Card body -->
+                                        <div id="collapseOne_c" class="collapse " role="tabpanel" aria-labelledby="headingOne_c" data-parent="#accordionEx">
+                                            <div class="card-body custom-btn-width">
+
+                                                <div class="row">
+                                                    <div class="col ">
+                                                        <div class="check_dropdwn">
+                                                            <div class="form-group">
+                                                                <select class="form-control" id="sel1" name="sellist1">
+                                                                    <option>Our Locations</option>
+                                                                    <option>2</option>
+                                                                    <option>3</option>
+                                                                    <option>4</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-auto ">
+                                                        <div class=" float-right">
+                                                            <a href="" class="black" data-toggle="modal" data-target="#Maps">View Map</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-auto ">
+                                                        <div class="pt-2">
+                                                            <div class="custom-control   ss11 w-100">
+                                                                <input type="radio" class="custom-control-input" id="customRadiosdate" name="exampledate1">
+                                                                <label class="custom-control-label" for="customRadiosdate"> Right Away</label>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col ">
+                                                        <div class="form-group">
+                                                            <input type="time" class="form-control" name="time">
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-auto ">
+                                                        <div class="pt-2">
+                                                            <div class="custom-control   ss11 w-100">
+                                                                <input type="radio" class="custom-control-input" id="customRadiosdate2" name="exampledate1">
+                                                                <label class="custom-control-label" for="customRadiosdate2"> Future Date</label>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col ">
+                                                        <div class="form-group">
+                                                            <input type="date" class="form-control" name="date">
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card mb-2 check_sec1_prt2">
+                                        <div class="custom-control custom-radio opacity2 ss11 w-100">
+                                            <input type="radio" class="custom-control-input cust-radio" id="customRadiost3" name="example1">
+                                            <label class="custom-control-label" for="customRadiost3"> Gift It</label>
+                                        </div>
+                                        <!-- Card header -->
+                                        <div class="card-header" role="tab" id="headingOne_a">
+                                            <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne_a" aria-expanded="true" aria-controls="collapseOne_a">
+
+                                            </a>
+                                        </div>
+
+                                        <!-- Card body -->
+                                        <div id="collapseOne_a" class="collapse" role="tabpanel" aria-labelledby="headingOne_a" data-parent="#accordionEx">
+                                            <div class="card-body custom-btn-width">
+
+                                                <p class="bold">Shipping</p>
+
+                                                <div class="text-center">
+
+                                                    <input type="text" class="form-control" name="email" id="login_id" placeholder="Name">
+                                                </div>
+                                                <div class="text-center">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" name="email" id="login_id" placeholder="Address">
+                                                    </div>
+                                                </div>
+                                                <div class="text-center">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" name="email" id="login_id" placeholder="Apartment,Suites,Etc (Optional)">
+                                                    </div>
+                                                </div>
+                                                <div class="text-center">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" name="email" id="login_id" placeholder="City">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="row">
+                                                        <div class="col-md-4 col-sm-12 p-0">
+                                                            <div class="check_dropdwn float-left">
+                                                                <form action="/action_page.php ">
+                                                                    <div class="form-group">
+                                                                        <select class="form-control" id="sel1" name="sellist1">
+                                                                            <option>Country/Region</option>
+                                                                            <option>2</option>
+                                                                            <option>3</option>
+                                                                            <option>4</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4 col-sm-12 p-0">
+                                                            <div class="check_dropdwn float-left">
+                                                                <form action="/action_page.php ">
+                                                                    <div class="form-group">
+                                                                        <select class="form-control" id="sel1" name="sellist1">
+                                                                            <option>Province Alberta</option>
+                                                                            <option>2</option>
+                                                                            <option>3</option>
+                                                                            <option>4</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4 col-sm-12 pr-0">
+                                                            <div class="text-center">
+                                                                <div class="form-group">
+                                                                    <input type="text" class="form-control" name="email" id="login_id" placeholder="Postal Code">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <textarea class="form-control" rows="5" id="comment" placeholder="Special Delivery Message"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <!-- Accordian  1 start -->
+
+                                    <p class="bold">Payment</p>
+                                    <!-- Accordion card -->
+                                    <div class="card mb-2">
+
+                                        <div class="custom-control custom-radio opacity2 ss11 w-100">
+                                            <input type="radio" class="custom-control-input cust-radio" id="customRadiost4" name="example1">
+                                            <label class="custom-control-label" for="customRadiost4">  Credit / Debit Card</label>
+                                        </div>
+                                        <!-- Card header -->
+                                        <div class="card-header" role="tab" id="headingOne3">
+                                            <a data-toggle="collapse" data-parent="#accordionExs2" href="#collapseOne3" aria-expanded="true" aria-controls="collapseOne3">
+
+                                            </a>
+                                        </div>
+
+                                        <!-- Card body -->
+                                        <div id="collapseOne3" class="collapse " role="tabpanel" aria-labelledby="headingOne3" data-parent="#accordionExs2">
+                                            <div class="card-body">
+                                                <div class="checkout-card">
+                                                    <ul class="list-inline">
+                                                        <li class="list-inline-item">
+                                                            <a href="" target="_blank">
+                                                                <img src="http://logistics.ocdtechsolutions.com/ocd/Images/img/visa.png" alt="" class="">
+                                                            </a>
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            <a href="" target="_blank">
+                                                                <img src="http://logistics.ocdtechsolutions.com/ocd/Images/img/mastercard.png" alt="" class="">
+                                                            </a>
+                                                        </li>
+                                                        <li class="list-inline-item"><a href="" target="_blank"><img src="http://logistics.ocdtechsolutions.com/ocd/Images/img/discover.png" alt="" class=""> </a></li>
+                                                        <li class="list-inline-item"><a href="" target="_blank"><img src="http://logistics.ocdtechsolutions.com/ocd/Images/img/american-express.png" alt="" class=""> </a></li>
+                                                        <!-- <li class="list-inline-item"><a href="" target="_blank"><img src="http://logistics.ocdtechsolutions.com/ocd/Images/img/paypal.png" alt="" class=""> </a></li> -->
+                                                        <li class="list-inline-item"><a href="" target="_blank"><img src="http://logistics.ocdtechsolutions.com/ocd/Images/img/ssl-card.png" alt="" class=""> </a></li>
+                                                        <li class="list-inline-item"><a href="" target="_blank"><img src="http://logistics.ocdtechsolutions.com/ocd/Images/img/norton.png" alt="" class=""> </a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="text-center">
+                                                    <div class="form-group">
+                                                        <input type="number" class="form-control" name="email" id="login_id" placeholder="Card Number">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="row">
+                                                        <div class="col-lg-6 col-md-12 text-center  pl-0 ">
+                                                            <div class="form-group">
+                                                                <input type="number" class="form-control" name="fname" id="login_id" placeholder="MM/YY">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6 col-md-12 text-center pr-0 pr-lg-2">
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control" name="lname" id="login_id" placeholder="CVV">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="text-center">
+                                                    <div class="form-group">
+                                                        <input type="password" class="form-control" name="email" id="login_id" placeholder="Cardholder,s Name">
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="form-check ">
+                                                    <label class="form-check-label" for="check1">
+                                                        <input type="checkbox" class="form-check-input w-auto" id="check1" name="option1" value="something" checked="">Billing address is the same as shipping
+                                                    </label>
+                                                </div>
+
+                                                <p class="black">Billing Address </p>
+                                                <div class="col-12">
+                                                    <div class="row">
+                                                        <div class="col-lg-6 col-md-12 text-center  pl-0 ">
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control" name="fname" id="login_id" placeholder="First Name">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6 col-md-12 text-center pr-0 pr-lg-2">
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control" name="lname" id="login_id" placeholder="Last Name">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="row">
+                                                        <div class="col-lg-6 col-md-12 text-center  pl-0 ">
+                                                            <div class="check_dropdwn ">
+
+                                                                <div class="form-group">
+                                                                    <select class="form-control" id="sel1" name="sellist1">
+                                                                        <option>Province Alberta</option>
+                                                                        <option>2</option>
+                                                                        <option>3</option>
+                                                                        <option>4</option>
+                                                                    </select>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6 col-md-12 text-center pr-0 pr-lg-2">
+                                                            <div class="check_dropdwn ">
+
+                                                                <div class="form-group">
+                                                                    <select class="form-control" id="sel1" name="sellist1">
+                                                                        <option>Province Alberta</option>
+                                                                        <option>2</option>
+                                                                        <option>3</option>
+                                                                        <option>4</option>
+                                                                    </select>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="row">
+                                                        <div class="col-lg-6 col-md-12 text-center  pl-0 ">
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control" name="fname" id="login_id" placeholder="First Name">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6 col-md-12 text-center pr-0 pr-lg-2">
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control" name="lname" id="login_id" placeholder="Last Name">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="row">
+                                                        <div class="col-lg-6 col-md-12 text-center  pl-0 ">
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control" name="fname" id="login_id" placeholder="First Name">
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <!-- </form> -->
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <!-- Accordion card -->
+                                    <!-- Accordion card -->
+                                    <div class="card mb-2">
+
+                                        <!-- Card header -->
+
+                                        <div class="card-header" role="tab" id="headingTwo4">
+                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordionExs2" href="#collapseTwo4" aria-expanded="false" aria-controls="collapseTwo4">
+
+
+                                                <h5 class="paypal_accord_img mb-0">
+                                                    <img src="http://logistics.ocdtechsolutions.com/ocd/Images/img/paypal.png" alt="" class="">  PayPal<i class="fa fa-angle-down rotate-icon float-right"></i>
+                                                </h5>
+                                            </a>
+                                        </div>
+
+                                        <!-- Card body -->
+                                        <div id="collapseTwo4" class="collapse" role="tabpanel" aria-labelledby="headingTwo4" data-parent="#accordionExs2">
+                                            <div class="card-body">
+
+                                                <div class="">
+                                                    <div class="col-12 pb-4 ">
+                                                        <div class="row">
+                                                            <div class="col-lg-5 col-md-5 col-sm-12 col-12 text-center pt-md-3 check_btn_sec">
+
+                                                            </div>
+                                                            <div class="col-lg-7 col-md-7 col-sm-12 col-12 text-center">
+                                                                <button type="button" class="btn btn-subcribe px-3">Check Out with <img src="http://logistics.ocdtechsolutions.com/ocd/Images/img/paypal-name.png" alt=""></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <!-- Accordion card -->
+                                    <!-- Accordion wrapper -->
+                                </div>
+                            </div>
+
+                            <div class="go-back container">
+                                <a href="#accordionEx/logistics-checkout.html" class="black float-left mt-3" id="return-checkout"><i class="fa fa-angle-left" aria-hidden="true"></i> Go Back</a>
+                            </div>
+                            <div class="clearfix"></div>
+                            <hr>
+                            <input type="button" name="next" class="next action-button checkout_login_btn" value="Continue">
+                            <a href="http://logistics.ocdtechsolutions.com/ocd/logistics-checkout.html" class="previous float-left black mt-3"><i class="fa fa-angle-left" aria-hidden="true"></i> Return</a>
+
+                        </fieldset>
+
+                        <fieldset>
+                            <div class="form-card">
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-9">
+                                            <div class="check_sec2">
+                                                <p class="bold">Customer Information</p>
+                                                <ul class="check_sec1_prt2_ul">
+                                                    @{ if (!string.IsNullOrEmpty(applicationUser.FirstName))
+                                                        {
+                                                            <li>@applicationUser.FirstName @applicationUser.FirstName</li>
+                                                        }
+                                                        else
+                                                        {
+                                                            <li>@applicationUser.UserName</li>
+                                                        }
+                                                    }
+                                                    @*<li>OCD Think Tank Inc.</li>*@
+                                                    <li>@applicationUser.PhoneNumber</li>
+                                                    <li>@applicationUser.Email</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="checkout_sec3_edit text-right mt-md-5 check_btn_sec"><a href="#"> Edit</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="row check_sec2_shipping">
+                                        <div class="col-9">
+                                            <div class="check_sec2">
+                                                <p class="bold">Shipping</p>
+                                                <ul class="check_sec1_prt2_ul">
+                                                    <li>Attention: Omar Kiani.</li>
+                                                    <li>Business Name: OCD Think Tank Inc.</li>
+                                                    <br>
+                                                    <li>2114 Warry Way Sw</li>
+                                                    <li>Edmontion,Albert</li>
+                                                    <li>Canada, T6W0N9</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="checkout_sec3_edit text-right mt-md-5 check_btn_sec"><a href="#"> Edit</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion md-accordion check_sec2_shipping" id="accordionExs3" role="tablist" aria-multiselectable="true">
+                                    <div class="card mb-2">
+                                        <div class="card-header" role="tab" id="headingOne7">
+                                            <a data-toggle="collapse" data-parent="#accordionExs3" href="#collapseOne7" aria-expanded="true" aria-controls="collapseOne7">
+                                                <h5 class="mb-0">Credit / Debit Card <i class="fa fa-angle-down rotate-icon float-right"></i></h5>
+                                            </a>
+                                        </div>
+                                        <div id="collapseOne7" class="collapse" role="tabpanel" aria-labelledby="headingOne7" data-parent="#accordionExs3">
+                                            <div class="card-body">
+                                                <div class="col-12">
+                                                    <div class="row">
+                                                        <div class="col-9">
+                                                            <div class="check_sec2 paypal_accord_img">
+                                                                <ul class="check_sec1_prt2_ul pl-0">
+                                                                    <li class="list-inline-item">
+                                                                        <a href="" target="_blank"> <img src="http://logistics.ocdtechsolutions.com/ocd/Images/img/visa.png" alt="" class=""> </a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-3">
+                                                            <div class="checkout_sec3_edit text-right check_btn_sec"><a href="#"> Edit</a></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="text-center">
+                                                    <div class="form-group"><input type="number" class="form-control" name="email" id="login_id" placeholder="423786959484"></div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="row">
+                                                        <div class="col-lg-6 col-md-12 text-center pl-0">
+                                                            <div class="form-group"><input type="number" class="form-control" name="fname" id="login_id" placeholder="09/11"></div>
+                                                        </div>
+                                                        <div class="col-lg-6 col-md-12 text-center pr-0 pr-lg-2">
+                                                            <div class="form-group"><input type="number" class="form-control" name="lname" id="login_id" placeholder="111"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="text-center">
+                                                    <div class="form-group"><input type="text" class="form-control" name="email" id="login_id" placeholder="Omar Kiani"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <a href="" class="previous float-left black mt-3"><i class="fa fa-angle-left" aria-hidden="true"></i> Go Back</a>
+                            <a href="@Url.Action("PaymentWithPaypal","Payment")" class=" float-right black mt-3 action-button checkout_login_btn"> Finish</a>
+                        </fieldset>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5 text-center mt-3 mb-2">
+
+                <div class="right-box-checkout">
+                    <div class="form-group">
+                        <label for="comment" class="bold">Order Confirmation</label>
+                        <textarea class="form-control" rows="5" id="comment" placeholder="Are there any special Instructions ?"></textarea>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="f-18 bold black">YOUR ORDER</div>
+                        </div>
+                        <div class="col">
+                            <div class="f-18 bold text-right"><a href="@Url.Action("Index","Cart")" class="black text-underline text-upper">EDIT Basket</a></div>
+                        </div>
+                    </div>
+                    <table class="table check_table checkout-table">
+
+                        <tbody>
+                            @{ var cartItems = cart.Select(x => x.ResourceId).Distinct();
+                            }
+                            @foreach (var obj in cartItems)
+                            {
+                                var item = cart.FirstOrDefault(x => x.ResourceId == obj);
+                                var product = ocdlogisticsEntities.tbl_Product.Find(item.ResourceId);
+                                var package = ocdlogisticsEntities.tbl_Distribution_Packages.Find(item.ResourceId);
+                                if (product != null && item.ResourceType == OcdlogisticsSolution.Common.ViewModels.ResourceEnums.Product)
+                                {
+                                    var cost = cart.Where(x => x.ResourceId == product.Id).Count() * Convert.ToDouble(product.SupplyPrice) * Convert.ToDouble(product.Markup);
+                                    subtotal += cost;
+                                    <tr>
+                                        <td>
+                                            <div class="checkout-img-sec">
+                                                <img class="" src="@product.tbl_Product_File.FirstOrDefault().tbl_File.PathName" alt="">
+                                                <div class="check-img-count"> @cart.Where(x => x.ResourceId == product.Id).Count()</div>
+
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="check_volume">
+                                                <p class="bold">@product.Name</p>
+                                            </div>
+                                            <div class="check_row">
+                                                <p class="bold">Weight @product.ProductWeight @product.tbl_UnitOfWeight.Name</p>
+                                            </div>
+
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="text-center">$@(product.SupplyPrice * product.Markup)</span>
+
+                                            <p class="text-center ">In-Stock</p>
+                                        </td>
+                                    </tr>
+                                }
+                                else if (package != null && item.ResourceType == OcdlogisticsSolution.Common.ViewModels.ResourceEnums.DistributionServices)
+                                {
+                                    var cost = cart.Where(x => x.ResourceId == package.Id).Count() * Convert.ToInt64(package.Cost);
+                                    subtotal += cost;
+                                    <tr>
+                                        <td>
+                                            <div class="checkout-img-sec">
+                                                <img class="" src="https://www.freeiconspng.com/uploads/service-icon-24.png" alt="">
+                                                <div class="check-img-count"> @cart.Where(x => x.ResourceId == package.Id).Count()</div>
+
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="check_volume">
+                                                <p class="bold">@package.Name</p>
+                                            </div>
+                                            <div>
+                                                <b>Service:</b>  @package.tbl_Distribution_Packages_Info.FirstOrDefault().tbl_DistributionServices.Name
+                                            </div>
+                                            @*<div class="check_row">
+                                                <p class="bold">Weight @package.ProductWeight @item.tbl_UnitOfWeight.Name</p>
+                                            </div>*@
+
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="text-center">$@(package.Cost)</span>
+
+                                            <p class="text-center ">In-Stock</p>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                    <hr>
+                    <div class="input-group mb-3 copen-cust">
+                        <input type="text" class="form-control" placeholder="Gift card or Discount Code">
+                        <div class="input-group-append">
+                            <button class="btn btn-success  checkout_login_btn w-100 ml-4" type="submit">Apply</button>
+                        </div>
+                    </div>
+                    <hr>
+                    <div>
+                        <p><img src="http://logistics.ocdtechsolutions.com/ocd/Images/img/color.png" alt=""> <span class=" bold">Instant Rewards</span></p>
+                    </div>
+                    <div>
+                        <p class="text-right">In your Account <span class="clr_lightgreen bold ml-5">$126.55 CAD</span></p>
+                    </div>
+                    <div class="form-check text-right">
+                        <label class="form-check-label mr-2">
+                            <input type="radio" class="form-check-input" name="optradio">Continue to Save
+                        </label>
+                    </div>
+                    <div class="form-check text-right">
+                        <label class="form-check-label">
+                            <input type="radio" class="form-check-input" name="optradio">Apply to Purchase
+                        </label>
+                    </div>
+                    <hr>
+                    <table class="table check_table checkout-table-total">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="bold f-18">Subtotal:</div>
+                                </td>
+
+                                <td>
+                                    <div class="bold f-18">$@subtotal</div>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td>
+                                    <div class="bold f-18">Delivery:</div>
+                                </td>
+
+                                <td>
+                                    <div class="bold f-18"><small class="clr_litgrey">Dynamicly Calculated</small>      $FREE</div>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td>
+                                    <div class="bold f-18">Tax:</div>
+                                </td>
+
+                                <td>
+                                    <div class="bold f-18">$5.87</div>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <hr>
+                    <table class="table check_table checkout-table-total">
+
+                        <tbody>
+                            <tr>
+
+                                <td>
+                                    <div class="bold f-18">Total</div>
+                                </td>
+
+                                <td>
+                                    <div class="bold f-18">CAD $@(subtotal+5.87)</div>
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+                    <div>
+                        <p class="f-14">Instant Rewards Earned From Purchase <span class="clr_lightgreen bold f-16">$6.25 CAD</span></p>
+                    </div>
+                    <div class="text-right mb-3">
+                        <button class="btn btn-shop checkout_btn_ylw ">
+                            PURCHASE
+                        </button>
+                    </div>
+
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<script src="http://logistics.ocdtechsolutions.com/ocd/js/jquery.min.js"></script>
+<script src="http://logistics.ocdtechsolutions.com/ocd/js/slick.js"></script>
+<script src="http://logistics.ocdtechsolutions.com/ocd/js/popper.min.js"></script>
+<script src="http://logistics.ocdtechsolutions.com/ocd/js/main.js"></script>
+<script src="http://logistics.ocdtechsolutions.com/ocd/js/mine.js"></script>
+<script src="http://logistics.ocdtechsolutions.com/ocd/js/wow.js"></script>
+<style>
+    #progressbar li.active:before, #progressbar li.active:after {
+        background: #f7742c !important;
+    }
+
+    .progress-bar {
+        background-color: #f7742c !important;
+    }
+</style>

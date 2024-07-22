@@ -1,0 +1,35 @@
+﻿@using OcdlogisticsSolution.Web.Helpers
+<div class="container">
+    @using (Html.BeginForm("AddSubscriptionEmail", "EmailSubscription", FormMethod.Post,new { id= "SubscribeNewsLatter" }))
+    {
+        <div class="row">
+            <div class="col-lg-8 col-md-4 col-sm-12 col-12">
+                <div class="d-block w-100 float-left">
+                    <div class="wid-same txt-uper">Sign up for promotions</div>
+                    <div class="wid-same input-frm">
+                        <input type="email" class="from-control" placeholder="E-mail Address" name="data" required id="Email">
+                    </div>
+                    <div class="wid-same">
+                        <button type="button" class="btn btn-subcribe" id="EmailButton">Subscribe</button>
+                    </div>
+                </div>
+                <div class="d-block w-100 float-left">
+                    @Html.GoogleCaptcha()
+                    @Html.InvalidGoogleCaptchaLabel("Captcha is not valid !")
+
+                    @*<label class="checkbox-cus">
+                            I'm not a robot
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>*@
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-12 col-12 text-center">
+                <button type="button" class="btn btn-shop sub">Shop Now</button>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-12 col-12 text-center">
+                <button type="button" class="btn btn-shop sub">Directory</button>
+            </div>
+        </div>
+    }
+</div>

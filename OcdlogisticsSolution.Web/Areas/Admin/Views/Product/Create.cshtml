@@ -1,0 +1,416 @@
+﻿@model OcdlogisticsSolution.Common.ViewModels.ProductViewModel
+<script src="~/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.min.js"></script>
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <h1 class="text-muted font-weight-light mb-4">In progress</h1>
+
+            <div class="card box-shadow border-0 rounded">
+                <h4 class="p-4 d-flex text-right font-weight-light border-bottom bg-light">
+                    Create or Edit Product
+                </h4>
+                <div class="card-body">
+                    @using (Html.BeginForm("Create", "Product"))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(x => x.Id)
+                        <div class="form-row">
+                            <div class="form-group col-12">
+                                <label for="inputState">Product SKU</label>
+                                <div class="d-flex">
+                                    @if (string.IsNullOrWhiteSpace(Model.Id))
+                                    {
+                                        @Html.TextBoxFor(x => x.PrductSkU, new { @class = "form-control control-style  col-lg-5 col-sm-8 col-md-8 col-xl-5 mr-4" })
+                                    }
+                                    else
+                                    {
+                                        @Html.TextBoxFor(x => x.PrductSkU, new { @class = "form-control control-style  col-lg-5 col-sm-8 col-md-8 col-xl-5 mr-4", @readonly = true })
+                                    }
+
+                                    @if (!string.IsNullOrWhiteSpace(Model.Id))
+                                    {
+                                        @Ajax.ActionLink("Genrate SKU#", "GenerateUniqueSKU", null, new AjaxOptions()
+                                   {
+                                       HttpMethod = "Post",
+                                       OnSuccess = "OnSuccess",
+                                       OnBegin = "OnBegin",
+                                       OnComplete = "OnComplete",
+                                       InsertionMode = InsertionMode.Replace,
+                                       UpdateTargetId = "SKU",
+
+                                   }, new { @class = "btn btn-primary", id = "btnGeneratUniqueSKU" })
+                                    }
+                                </div>
+                                @Html.ValidationMessageFor(m => m.PrductSkU, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12 ">
+                                @Html.Label("Product UPC")
+                                @Html.TextBoxFor(x => x.UPC, "", new { @class = "form-control control-style" })
+                                @Html.ValidationMessageFor(m => m.UPC, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12 ">
+                                @Html.Label("Product Part#")
+                                @Html.TextBoxFor(x => x.Part, "", new { @class = "form-control control-style" })
+                                @Html.ValidationMessageFor(m => m.Part, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group col-lg-12">
+                                <label>Product Name</label>
+                                @Html.TextBoxFor(m => m.Name, new { @class = "form-control control-style", placeholder = "Product Name" })
+                                @Html.ValidationMessageFor(x => x.Name, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>Product Weight</label>
+                                @Html.TextBoxFor(m => m.Weight, null, new { @class = "form-control control-style", type = "number" })
+                                @Html.ValidationMessageFor(x => x.Weight, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>Unit of Measure</label>
+                                @Html.DropDownListFor(m => m.ProductWeightUnitId, null, new { @class = "form-control control-style", placeholder = "Product Name" })
+                                @Html.ValidationMessageFor(x => x.ProductWeightUnitId, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <div class="d-flex justify-content-between">
+                                    <label> Color</label>
+                                    <a href="@Url.Action("Colors")">Not Found?</a>
+                                </div>
+                                @Html.DropDownListFor(m => m.ProductColorId, null, new { @class = "form-control control-style", type = "color" })
+                                @Html.ValidationMessageFor(x => x.ProductColorId, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-lg-12">
+                                <label>Product Quantity</label>
+                                @Html.TextBoxFor(m => m.Quantity, null, new { @class = "form-control control-style", type = "number" })
+                                @Html.ValidationMessageFor(x => x.Quantity, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-lg-12">
+                                <label>Product Ingredients</label>
+                                @Html.TextBoxFor(m => m.Ingredients, null, new { @class = "form-control control-style" })
+                                @Html.ValidationMessageFor(x => x.Ingredients, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-lg-12">
+                                <div class="d-flex justify-content-between">
+                                    <label>Product Brand</label>
+                                    <a href="@Url.Action("Brands")">Not Found?</a>
+                                </div>
+                                @Html.DropDownListFor(x => x.ProductBrandId, null, new { @class = "form-control control-style" })
+                                @Html.ValidationMessageFor(x => x.ProductBrandId, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-lg-12">
+                                <div class="d-flex justify-content-between">
+                                    <label>Product Line</label>
+                                    <a href="@Url.Action("ProductLine")">Not Found?</a>
+                                </div>
+                                @Html.DropDownListFor(x => x.ProductLineId, null, "Select Product Line", new { @class = "form-control control-style" })
+                                @Html.ValidationMessageFor(x => x.ProductLineId, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xl-6">
+                                <div class="d-flex justify-content-between">
+                                    <label for="inputState">Product Category</label>
+                                    <a href="@Url.Action("Categories")">Not Found?</a>
+                                </div>
+                                @Html.DropDownListFor(m => m.ProductTypeId, null, new { @class = "form-control control-style select2", placeholder = "Product Name" })
+                                @Html.ValidationMessageFor(x => x.ProductTypeId, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xl-6">
+                                <div class="d-flex justify-content-between">
+                                    <label for="inputState">Product Sub Category</label>
+                                    <a href="@Url.Action("SubCategories")">Not Found?</a>
+                                </div>
+                                @Html.DropDownListFor(x => x.ProductSubCategory, null, new { @class = "form-control control-style select2" })
+                                @Html.ValidationMessageFor(x => x.ProductSubCategory, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-lg-12 col-md-8 col-sm-12 col-xs-12 ">
+                                <label for="inputState">Short Description</label>
+                                @Html.TextAreaFor(m => m.BriefDescription, new { @class = "form-control control-style", rows = 5 })
+                                @Html.ValidationMessageFor(x => x.BriefDescription, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-lg-12 col-md-8 col-sm-12 col-xs-12 ">
+                                <label for="inputState">Full Description<small class="text-muted"> (only used on certain views)</small></label>
+                                @Html.TextAreaFor(x => x.FullDescription)
+                                @Html.ValidationMessageFor(x => x.FullDescription, "", new { @class = "text-danger" })
+                            </div>
+                            @*<div class="form-group col-12">
+                                    <label for="inputState">Vendors</label>
+                                    @Html.ListBoxFor(x => x.ProductVendors, null, new { @class = "form-control control-style select2 form-control-lg" })
+                                    @Html.ValidationMessageFor(x => x.ProductVendors, "", new { @class = "text-danger" })
+                                </div>*@
+                            <div class="form-group col-12">
+                                <div class="d-flex justify-content-between">
+                                    <label for="inputState">Industry</label>
+                                    <a href="@Url.Action("Industries")">Not Found?</a>
+                                </div>
+                                @Html.DropDownListFor(x => x.ProductIndustryId, null, "Select Industry", new { @class = "form-control control-style select2" })
+                                @Html.ValidationMessageFor(x => x.ProductIndustryId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <!--Images Panel Open-->
+                        <h4 class="pb-4 pt-4 border-bottom">
+                            Product Images
+                        </h4>
+
+                        <div class="row mt-3">
+
+                            <div class="col-12 form-group text-center">
+                                <div class="btn-group">
+                                    <a href="#" id="btnAddImgWeb" class="btn btn-primary">Add Image Link From Web</a>
+                                    <a href="#" id="btnAddVideoWeb" class="btn btn-outline-primary">Add Video Link From Web</a>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-12" id="ImagePanelFiles">
+                                <div class="form-group d-flex align-items-center">
+                                    <input type="text" name="ImageFromWebLink" class="form-control" placeholder="Add image link from web" />
+                                    <a href="#" class="close ml-2 remove-simple-web-file">&times;</a>
+                                </div>
+                            </div>
+                            <div class="form-group col-12" id="VideoPanelFiles">
+                                <div class="form-group d-flex align-items-center">
+                                    <input type="text" name="VideoFromWebLink" class="form-control" placeholder="Add video link from web" />
+                                    <a href="#" class="close ml-2 remove-simple-web-file">&times;</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row mt-4">
+                            <div class="form-group col-xl-12 col-lg-12 col-md-8 col-sm-12  ">
+                                <label>Select Images</label>
+                                <input type="file" accept="image/*" multiple name="files" id="files" />
+                            </div>
+                            @Html.ValidationMessage("files", new { @class = "text-danger" })
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-12 form-group">
+                                <div class="card">
+                                    <div class="card-header d-flex bg-light">
+                                        <span class="flex-grow-1 text-center">Selected Images</span>
+                                    </div>
+                                    <div class="card-body" id="VisiualizeImgPanel">
+                                        <span>not selected any image</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!--Prinding Panel Open-->
+                        <h4 class="pt-4 pb-4 border-bottom">
+                            Product Pricing
+                        </h4>
+                        <div class="form-row">
+                            <div class="form-group col-xl-4 col-lg-3 col-md-4 col-sm-4 ">
+                                @Html.Label("Supply price")
+                                @Html.TextBoxFor(m => m.SupplyPrice, new { @class = "form-control control-style", type = "number", placeholder = "" })
+                                @Html.ValidationMessageFor(m => m.SupplyPrice, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group text-center col-xl-1 col-lg-1 col-md-1 col-sm-1 ">
+                                @Html.Label("x")
+                            </div>
+                            <div class="form-group col-xl-3 col-lg-3 col-md-4 col-sm-4 ">
+                                @Html.Label("% Markup")
+                                @Html.TextBoxFor(m => m.Markup, new { @class = "form-control control-style", placeholder = "%", type = "number" })
+                                @Html.ValidationMessageFor(m => m.Markup, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group text-center col-xl-1 col-lg-1 col-md-1 col-sm-1 ">
+                                @Html.Label("=")
+                            </div>
+                            <div class="form-group col-xl-3 col-lg-3 col-md-4 col-sm-4 ">
+                                <label>Selling price</label>
+                                @Html.TextBoxFor(m => m.Markup, new { @class = "form-control control-style", placeholder = "0.00", type = "number" })
+                            </div>
+                            @*<div class="form-group col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
+                                    <h1 class="font-weight-normal">Loyalty Rewards</h1>
+                                </div>
+                                <div class="form-group col-xl-12 col-lg-12 col-md-8 col-sm-12">
+                                    <label for="inputState">Enable Loyalty</label>
+                                    <select id="layality" class="form-control control-style">
+                                        <option selected value="0">Disabled</option>
+                                        <option value="1">Enabled</option>
+                                    </select>
+                                </div>
+                                <fieldset disabled>
+                                    <div class="form-group col-xl-12 col-lg-12 col-md-8 col-sm-12 ">
+                                        <label for="inputState">Loyalty Calculation Type</label>
+                                        <select id="inputState" class="form-control control-style">
+                                            <option selected>Choose...</option>
+                                            <option>...</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-xl-12 col-lg-12 col-md-8 col-sm-12 ">
+                                        <label for="inputState">Loyalty Rule</label>
+                                        <select id="inputState" class="form-control control-style">
+                                            <option selected>Choose...</option>
+                                            <option>...</option>
+                                        </select>
+                                    </div>
+                                </fieldset>
+                                <br />*@
+                            <div class="text-right col-12">
+                                <div class="btn-group">
+                                    @if (!string.IsNullOrEmpty(Model.Id))
+                                    {
+                                        <input type="submit" value="Update & Save Changes" class="btn btn-primary" />
+                                    }
+                                    else
+                                    {
+                                        <input type="submit" value="Create" class="btn btn-primary" />
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+@section Scripts{
+
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+    <script>
+
+        function OnSuccess(data) {
+            $('#PrductSkU').val(data);
+        }
+        function OnComplete(data) {
+            $('#PrductSkU').prop('disabled', false);
+        }
+        function OnBegin(data) {
+            $('#PrductSkU').prop('disabled', true);
+        }
+        $('.select2').select2({
+            theme: "classic",
+            placeholder: '--Select Product Brands--'
+        });
+
+        $('#ProductCategories').select2({
+            theme: "classic",
+            placeholder: '--Select Categories--'
+        });
+
+        $('#ProductVendors').select2({
+            theme: "classic",
+            placeholder: '--Select Vendors--'
+        });
+
+        $('#ProductColor').select2({
+            theme: "classic",
+            placeholder: '--Select Product Available Color--'
+        });
+    </script>
+    <script>
+        $(function () {
+            var webImgFilePanel = $('#ImagePanelFiles');
+            var webVideoPanel = $('#VideoPanelFiles');
+
+            var simpleImagefileLink = '<div class="form-group d-flex align-items-center">' +
+                '<input type="text" name="ImageFromWebLink" class="form-control" placeholder="Add image link from web" />' +
+                '<a href="#" class="close remove-simple-web-file ml-2">&times;</a>' +
+                '</div>';
+
+            var simpleVideofileLink = '<div class="form-group d-flex align-items-center">' +
+                '<input type="text" name="VideoFromWebLink" class="form-control" placeholder="Add Video link from web" />' +
+                '<a href="#" class="close remove-simple-web-file ml-2">&times;</a>' +
+                '</div>';
+
+            $('#btnAddVideoWeb').click(function (e) {
+                webVideoPanel.append(simpleVideofileLink)
+                e.preventDefault();
+                return false;
+            });
+
+            $('#btnAddImgWeb').click(function (e) {
+                webImgFilePanel.append(simpleImagefileLink)
+                e.preventDefault();
+                return false;
+            });
+
+
+            function imgVisualizeHtml(src, name, size) {
+                return '<div class="d-flex justify-content-between align-items-center mb-2">' +
+                    '<img src="' + src + '" width="40" />' +
+                    '<small class="text-muted text-capitalize">' + name + '</small>' +
+                    '<b>' + size + '</b>' +
+                    '</div>'
+            }
+
+            function bytesToSize(bytes) {
+                var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+                if (bytes == 0) return '0 Byte';
+                var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
+                return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
+            }
+
+            function readURLToVisulize(file, targetElementId) {
+                if (file) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $(targetElementId)
+                            .attr('src', e.target.result);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            }
+
+
+            $('#files').change(function () {
+                $('#VisiualizeImgPanel').html('');
+                for (var i = 0; i < this.files.length; i++) {
+                    $('#VisiualizeImgPanel').append(imgVisualizeHtml('https://cdn3.iconfinder.com/data/icons/misc-file-formats/512/20-512.png', this.files[i].name, bytesToSize(this.files[i].size)));
+                    //imgVisualizeHtml(.src, this.files[0].name)
+                }
+            });
+
+
+            $('.form-group').on("click", '.remove-simple-web-file', function (e) {
+                $(this).parent('.form-group').remove();
+                e.preventDefault();
+                return false;
+            });
+
+            $('#SupplyPrice,#Markup').on({
+                keyup: function () {
+                    $('#sellingPrice').val(CalculateSellingPrice(parseFloat($('#Markup').val()), parseFloat($('#SupplyPrice').val())));
+                },
+                change: function () {
+                    $('#sellingPrice').val(CalculateSellingPrice(parseFloat($('#Markup').val()), parseFloat($('#SupplyPrice').val())));
+                }
+            });
+
+            function CalculateSellingPrice(supplyPrice, markup) {
+                return supplyPrice * markup;
+            }
+        });
+    </script>
+    <script>
+    </script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <!-- include summernote css/js -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#FullDescription').summernote({
+                height: 150,
+            });
+        });
+    </script>
+}
+
+
+
+
+
+
+
+
+
+
+

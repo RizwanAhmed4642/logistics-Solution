@@ -1,0 +1,84 @@
+﻿@model OcdlogisticsSolution.DomainModels.Models.Entity_Models.tbl_PartnerCms
+@{
+    ViewBag.Title = "Partner";
+    Layout = "~/Views/Shared/_OcdLogisticsLayout.cshtml";
+}
+<link href="~/Assets/css/patner.css" rel="stylesheet" />
+<div class="container-fluid myContainer2" style="background-image:url(@Model.BackGroundImg)">
+    <ul class="breadcrumb cust_crumb">
+        <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+        <li><a class="active" href="#">Partner With Us</a></li>
+    </ul>
+    <div class="spacer"></div>
+    <div class="ban-overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="sub-title">
+
+                    <h2>@Model.PartnerHeading</h2>
+                </div>
+                <div class="spacer"></div>
+                <div class="content">
+                    <p>@Model.PartnerContent</p>
+                    <div class="ban-img">
+                        @*<img src="@Model.BackGroundImg" alt="" srcset="">*@
+                    </div>
+
+                    <button class="btn btn-form">Learn more</button>
+                </div>
+                <!-- <div class="spacer"></div> -->
+
+            </div>
+            <div class="col-lg-4">
+
+
+                <div class="spacer"></div>
+                <form>
+                    <label>First Name*</label>
+                    <div class="form-group">
+                        <input type="text" class="form-control">
+                    </div>
+
+                    <label>Last Name*</label>
+                    <div class="form-group">
+                        <input type="text" class="form-control">
+                    </div>
+
+                    <label>Contact Number*</label>
+                    <div class="form-group">
+                        <input type="tel" class="form-control">
+                    </div>
+
+                    <label>City*</label>
+                    <div class="form-group">
+                        <input type="text" class="form-control">
+                    </div>
+
+                    <label>Location*</label>
+                    <div class="form-group">
+                        <input type="text" class="form-control">
+                    </div>
+
+                    <label>Email*</label>
+                    <div class="form-group">
+                        <input type="email" class="form-control">
+                    </div>
+
+                    <label>Business type</label>
+                    <div class="form-group">
+                        <input type="text" class="form-control">
+                    </div>
+
+                    <label>Notes</label>
+                    <div class="form-group">
+                        <textarea class="form-control" style="min-height: 90px;" id="FormControlTextarea" rows="3"></textarea>
+                    </div>
+                    <button class="btn btn-form">Submit</button>
+                </form>
+            </div>
+        </div>
+    <div class="spacer"></div>
+</div>
+
+

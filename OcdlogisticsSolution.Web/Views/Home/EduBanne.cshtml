@@ -1,0 +1,44 @@
+﻿@model OcdlogisticsSolution.DomainModels.Models.Entity_Models.Tbl_EducationBanner
+<div class="hero cus-aducation" style=" background-image: url(@Model.BannerImg);
+">
+
+    <div class="slider-overly-text2">
+        <div class="container">
+            <h2 class="white">@Model.BannerHeading </h2>
+            <p class="white">
+                @Model.BannerContent
+            </p>
+        </div>
+    </div>
+
+
+</div>
+ <div class="spacer"></div> 
+<div class="container bred-b">
+    <ul class="breadcrumb cust_crumb">
+        <li><a href="#" class="black"><i class="fa fa-home"></i> Home</a></li>
+        <li><a class="active black" href="#">Education</a></li>
+    </ul>
+    <div class="row padi-tb-50">
+        <div class="col-sm-12 col-md-6">
+            <div class="cdeck">
+                <div class="card text-center mb-3">
+                    <div class="img">
+                        <img src="@Model.Img" alt="" srcset="">
+                         <p>400x240</p> 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6">
+            <div class="cdeck">
+                <h2>@Model.ImgHeading</h2>
+                <div class="">
+                    <p class="card-text text-justify">
+                        @Model.ImgContent
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

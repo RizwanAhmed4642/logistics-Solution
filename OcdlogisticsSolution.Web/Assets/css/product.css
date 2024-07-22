@@ -1,0 +1,43 @@
+.hero {
+    /* position: relative; */
+    background-image: url("../images/monday_attachments/4.png");
+    width: 100%;
+    height: 491.5px !important;;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+}
+.block {
+    background-color: black;
+    color: white;
+    padding: 10px;
+}
+.block p {
+    color: white;
+}
+.block-btn {
+    display: flex;
+    justify-content: space-around;
+}
+.btn-blk {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 10px 0px;
+}
+@media (max-width: 375px){
+    .block-btn {
+        display: flex;
+        flex-direction: column;
+    }
+}
+@media (width: 768px) {
+    .hero {
+        height: 285px;
+    }  
+}
+@media (min-width: 320px) and (max-width: 575px) {
+    .hero {
+        height: 150px !important;
+    }  
+}

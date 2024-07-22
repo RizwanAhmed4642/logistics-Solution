@@ -1,0 +1,301 @@
+﻿@model OcdlogisticsSolution.Web.Models.ProfilePageViewModel
+@{
+    Layout = "~/Views/Shared/_OcdLogisticsLayout.cshtml";
+}
+<link rel="stylesheet" href="~/Assets/css/profile.css">  
+<link rel="stylesheet" href="~/Assets/css/about.css">  
+
+<div class="container-fluid myContainer bg-cust py-5" style="background:@(!string.IsNullOrWhiteSpace(Model.tbl_ProfilePage.BackGroungdColorBanner)?@Model.tbl_ProfilePage.BackGroungdColorBanner:"url(\'"+@Model.tbl_ProfilePage.bckimg1+"\')")">
+
+    <div class="container">
+        <!-- content start -->
+        <ul class="breadcrumb cust_crumb">
+            <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+            <li><a class="active" href="#">Profile</a></li>
+        </ul>
+        <div class="spacer"></div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="proImg">
+                    @if (!string.IsNullOrEmpty(Model.tbl_TeamProfiles.TeamImage) || Model.tbl_TeamProfiles.TeamImage != "")
+                    {
+                        <img src="@Model.tbl_TeamProfiles.TeamImage" alt="" srcset="">
+                    }
+                    else
+                    {
+                        <img src="/Areas/AdminDashboard/assets/media/users/blank.png" alt="">
+                    }
+                    <!-- <p>540x540</p> -->
+                </div>
+
+                <div class="proInfo text-center mt-sm-4">
+                    <h3> &nbsp; @Model.tbl_TeamProfiles.ProfileName</h3>
+                    <span>&nbsp;  @Model.tbl_TeamProfiles.Position</span>
+                </div>
+                <div class="spacer"></div>
+                <div class="profile-social-cart social-cart-block">
+                    <ul class="profile-cart-list list-inline">
+                        @if (!string.IsNullOrEmpty(Model.tbl_TeamProfiles.Facebook))
+                        {
+                            <li class="list-inline-item"><a href="@Model.tbl_TeamProfiles.Facebook" target="_blank"><i class="fa fa-facebook fb"></i> </a></li>
+                        }
+                        @if (!string.IsNullOrEmpty(Model.tbl_TeamProfiles.Instagram))
+                        {
+                            <li class="list-inline-item"><a href="@Model.tbl_TeamProfiles.Instagram" target="_blank"><i class="fa fa-instagram insta"></i> </a></li>
+
+                        }
+                        @if (!string.IsNullOrEmpty(Model.tbl_TeamProfiles.Tweeter))
+                        {
+                            <li class="list-inline-item"><a href="@Model.tbl_TeamProfiles.Tweeter" target="_blank"><i class="fa fa-twitter twit"></i> </a></li>
+
+                        }
+                        @if (!string.IsNullOrEmpty(Model.tbl_TeamProfiles.Pintrestr))
+                        {
+                            <li class="list-inline-item"><a href="@Model.tbl_TeamProfiles.Pintrestr" target="_blank"><i class="fa fa-pinterest pin"></i> </a></li>
+
+                        }
+                        @if (!string.IsNullOrEmpty(Model.tbl_TeamProfiles.Youtube))
+                        {
+                            <li class="list-inline-item"><a href="@Model.tbl_TeamProfiles.Youtube" target="_blank"><i class="fa fa-youtube yt"></i> </a></li>
+
+                        }
+                        @if (!string.IsNullOrEmpty(Model.tbl_TeamProfiles.LinkedIn))
+                        {
+                            <li class="list-inline-item"><a href="@Model.tbl_TeamProfiles.LinkedIn" target="_blank"><i class="fa fa-linkedin"></i> </a></li>
+
+                        }
+
+                        @if (!string.IsNullOrEmpty(Model.tbl_TeamProfiles.Email))
+                        {
+                            <li class="list-inline-item"><a href="mailto:@Model.tbl_TeamProfiles.Email" target="_blank"><i class="fa fa-envelope"></i> </a></li>
+
+                        }
+                        @if (!string.IsNullOrEmpty(Model.tbl_TeamProfiles.ContactNumber))
+                        {
+                            <li class="list-inline-item"><a href="tel:@Model.tbl_TeamProfiles.ContactNumber" target="_blank"><i class="fa fa-phone"></i> </a></li>
+
+                        }
+                        @if (!string.IsNullOrEmpty(Model.tbl_TeamProfiles.Message))
+                        {
+                            <li class="list-inline-item"><a href="@Model.tbl_TeamProfiles.Message" target="_blank"><i class="fa  fa-commenting-o"></i> </a></li>
+
+                        }
+
+                    </ul>
+                </div>
+
+
+            </div>
+            <div class="col-lg-6">
+                <div class="proInfo text-center">
+                    <h3>@Model.tbl_TeamProfiles.ProfileName</h3>
+                         
+                            <span>@Model.tbl_TeamProfiles.Position</span>
+                </div>
+                <div class="spacer"></div>
+                <div class="projectName">
+                    @*<div style="padding: 10px;overflow-y:auto">*@
+
+                 @*   <p style="padding: 10px;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit molestiae dolore consectetur quae. Velit dolores animi recusandae quos placeat eaque fugit quasi? Ipsam itaque, distinctio quibusdam aliquid harum consequuntur qui nostrum perspiciatis, maxime voluptatibus unde perferendis debitis impedit expedita eveniet eos reprehenderit dignissimos porro pariatur deserunt laudantium id! Sed, in totam? Ipsum debitis aliquid repudiandae, nemo rerum numquam magni? Tempore eveniet aspernatur laboriosam maxime nesciunt accusamus! Iste a ipsum voluptates atque eligendi magnam fugit? Et animi repellendus quis sequi ipsam eum commodi aliquid sint, vel facere voluptas quas molestiae veniam dolorum mollitia non cupiditate officiis possimus odio nihil architecto voluptatum.</p>*@
+
+                     @(new MvcHtmlString( Model.tbl_TeamProfiles.ShortDescription))
+
+                    <a href="" class="btn btn-black  ml-sm-3" data-toggle="modal" data-target="#Profile-text">Learn More </a>
+                </div>
+                <br>
+                <div class="spacer"></div>
+                <button class="cnt-btn btnCard">GET IN TOUCH</button>
+            </div>
+
+            <!-- modal movement -->
+            <div class="modal fade" id="Profile-text" tabindex="-1" role="dialog" aria-labelledby="MovementTitle" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="MovementTitle">@Model.tbl_TeamProfiles.Position</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                           @* <p style="padding: 10px;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit molestiae dolore consectetur quae. Velit dolores animi recusandae quos placeat eaque fugit quasi? Ipsam itaque, distinctio quibusdam aliquid harum consequuntur qui nostrum perspiciatis, maxime voluptatibus unde perferendis debitis impedit expedita eveniet eos reprehenderit dignissimos porro pariatur deserunt laudantium id! Sed, in totam? Ipsum debitis aliquid repudiandae, nemo rerum numquam magni? Tempore eveniet aspernatur laboriosam maxime nesciunt accusamus! Iste a ipsum voluptates atque eligendi magnam fugit? Et animi repellendus quis sequi ipsam eum commodi aliquid sint, vel facere voluptas quas molestiae veniam dolorum mollitia non cupiditate officiis possimus odio nihil architecto voluptatum.</p>*@
+                            <p style="padding: 10px;">
+                                @(new MvcHtmlString( Model.tbl_TeamProfiles.ShortDescription))
+
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+
+                            <button type="button" class="btn btn-black" data-dismiss="modal">Continue</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- modal movement -->
+        </div>
+
+    </div>
+</div>
+
+<div class="acc-tabs bg-cust " style="background:@(!string.IsNullOrWhiteSpace(Model.tbl_ProfilePage.BackGroungdColorbody)?@Model.tbl_ProfilePage.BackGroungdColorbody:"url(\'"+@Model.tbl_ProfilePage.bckimg2+"\')")">
+    @if (!string.IsNullOrEmpty(Model.tbl_TeamProfiles.FavoriteQuote))
+    {
+        <div class="container padi-tb-50">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-lg-12">
+                    <h2 class="banner">"@Model.tbl_TeamProfiles.FavoriteQuote"</h2>
+                </div>
+            </div>
+        </div>
+    }
+    <div class="acc-tabs">
+        <div class="container">
+            <div class="row pb-3 pt-4">
+                <div id="accordionFaq " class="myaccordion rem-bg-clr">
+                    <div class="card">
+                        @if (!string.IsNullOrEmpty(Model.tbl_TeamProfiles.Bio))
+                        {
+                            <div class="card-header" id="headingOne">
+                                <h2 class="mb-0">
+
+                                    <button class="d-flex align-items-center justify-content-between btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                        Bio
+                                        <span class="fa-stack fa-sm">
+                                            <i class="fa fa-angle-down"></i>
+                                        </span>
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionFaq">
+                                <div class="card-body">
+
+                                    <p>@Html.Raw(Model.tbl_TeamProfiles.Bio)</p>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="card">
+                        @if (!string.IsNullOrEmpty(Model.tbl_TeamProfiles.Credentials))
+                        {
+                            <div class="card-header" id="headingTwo">
+                                <h2 class="mb-0">
+                                    <button class="d-flex align-items-center justify-content-between btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        Credentials
+                                        <span class="fa-stack fa-2x">
+                                            <i class="fa fa-angle-down"></i>
+                                        </span>
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionFaq">
+                                <div class="card-body">
+                                    <p>@Html.Raw(Model.tbl_TeamProfiles.Credentials)</p>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="card">
+                        @if (!string.IsNullOrEmpty(Model.tbl_TeamProfiles.PassionandHobbies))
+                        {
+                            <div class="card-header" id="headingThree">
+                                <h2 class="mb-0">
+                                    <button class="d-flex align-items-center justify-content-between btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        PASSIONS & HOBBIES
+                                        <span class="fa-stack fa-2x">
+                                            <i class="fa fa-angle-down"></i>
+                                        </span>
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionFaq">
+                                <div class="card-body">
+                                    <p>@Html.Raw(Model.tbl_TeamProfiles.PassionandHobbies)</p>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="card">
+                        @if (!string.IsNullOrEmpty(Model.tbl_TeamProfiles.MyWork))
+                        {
+                            <div class="card-header" id="headingFour">
+                                <h2 class="mb-0">
+                                    <button class="d-flex align-items-center justify-content-between btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                        MY WHY
+                                        <span class="fa-stack fa-2x">
+                                            <i class="fa fa-angle-down"></i>
+                                        </span>
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionFaq">
+                                <div class="card-body">
+                                    <p>@Html.Raw(Model.tbl_TeamProfiles.MyWork)</p>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<div class="bg-cust pb-5" style="background:@(!string.IsNullOrWhiteSpace(Model.tbl_ProfilePage.BackGroungdColorFootr)?@Model.tbl_ProfilePage.BackGroungdColorFootr:"url(\'"+@Model.tbl_ProfilePage.bckimg3+"\')")">
+    <div class="container pt-5 expert-cus img-wid-set">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="cdeck">
+                    <div class="card text-center">
+                        <div class="img">
+                            @if (!string.IsNullOrEmpty(Model.tbl_ProfilePage.ProfilePageSeminarImage) || Model.tbl_ProfilePage.ProfilePageSeminarImage != "")
+                            {
+                                <img src="@Model.tbl_ProfilePage.ProfilePageSeminarImage" alt="" srcset="">
+                            }
+                            else
+                            {
+                                <img src="/Areas/AdminDashboard/assets/media/users/blank.png" alt="">
+                            }
+                            <!-- <p>540x540</p> -->
+                        </div>
+                        <div class="card-img-overlay text-white">
+                            <div class="card-title">
+                                <h4>@Model.tbl_ProfilePage.ExpertImageText</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="cnt-btn btnCard">Discover Your Solution</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="cdeck">
+                    <div class="card text-center">
+                        <div class="img">
+                            @if (!string.IsNullOrEmpty(Model.tbl_ProfilePage.ProfilePageExpertImage) || Model.tbl_ProfilePage.ProfilePageExpertImage != "")
+                            {
+                                <img src="@Model.tbl_ProfilePage.ProfilePageExpertImage" alt="" srcset="">
+                            }
+                            else
+                            {
+                                <img src="/Areas/AdminDashboard/assets/media/users/blank.png" alt="">
+                            }
+                        </div>
+                        <div class="card-img-overlay text-white">
+                            <div class="card-title">
+                                <h4>@Model.tbl_ProfilePage.SeminarImageText</h4>
+
+                            </div>
+                        </div>
+                    </div>
+                    <button class="cnt-btn btnCard">Save the Date</button>
+                </div>
+            </div>
+        </div>
+        <h2 class="last-banner text-center pt-3">"@Model.tbl_ProfilePage.ProfilePageQuote"</h2>
+    </div>
+</div>

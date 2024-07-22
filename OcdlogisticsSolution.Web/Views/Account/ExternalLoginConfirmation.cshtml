@@ -1,0 +1,77 @@
+﻿@model OcdlogisticsSolution.Web.Models.ExternalLoginConfirmationViewModel
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_RatsLayout.cshtml";
+
+}
+    <div id="contact_us">
+        <!-- BreadCrumbs -->
+        <ul class="breadcrumb cust_crumb">
+            <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+            <li><a class="" href="#">Create Account</a></li>
+        </ul>
+        <div class="container">
+            <div class="row d-flex h-100">
+                <div class="col-12 col-lg-12 col-md-12 col-xl-12 ">
+                    <div id="e_msg"></div>
+                    <div class="form-main login_main_div pt-md-5 pb-md-5 cont_text">
+                        <h2 style="text-align:center">@ViewBag.Title</h2>
+                        <h3 style="text-align:center;color:white !important">Associate your @ViewBag.LoginProvider account.</h3>
+
+                        @using (Html.BeginForm("ExternalLoginConfirmation", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <h4 style="text-align:center;color:white !important">Association Form</h4>
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <p class="text-info" style="text-align:center;color:white !important">
+                                You've successfully authenticated with <strong>@ViewBag.LoginProvider</strong>.
+                                Please enter a user name for this site below and click the Register button to finish
+                                logging in.
+                            </p>
+                            <div class=" justify-center">
+                                <p class="text-center log_mint_p">Create an Account </p>
+
+                                <div class="text-center">
+                                    <div class="form-group">
+                                        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "  First Name*", id = "firstname", required = "required" })
+                                    </div>
+                                </div>
+                                <div class="text-center ">
+                                    <div class="form-group">
+                                        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "  Last Name*", id = "lastname", required = "required" })
+                                    </div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="form-group">
+                                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "  Email*", id = "email", required = "required" })
+                                    </div>
+                                </div>
+                                @*<div class="text-center">
+                                    <div class="form-group">
+                                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "  Password*", id = "password", type = "password", required = "required", autocomplete = "off" })
+                                    </div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="form-group">
+                                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Confirm  Password*", id = "password", type = "password", required = "required", autocomplete = "off" })
+                                    </div>
+                                </div>*@
+                            </div>
+                            <div class="form-group">
+                                <div class="text-center pt-md-3 pb-2" style="text-align:center">
+                                    <input type="submit" class="btn btn-primary mint_cntct_btn login_social_btn" value="Register" />
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

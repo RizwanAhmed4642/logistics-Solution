@@ -1,0 +1,87 @@
+﻿@model OcdlogisticsSolution.Common.ViewModels.ResourcesModel.SpecialHoursViewModel
+@{
+    ViewBag.Title = "SpecialHours";
+    Layout = "~/Areas/Admin/Views/Shared/_layout.cshtml";
+
+}
+<style>
+    .form-control {
+        border-radius: 4px;
+    }
+</style>
+<div class="container-fluid mb-5 mt-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        Special Hours
+                    </h3>
+                </div>
+                <div class="card-body border-bottom">
+                    <div class="row align-items-end justify-content-center ">
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.Date) <div class="d-flex">
+                                    @Html.TextBoxFor(x => x.Date, "", new { @class = "form-control" })
+                                    <button class="btn btn-outline-primary ml-1 text-center"><i class="far fa-clock"></i></button>
+                                </div>
+                            </div>
+                            @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.Start)
+                                <div class="d-flex">
+                                    @Html.TextBoxFor(x => x.Start, "", new { @class = "form-control" })
+                                    <button class="btn btn-outline-primary ml-1 text-center"><i class="far fa-clock"></i></button>
+                                </div>
+                            </div>
+                            @Html.ValidationMessageFor(model => model.Start, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.End)
+                                <div class="d-flex">
+                                    @Html.TextBoxFor(x => x.End, "", new { @class = "form-control" })
+                                    <button class="btn btn-outline-primary ml-1 text-center"><i class="far fa-clock"></i></button>
+                                </div>
+                            </div>
+                            @Html.ValidationMessageFor(model => model.End, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-2 text-center">
+                            <div class="form-group">
+                                @Html.CheckBoxFor(x => x.IsClosed, new { @class = "mr-2" })
+                                @Html.LabelFor(x => x.IsClosed, "Closed")
+                            </div>
+                        </div>
+                        <div class="col-lg-2 text-center">
+                            <div class="form-group">
+                                <input type="submit" value="Save Special Hours" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center mt-3">
+                    <div class="col-lg-6 col-md-7 col-xl-6 col-sm-12 form-group mt-5">
+                        <div class="card">
+                            <div class="card-header d-flex bg-light p-4">
+                                <span>Day</span>
+                                <span class="flex-grow-1 text-center">Hours of Operation</span>
+                            </div>
+                            <div style="height:400px" class="card-body">
+                                <span>no records to display</span>
+                                @*@Html.ListBox("AvailableSpecialHours")*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer d-flex justify-content-center border-top bg-light border-secondary mt-4">
+                    <div class="col-lg-6 col-md-7 col-xl-6 col-sm-12 form-group mt-5">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5cbe6c4eb6074c8494b07ef000c4a6db" Name="Diagram1">
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.C__MigrationHistory" Width="1.5" PointX="9.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.AspNetRoles" Width="1.5" PointX="5.25" PointY="33.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.AspNetUserClaims" Width="1.5" PointX="7.5" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.AspNetUserLogins" Width="1.5" PointX="7.5" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.AspNetUserRoles" Width="1.5" PointX="7.5" PointY="28.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.AspNetUsers" Width="1.5" PointX="5.25" PointY="24.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.PointOfContractPerson" Width="1.5" PointX="13" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.sysdiagrams" Width="1.5" PointX="10.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_AboutUs" Width="1.5" PointX="17.75" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_Address" Width="1.5" PointX="3" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_Brand" Width="1.5" PointX="13" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_Business" Width="1.5" PointX="15.25" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_BusinessInfo" Width="1.5" PointX="9.75" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_City" Width="1.5" PointX="0.75" PointY="27.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_Color" Width="1.5" PointX="8.25" PointY="55.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.Tbl_ContactUs" Width="1.5" PointX="0.75" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_ContectUsPage" Width="1.5" PointX="2.75" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_Country" Width="1.5" PointX="0.75" PointY="24.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_Customers" Width="1.5" PointX="10.5" PointY="27.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_CustomerShippingDetail" Width="1.5" PointX="7.5" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_CustomerType" Width="1.5" PointX="8.25" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_Distribution_Packages" Width="1.5" PointX="15" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_Distribution_Packages_Info" Width="1.5" PointX="17.25" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_DistributionServices" Width="1.5" PointX="15" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_Duration" Width="1.5" PointX="12.75" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.Tbl_EducationBanner" Width="1.5" PointX="4.75" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_FAQ" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_FAQ_Questions" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_File" Width="1.5" PointX="10.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.Tbl_FindF" Width="1.5" PointX="17.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_Home_Page_Feature_Benifites" Width="1.5" PointX="10.75" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_HomePage_Packages" Width="1.5" PointX="15" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_Industry" Width="1.5" PointX="8.25" PointY="57.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_Ingredient_Info" Width="1.5" PointX="12.75" PointY="61.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_Ingredients" Width="1.5" PointX="10.5" PointY="67.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.Tbl_LearningPreference" Width="1.5" PointX="0.75" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_Membership" Width="1.5" PointX="2.75" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.Tbl_Misson" Width="1.5" PointX="4.75" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_Order" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.Tbl_OurSolution" Width="1.5" PointX="17.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_OurTeamPage" Width="1.5" PointX="12.75" PointY="20.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_PartnerCms" Width="1.5" PointX="14.75" PointY="20.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_Payments" Width="1.5" PointX="3" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_PaymentsTypes" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.Tbl_PrivacyPolicy" Width="1.5" PointX="2.75" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_Product" Width="1.5" PointX="10.5" PointY="57.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_Product_File" Width="1.5" PointX="13" PointY="36.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_Product_Line" Width="1.5" PointX="13" PointY="39.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_ProductCategory" Width="1.5" PointX="8.25" PointY="60.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_ProductLoyalityCalculationType" Width="1.5" PointX="10.5" PointY="55.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_ProductLoyalityRewards" Width="1.5" PointX="12.75" PointY="58" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_ProductLoyalityRule" Width="1.5" PointX="10.5" PointY="52.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_ProductType" Width="1.5" PointX="8.25" PointY="62.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_ProductVendorsInfo" Width="1.5" PointX="12.75" PointY="30.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_ProfilePage" Width="1.5" PointX="19.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_Province" Width="1.5" PointX="0.75" PointY="30.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_Rceiver_ShippingDetail" Width="1.5" PointX="7.5" PointY="25.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.Tbl_RefundPolicy" Width="1.5" PointX="4.75" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_Resources" Width="1.5" PointX="10.5" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_ResourcesShedule" Width="1.5" PointX="12.75" PointY="26" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_ResourcesSpecialHour" Width="1.5" PointX="7.5" PointY="31.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_ResourcesType" Width="1.5" PointX="8.25" PointY="20.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_Slider" Width="1.5" PointX="7.5" PointY="34.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_SocailInfo" Width="1.5" PointX="3" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_Socails" Width="1.5" PointX="0.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_SocialHandler" Width="1.5" PointX="7.5" PointY="37.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.Tbl_Sponser" Width="1.5" PointX="19.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.Tbl_SponserEducation" Width="1.5" PointX="19.75" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_SubscribeToNewsLatter" Width="1.5" PointX="19.75" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_TeamProfiles" Width="1.5" PointX="19.75" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_UnitOfWeight" Width="1.5" PointX="8.25" PointY="65.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_UserSettings" Width="1.5" PointX="7.5" PointY="50.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_Vendor_Product" Width="1.5" PointX="12.75" PointY="33.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_Vendors" Width="1.5" PointX="10.5" PointY="30" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tbl_WeekDay" Width="1.5" PointX="10.5" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.Tbl_WhyChoose" Width="1.5" PointX="21.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tblIngredients" Width="1.5" PointX="8.25" PointY="67.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tblProduct_line_Info" Width="1.5" PointX="15.25" PointY="35.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tblRights" Width="1.5" PointX="7.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.tblVendorType" Width="1.5" PointX="8.25" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OcdlogisticsProjectModel.TermsConditions" Width="1.5" PointX="21.75" PointY="5.5" IsExpanded="true" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK_tblRights_AspNetRoles" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK__tbl_Slide__UserI__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK__tbl_UserS__UserI__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK_AspNetUsers_tbl_Address" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK_tbl_Customers_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK_tbl_CustomerShippingDetail_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK_tbl_Rceiver_ShippingDetail_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK_tbl_Resources_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK_tbl_Resources_AspNetUsers1" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK_tbl_ResourcesShedule_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK_tbl_ResourcesSpecialHour_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK_tbl_SocialHandler_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK_tbl_Vendors_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK_tbl_Business_PointOfContractPerson" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK_tbl_Address_tbl_City" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK_tbl_Address_tbl_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK_tbl_Address_tbl_Province" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK__tbl_Indus__Brand__1D4655FB" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK_tbl_Brand_tbl_File" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK_tblProduct_line_Info_tbl_Brand" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK_tbl_Product_tbl_Color" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK_tbl_Customers_tbl_CustomerType" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK_tbl_Distribution_Packages_Info_tbl_Distribution_Packages" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK_tbl_Distribution_Packages_tbl_Duration" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK_tbl_Distribution_Packages_Info_tbl_DistributionServices" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK_tbl_DistributionServices_tbl_Duration" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK_tbl_HomePage_Packages_tbl_Duration" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK__tbl_FAQ_Q__FAQ_I__5CA1C101" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK__tbl_FAQ_Q__FAQ_I__5D95E53A" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK__tbl_FAQ_Q__FAQ_I__5E8A0973" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK_tbl_Product_File_tbl_File" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK_tbl_Product_tbl_Industry" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK_tbl_Ingredient_Info_tbl_Ingredients" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK_tbl_Ingredient_Info_tbl_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK_tbl_Payments_tbl_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK_tbl_Payments_tbl_PaymentsTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK__tbl_Produ__Produ__43D61337" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK__tbl_Produ__Produ__531856C7" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK_tbl_Product_File_tbl_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK_tbl_Product_tbl_ProductCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK_tbl_Product_tbl_ProductType" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK_tbl_Product_tbl_UnitOfWeight" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK_tbl_Product_tblIngredients" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK_tbl_Vendor_Product_tbl_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK_tblProduct_line_Info_tbl_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK_tblProduct_line_Info_tbl_Product_Line" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK__tbl_Produ__Loyal__6BE40491" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK__tbl_Produ__Loyal__6CD828CA" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK__tbl_Produ__Vendo__6FB49575" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK_tbl_Resources_tbl_ResourcesType" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK_tbl_ResourcesShedule_tbl_Resources" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK_tbl_ResourcesShedule_tbl_WeekDay" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK__tbl_Socai__Socia__793DFFAF" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK_tbl_Vendor_Product_tbl_Vendors" ManuallyRouted="false" />
+        <AssociationConnector Association="OcdlogisticsProjectModel.FK_tbl_Vendors_tbl_Vendors" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,170 @@
+﻿@{
+    Layout = "~/Views/Shared/_OcdLogisticsLayout.cshtml";
+    var srcResourceUrl = "http://logistics.ocdtechsolutions.com/ocd/";
+}
+
+<section class="after-header">
+    <ul class="breadcrumb cust_crumb about_breadCrums">
+        <li><a href="@Url.Action("Index","Home")"><i class="fa fa-home"></i> Home</a></li>
+        <li><a class="active" href="#">Thankyou</a></li>
+    </ul>
+    <div class="container ">
+        <div class="row ">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-5 col-xl-5 text-center p-0 mt-3 mb-2">
+                <div class="my-account-cus">
+                    <h2 class="clr_golden text-left">MY ACCOUNT</h2>
+                    <hr>
+                    <ul>
+                        <li>
+                            <a href="">
+                                <p class="thnku_wid_img">
+                                    <img src="@srcResourceUrl/images/img/man_hh.png" alt="">
+                                    <span class="black bold ml-3">My Profile</span>
+                                </p>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="">
+                                <p class="thnku_wid_img">
+                                    <img src="@srcResourceUrl/images/img/message_aa.png" alt="">
+                                    <span class="black bold ml-3">My Communication Preferences</span>
+                                </p>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="">
+                                <p class="thnku_wid_img">
+                                    <img src="@srcResourceUrl/images/img/heart_bb.png" alt="">
+                                    <span class="black bold ml-3">My Wish List</span>
+                                </p>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="">
+                                <p class="thnku_wid_img">
+                                    <img src="@srcResourceUrl/images/img/box_cc.png" alt="">
+                                    <span class="black bold ml-3">My Orders</span>
+                                </p>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="">
+                                <p class="thnku_wid_img">
+                                    <img src="@srcResourceUrl/images/img/hexagon_gg.png" alt="">
+                                    <span class="black bold ml-3">My Instant Rewards</span>
+                                </p>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="">
+                                <p class="thnku_wid_img">
+                                    <img src="@srcResourceUrl/images/img/textsheet_ee.png" alt="">
+                                    <span class="black bold ml-3">My Business Reports</span>
+                                </p>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="">
+                                <p class="thnku_wid_img">
+                                    <img src="@srcResourceUrl/images/img/house_dd.png" alt="">
+                                    <span class="black bold ml-3">My Clients</span>
+                                </p>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="">
+                                <p class="thnku_wid_img">
+                                    <img src="@srcResourceUrl/images/img/calender_fff.png" alt="">
+                                    <span class="black bold ml-3">My Appointments</span>
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="border-box-s">
+                    <h2 class="clr_golden text-left">NEED HELP?</h2>
+                    <hr>
+                    <p class="bold">
+                        Customer Service
+                    </p>
+                    <p class="bold">
+                        Call or Text :<br>
+                        1- 8 77- 8 76 - 9 6 6 8<br>
+                    </p>
+                    <p class="bold">
+                        Email:<br>
+                        info@MintLashes.com<br>
+                    </p>
+                    <p class="bold">
+                        Office Hours:<br>
+                        Monday - Friday<br>
+                        9:00 am - 5:00 pm<br>
+                    </p>
+                    <p class="bold">
+                        War ehous e Hours:<br>
+                        9:00 am - 9 :0 0 pm<br>
+                        My Address Book<br>
+                    </p>
+
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-7 col-xl-7 text-center mt-3 mb-2">
+
+                <div class="right-box-checkout">
+                    <div>
+                        <h2 class="black text-left ">
+                            Thank You , Omar Kiani
+                            @using (Html.BeginForm("LogOff", "Account",FormMethod.Post,new { @class= "d-inline" }))
+                            {
+                                @Html.AntiForgeryToken();
+                                <button type="submit" class="black btn btn-link text-underline float-right f-16 ">Sign out</button>
+                            }
+                        </h2>
+                        <hr>
+                        <div class="text-center"><img src="@srcResourceUrl/images/img/cart-car.png" alt=""></div>
+                        <hr>
+                        <div>
+                            <p class="bold">We Appreciate Your Business</p>
+                            <!-- <p class="bold">THANK YOU FOR YOUR ORDER OF $ 123.33 CAD</p> -->
+                            <div class="textlist-thankyou">
+                                <p>We have recived your transaction on</p>
+                                <ul>
+                                    <li>May 19,2020 @@ 9:20 pm</li>
+
+                                </ul>
+                                <p>
+                                    Once your order has been fulfilled you will be notifed
+                                    based on you rcommunication preference. Your
+                                    notification will contain all details and live status updates
+                                    of your order.
+                                </p>
+                            </div>
+                            <div class="textlist-thankyou">
+                                <p>
+                                    Please Click the following link to print or save a copy
+                                    of your invoice.
+                                </p>
+                                <ul>
+                                    <li><a href="" class="s clr_golden">link to PDF Invoice</a></li>
+                                </ul>
+
+                            </div>
+                            <div class="text-center">
+                                <a href="@Url.Action("Index","Home")" class="btn checkout_login_btn"> Home</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>

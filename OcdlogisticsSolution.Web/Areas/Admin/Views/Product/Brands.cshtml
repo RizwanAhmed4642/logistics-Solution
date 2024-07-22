@@ -1,0 +1,76 @@
+﻿@using OcdlogisticsSolution.DomainModels.Models.Entity_Models
+@{
+
+    OcdlogisticsEntities db = new OcdlogisticsEntities();
+
+    ViewBag.Title = "Brand";
+}
+
+
+<div class="col-lg-11">
+    <div class="box-shadow m-2 rounded">
+        <div class="card border-0">
+            <div class="card-header">
+                <div class="card-title mb-0">
+                    <div class="d-flex align-content-center justify-content-between">
+                        <span>Brands</span>
+                        <a href="@Url.Action("AddNewBrand")">Add New</a>
+                    </div>
+                    <div class="text-success">
+                        @if (!string.IsNullOrWhiteSpace(Request.QueryString["SuccessMsg"]))
+                        {
+                            @:<text>@Request.QueryString["SuccessMsg"]</text>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div style="height:400px" class="card-body p-0">
+                @if (db.tbl_ProductType.Count() > 0)
+                {
+                    <table class="table table-hover ">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th class="text-center">Tradmark</th>
+                                <th class="text-center">Business</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        @foreach (var item in db.tbl_Business)
+                        {
+                            <tr>
+                                <td>
+                                    <span id="@item.ID">@item.tbl_Brand.Name</span>
+                                </td>
+                                <td class="text-center">
+                                    <img src="@Url.Content("~/"+@item.tbl_Brand.tbl_File.PathName)" height="30"/>
+                                </td>
+                                <td class="text-center">
+                                    <a href="#">View Info</a>
+                                </td>
+                                <td>
+                                    <div class="d-flex justify-content-end">
+                                        @*@if (item.tbl_Product.Count <= 0)
+                                            {
+                                                using (Html.BeginForm("RemoveCategory", "Product", new { id = item.Id }))
+                                                {*@
+                                        <button type="submit" class="btn mr-1 btn-danger btn-sm d-flex" onclick="return confirm('are you sure, you want to delete {@item.Name} category?')"><i class="material-icons">delete</i> Remove</button>
+                                        @*//    }
+                                        //}*@
+                                        <a href="#" class="btn btn-primary btn-sm d-flex edit-entity" data-id="@item.ID" data-target="#@item.ID"><i class="material-icons">edit</i> &nbsp;Edit</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                }
+                else
+                {
+                    <div class="p-3">
+                        <small class="text-muted ">There is no  brand created yet.</small>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

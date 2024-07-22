@@ -1,0 +1,128 @@
+﻿@model OcdlogisticsSolution.DomainModels.Models.Entity_Models.tbl_SocialHandler
+
+
+
+<div id="foot_logo_sec">
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-md-6 col-sm-6 col-6">
+                <div class="logo_style_1  ">
+                    <a href="#">
+                        <img src="@Model.FooterImage80">
+                        <p class="foot_l_h5">@Model.CusinessSlogan</p>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-6">
+                <div class="logo_style img-tst ">
+                    <a href="#"><img src="~/Assets/images/img/OCD-ThinkTank-reverse.png"><p class="foot_l_h6">Powered By:</p></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Logo Portion End -->
+<div class="social-cart-block">
+    <div class="container">
+
+        <ul class="list-inline">
+            @if (!string.IsNullOrEmpty(Model.Facebook))
+            {
+                <li class="list-inline-item"><a href="@Model.Facebook" target="_blank"><i class="fa fa-facebook fb"></i> </a></li>
+            }
+            @if (!string.IsNullOrEmpty(Model.Instagram))
+            {
+                <li class="list-inline-item"><a href="@Model.Instagram" target="_blank"><i class="fa fa-instagram insta"></i> </a></li>
+
+            }
+            @if (!string.IsNullOrEmpty(Model.Twitter))
+            {
+                <li class="list-inline-item"><a href="@Model.Twitter" target="_blank"><i class="fa fa-twitter twit"></i> </a></li>
+
+            }
+            @if (!string.IsNullOrEmpty(Model.Pintrest))
+            {
+                <li class="list-inline-item"><a href="@Model.Pintrest" target="_blank"><i class="fa fa-pinterest pin"></i> </a></li>
+
+            }
+            @if (!string.IsNullOrEmpty(Model.Youtube))
+            {
+                <li class="list-inline-item"><a href="@Model.Youtube" target="_blank"><i class="fa fa-youtube yt"></i> </a></li>
+
+            }
+            @if (!string.IsNullOrEmpty(Model.LinkedIn))
+            {
+                <li class="list-inline-item"><a href="@Model.LinkedIn" target="_blank"><i class="fa fa-linkedin"></i> </a></li>
+
+            }
+            @if (!string.IsNullOrEmpty(Model.Email))
+            {
+                <li class="list-inline-item"><a href="mailto:@Model.Email" target="_blank"><i class="fa fa-envelope"></i> </a></li>
+
+            }
+            @if (!string.IsNullOrEmpty(Model.Phone))
+            {
+                <li class="list-inline-item"><a href="tel:@Model.Phone" target="_blank"><i class="fa fa-phone"></i> </a></li>
+
+            }
+            @if (!string.IsNullOrEmpty(Model.TextMessage))
+            {
+                <li class="list-inline-item"><a href="@Model.TextMessage" target="_blank"><i class="fa  fa-commenting-o"></i> </a></li>
+
+            }
+
+
+        </ul>
+        <div class="cc-card">
+            <ul class="list-inline">
+                @if (Model.VisaBit == true)
+                {
+                    <li class="list-inline-item"><a href="" target="_blank"><img src="~/Assets/images/img/visa.png" alt="" class=""> </a></li>
+                }
+                @if (Model.MasterCard == true)
+                {
+                    <li class="list-inline-item"><a href="" target="_blank"><img src="~/Assets/images/img/mastercard.png" alt="" class=""> </a></li>
+
+                }
+                @if (Model.Discover == true)
+                {
+                    <li class="list-inline-item"><a href="" target="_blank"><img src="~/Assets/images/img/discover.png" alt="" class=""> </a></li>
+
+                }
+                @if (Model.AmercianExpress == true)
+                {
+                    <li class="list-inline-item"><a href="" target="_blank"><img src="~/Assets/images/img/american-express.png" alt="" class=""> </a></li>
+
+                }
+                @if (Model.Paypal == true)
+                {
+                    <li class="list-inline-item"><a href="" target="_blank"><img src="~/Assets/images/img/paypal.png" alt="" class=""> </a></li>
+
+                }
+                @if (Model.SSl == true)
+                {
+                    <li class="list-inline-item"><a href="" target="_blank"><img src="~/Assets/images/img/ssl-card.png" alt="" class=""> </a></li>
+
+                }
+                @if (Model.Norten == true)
+                {
+                    <li class="list-inline-item"><a href="" target="_blank"><img src="~/Assets/images/img/norton.png" alt="" class=""> </a></li>
+
+                }
+
+            </ul>
+        </div>
+        <div class="copy-txt-white">
+            <p>Copyright @DateTime.Now.Year @Model.CompanyName and @Model.TextMessage</p>
+            <p class="bold"> <a href="" class="comp-web">@Model.CompanyName</a> <a href="@(new MvcHtmlString("https://www.google.com/maps/place/14135+128+Ave+NW,+Edmonton,+AB+T5L+3H3,+Canada/@53.5845425,-113.5671893,17z/data=!3m1!4b1!4m5!3m4!1s0x53a023f88a514fc5:0xd2df6924d3a61721!8m2!3d53.5845393!4d-113.5650006"))" target="_blank">@Model.Adress</a> <a href="tel:@Model.Phone">@Model.Phone</a> </p>
+        </div>
+    </div>
+</div>
+
+<div class="award-block">
+    <div class="container">
+        <div class="ern-award"> <a href="">Earn Instant Rewards on all Purchases</a></div>
+    </div>
+</div>

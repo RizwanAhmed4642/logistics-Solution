@@ -1,0 +1,569 @@
+﻿@using OcdlogisticsSolution.DomainModels.Models.Entity_Models
+
+@{
+    Layout = null;
+    double subtotal = 0; double totalCharges = 0;
+    OcdlogisticsEntities ocdlogisticsEntities = new OcdlogisticsEntities();
+
+    if (Session["Carts"] == null)
+    {
+        Session["Carts"] = new List<OcdlogisticsSolution.Common.ViewModels.CartItem>();
+    }
+
+    var cart = (List<OcdlogisticsSolution.Common.ViewModels.CartItem>)Session["Carts"];
+
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>OCD-Logistics</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="~/Assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Assets/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="~/Assets/css/bootstrap-reboot.min.css">
+    <!-- slick -->
+
+    <link rel="stylesheet" href="~/Assets/css/slick-theme.css">
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/Assets/css/animate.css" type="text/css" rel="stylesheet">
+    <!-- custom -->
+    <link rel="stylesheet" type="text/css" href="~/Assets/css/custom.css">
+    <link rel="stylesheet" href="~/Assets/css/slick.css">
+    <!-- this page css -->
+    <link rel="stylesheet" href="~/Assets/css/ocdHome.css">
+    <!-- footer css -->
+    <link rel="stylesheet" href="~/Assets/css/footer.css">
+    <link rel="stylesheet" type="text/css" href="~/Assets/css/style.css">
+    <!-- responsive -->
+    <link rel="stylesheet" type="text/css" href="~/Assets/css/responsive.css">
+    @RenderSection("Styles", required: false)
+
+
+</head>
+<body>
+    <!-- notification -->
+    <section class="first-bar2 alert alert-dismissible">
+        <div class="max-wid rel">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+        </div>
+        <div class="container">
+            <a href="">
+                <p class="text-center"><i class="fa fa-bullhorn " aria-hidden="true"></i>Please note - Covid Update Here Building the Community within the Community </p>
+            </a>
+        </div>
+    </section>
+    <img src="~/Assets/images/img/angle-up.png" class="fixed-caret" alt="">
+    <!-- notification -->
+    <section class="rel">
+        @Html.Action("SocialLinksHeader", "Home")
+        <section class="after-header">
+            <div class="main navbar-inverse header-box ">
+                <div class="container-fluid p-0">
+                    <nav class="navbar navbar-expand-md p0 navbar-dark">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar"> <span class="navbar-toggler-icon"></span> </button>
+                        <div class="collapse navbar-collapse navclose " id="collapsibleNavbar">
+                            <button type="button" class="close d-md-none d-block" data-dismiss="navclose">×</button>
+                            <div class="d-md-none d-block pink-log"> <a href="">SIGN IN/REGISTER TO SHOP TRADE <i class="fa fa-user ml-2"></i> </a> </div>
+                            <ul class="navbar-nav nav_ul_style max-wid">
+                                <li class="nav-item nav-f"> <a class="nav-link " href="#">Logistics  </a> </li>
+                                <li class="nav-item nav-f"> <a class="nav-link " href="#">Storage</a> </li>
+                                <li class="nav-item nav-f"> <a class="nav-link " href="#">Moving  </a> </li>
+                                <li class="nav-item nav-f"> <a class="nav-link " href="@Url.Action("Distribution","Home")">Distribution </a> </li>
+                                <li class="nav-item nav-f"> <a class="nav-link " href="#">Our MarketPlace </a> </li>
+
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </section>
+    </section>
+    <!-- text slider -->
+    <section class="third-row">
+        <div class="main-name-silder cus-arrow">
+            <div>
+                <div class="text-g"><a href="@Url.Action("About","Home")"><h3>About</h3><br class="d-block d-md-none">- Learn More -</a></div>
+            </div>
+            <div>
+                <div class="text-g"><a href="@Url.Action("Education","Home")"><h3>education</h3><br class="d-block d-md-none">- Level Up -</a></div>
+            </div>
+            <div>
+                <div class="text-g"><a href="#"><h3>Events</h3><br class="d-block d-md-none">- Save the Date -</a></div>
+            </div>
+        </div>
+    </section>
+    <div>
+        @RenderBody()
+    </div>
+    <section class="footer">
+        <div class="shop-cart-block">
+            <div class="container">
+                <i class="fa fa-angle-down" aria-hidden="true"></i> Shopping Cart <i class="fa fa-angle-up" aria-hidden="true"></i>
+            </div>
+        </div>
+        <div class="subscribe-block">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-4 col-sm-12 col-12">
+                        <div class="d-block w-100 float-left">
+                            <div class="wid-same txt-uper">Sign up for promotions</div>
+                            <div class="wid-same input-frm"><input type="text" class="from-control" placeholder="E-mail Address"></div>
+                            <div class="wid-same"><button type="button" class="btn btn-subcribe">Subscribe</button></div>
+                        </div>
+                        <div class="d-block w-100 float-left">
+                            <label class="checkbox-cus">
+                                I'm not a robot
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-12 col-12 text-center">
+                        <button type="button" class="btn btn-shop sub">Shop Now</button>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-12 col-12 text-center">
+                        <button type="button" class="btn btn-shop sub">Directory</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FOOTER Start -->
+        <div class="footer_pageLinks_main">
+            <div class="container">
+                <div class="row pb-3 pt-4">
+                    <div id="accordionFooter" class="myaccordion">
+                        <div class="card">
+                            <div class="card-header left-bar" id="headingOneFooter">
+                                <h2 class="mb-0">
+                                    <button class="d-flex align-items-center justify-content-between btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOneFooter" aria-expanded="false" aria-controls="collapseOneFooter">
+                                        ABOUT US
+                                        <span class="fa-sm">
+                                            <i class="fa fa-angle-down"></i>
+                                        </span>
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseOneFooter" class="collapse" aria-labelledby="headingOneFooter" data-parent="#accordionFooter">
+                                <div class="card-body">
+                                    <ul class="footer-links-c">
+                                        <li><a href="#">Why Us</a></li>
+                                        <li><a href="#">Opportunities</a></li>
+                                        <li><a href="#">Affiliates</a></li>
+                                        <li><a href="#">Preferred Partners</a></li>
+                                        <li><a href="#">Charity</a></li>
+                                        <li><a href="#">Sell on OCD Logistics</a></li>
+                                        <li><a href="#">Brand Ambassadors</a></li>
+                                        <li><a href="@Url.Action("Ourteam","Home")">Our Team</a></li>
+                                        <li><a href="#">Blog</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header left-bar" id="headingTwoFooter">
+                                <h2 class="mb-0">
+                                    <button class="d-flex align-items-center justify-content-between btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwoFooter" aria-expanded="false" aria-controls="collapseTwoFooter">
+                                        SERVICES
+                                        <span class="fa-sm">
+                                            <i class="fa fa-angle-down"></i>
+                                        </span>
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseTwoFooter" class="collapse" aria-labelledby="headingTwoFooter" data-parent="#accordionFooter">
+                                <div class="card-body">
+                                    <ul class="footer-links-c">
+                                        <li><a href="@Url.Action("Login","Account")">Login</a></li>
+                                        <li><a href="@Url.Action("Register","Account")">Sign Up</a></li>
+                                        <li><a href="#">Logistics</a></li>
+                                        <li><a href="@Url.Action("Education","Home")">Education</a></li>
+                                        <li><a href="#">Finance </a></li>
+                                        <li><a href="#">The OCD Application</a></li>
+                                        <li><a href="#">The OCD Marketplace</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header left-bar" id="headingThreeFooter">
+                                <h2 class="mb-0">
+                                    <button class="d-flex align-items-center justify-content-between btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThreeFooter" aria-expanded="false" aria-controls="collapseThreeFooter">
+                                        INFORMATION
+                                        <span class="fa-sm">
+                                            <i class="fa fa-angle-down"></i>
+                                        </span>
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseThreeFooter" class="collapse" aria-labelledby="headingThreeFooter" data-parent="#accordionFooter">
+                                <div class="card-body">
+                                    <ul class="footer-links-c">
+                                        <li><a href="#">FAQ's</a></li>
+                                        <li><a href="@Url.Action("Contact","Home")">Contact Us</a></li>
+                                        <li><a href="#">Directory</a></li>
+                                        <li><a href="#">Events</a></li>
+                                        <li><a href="#">Track My Order</a></li>
+                                        <li><a href="#">Instant Rewards</a></li>
+                                        <li><a href="#">Advertise With Us</a></li>
+                                        <li><a href="#">Site Map</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header left-bar" id="headingFourFooter">
+                                <h2 class="mb-0">
+                                    <button class="d-flex align-items-center justify-content-between btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFourFooter" aria-expanded="false" aria-controls="collapseFourFooter">
+                                        CONDITIONS
+                                        <span class="fa-sm">
+                                            <i class="fa fa-angle-down"></i>
+                                        </span>
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseFourFooter" class="collapse" aria-labelledby="headingFourFooter" data-parent="#accordionFooter">
+                                <div class="card-body">
+                                    <ul class="footer-links-c">
+                                        <li><a href="@Url.Action("TurmsConditions","Home")">Terms & Conditions</a></li>
+                                        <li><a href="@Url.Action("PrivacyPolicy","Home")">Privacy Policy</a></li>
+                                        <li><a href="#">Privacy Settings</a></li>
+                                        <li><a href="#">Privacy Cookies</a></li>
+                                        <li><a href="#">Term of Sales</a></li>
+                                        <li><a href="@Url.Action("Refundpolicy","Home")">Refund Policy</a></li>
+                                        <li><a href="#">Shipping Policy</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- footer start -->
+
+        @Html.Action("SocialLinksFooter", "Home")
+
+
+
+        <!--Modal Section-->
+        <!--For Cart-->
+
+        <div class="modal fade p-0" id="mycarts">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="box-shadow">
+                        <div class="modal-header check_mdl_head mb-3">
+                            <h2 class="modal-title">YOUR Cart</h2>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        @*<h4 class="modal-title text-center mb-3">You are <span class="check_price_span">$5.04</span> away from FREE delivery</h4>*@
+                        <div class="check_main_table table-responsive">
+                            <table class="table table-bordered check_table">
+                                <tbody>
+                                    @{ var cartItems = cart.Select(x => x.ResourceId).Distinct();
+                                    }
+                                    @foreach (var obj in cartItems)
+                                    {
+                                        var item = cart.FirstOrDefault(x => x.ResourceId == obj);
+                                        var product = ocdlogisticsEntities.tbl_Product.Find(item.ResourceId);
+                                        var package = ocdlogisticsEntities.tbl_Distribution_Packages.Find(item.ResourceId);
+
+                                        if (product != null && item.ResourceType == OcdlogisticsSolution.Common.ViewModels.ResourceEnums.Product)
+                                        {
+                                            var cost = cart.Where(x => x.ResourceId == product.Id).Count() * Convert.ToDouble(product.SupplyPrice) * Convert.ToDouble(product.Markup);
+                                            subtotal += cost;
+                                            <tr class="">
+                                                <td>
+                                                    <div class="d-flex justify-content-center check_fa_cntr">
+                                                        @using (Html.BeginForm("RemoveCartItem", "Cart", FormMethod.Post))
+                                                        {
+                                                            <input type="hidden" name="src" value="Product/Index" />
+                                                            <input type="hidden" name="resourceId" value="@product.Id" />
+                                                            <button type="submit" class="btn btn-outline-danger"><span class="fa fa-times"></span></button>}
+                                                    </div>
+                                                </td>
+                                                <td>
+
+                                                    <img class="checkout_modl_img box-shadow rounded" src="@product.tbl_Product_File.FirstOrDefault().tbl_File.PathName" alt="">
+                                                </td>
+                                                <td>
+                                                    <div class="check_volume">
+                                                        <p class="bold">@product.Name</p>
+                                                    </div>
+                                                    <div class="check_row">
+                                                        <p class="bold">Weight @product.ProductWeight @product.tbl_UnitOfWeight.Name</p>
+                                                    </div>
+                                                    @*<div class="check_size">
+                                                    <p class="bold">SIZE <span>12 mm</span></p>
+                                                    </div>*@
+                                                    @*<div class="check_option">
+                                                    <p class="bold">OPTION <span>12 mm</span></p>
+                                                    </div>*@
+                                                    <div>
+                                                        <p>
+                                                            <span class="text_green bold">$@(product.SupplyPrice * product.Markup)</span>
+                                                        </p>
+                                                    </div>
+                                                </td>
+                                                <td class="count_cust">
+                                                    <p class="text-center check_text_ylw">$@(cart.Where(x => x.ResourceId == product.Id).Count() * (product.SupplyPrice * product.Markup))</p>
+                                                    <div class="input-group check_input">
+                                                        <span class="input-group-btn">
+                                                            @using (Html.BeginForm("CartAction", "Cart", FormMethod.Post))
+                                                            {
+                                                                <input type="hidden" name="src" value="Product/Index" />
+                                                                <input type="hidden" name="actionType" value="2" />
+                                                                <input type="hidden" name="resourceId" value="@product.Id" />
+                                                                <button type="submit" class="quantity-left-minus btn check_quantity btn-number" data-type="minus" data-field="">
+                                                                    <span class="fa fa-minus check_plus_minus"></span>
+                                                                </button>}
+                                                        </span>
+                                                        <input type="text" name="quantity" class="form-control input-sst quantity input-number" value="@cart.Where(x => x.ResourceId == product.Id).Count()" min="1" max="100">
+                                                        <span class="input-group-btn">
+                                                            @using (Html.BeginForm("CartAction", "Cart", FormMethod.Post))
+                                                            {
+                                                                <input type="hidden" name="src" value="Product/Index" />
+                                                                <input type="hidden" name="actionType" value="1" />
+                                                                <input type="hidden" name="resourceId" value="@product.Id" />
+                                                                <button type="submit" class="quantity-right-plus btn check_quantity btn-number" data-type="plus" data-field="">
+                                                                    <span class="fa fa-plus check_plus_minus"></span>
+                                                                </button>}
+                                                        </span>
+                                                    </div>
+                                                    <p class="text-center check_text_ylw">In-Stock</p>
+                                                </td>
+                                            </tr>
+                                        }
+                                        else if (package != null && item.ResourceType == OcdlogisticsSolution.Common.ViewModels.ResourceEnums.DistributionServices)
+                                        {
+                                            var cost = cart.Where(x => x.ResourceId == package.Id).Count() * Convert.ToInt64(package.Cost);
+                                            subtotal += cost;
+
+                                            <tr class="">
+                                                <td>
+                                                    <div class="d-flex justify-content-center check_fa_cntr">
+                                                        @using (Html.BeginForm("RemoveCartItem", "Cart", FormMethod.Post))
+                                                        {
+                                                            <input type="hidden" name="src" value="Product/Index" />
+                                                            <input type="hidden" name="resourceId" value="@package.Id" />
+                                                            <button type="submit" class="btn btn-outline-danger">
+                                                                <span class="fa fa-times"></span>
+                                                            </button>}
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <img class="checkout_modl_img rounded" src="https://www.freeiconspng.com/uploads/service-icon-24.png" alt="">
+                                                </td>
+                                                <td>
+                                                    <div class="check_volume">
+                                                        <p class="bold">@package.Name</p>
+                                                    </div>
+                                                    @*<div class="check_row">
+                                                    <p class="bold">Weight @product.ProductWeight @product.tbl_UnitOfWeight.Name</p>
+                                                    </div>*@
+                                                    @*<div class="check_size">
+                                                    <p class="bold">SIZE <span>12 mm</span></p>
+                                                    </div>*@
+                                                    @*<div class="check_option">
+                                                    <p class="bold">OPTION <span>12 mm</span></p>
+                                                    </div>*@
+                                                    <div>
+                                                        <p>
+                                                            <span class="text_green bold">$@(package.Cost)</span>
+                                                        </p>
+                                                    </div>
+                                                </td>
+                                                <td class="count_cust">
+                                                    <p class="text-center check_text_ylw">$@(cart.Where(x => x.ResourceId == package.Id).Count() * Convert.ToInt64( package.Cost ))</p>
+                                                    <div class="input-group check_input">
+                                                        <span class="input-group-btn">
+                                                            @using (Html.BeginForm("CartAction", "Cart", FormMethod.Post))
+                                                            {
+                                                                <input type="hidden" name="src" value="Product/Index" />
+                                                                <input type="hidden" name="actionType" value="2" />
+                                                                <input type="hidden" name="resourceId" value="@package.Id" />
+                                                                <button type="submit" class="quantity-left-minus btn check_quantity btn-number" data-type="minus" data-field="">
+                                                                    <span class="fa fa-minus check_plus_minus"></span>
+                                                                </button>}
+                                                        </span>
+                                                        <input type="text" name="quantity" class="form-control input-sst quantity input-number" value="@cart.Where(x => x.ResourceId == package.Id).Count()" min="1" max="100">
+                                                        <span class="input-group-btn">
+                                                            @using (Html.BeginForm("CartAction", "Cart", FormMethod.Post))
+                                                            {
+                                                                <input type="hidden" name="src" value="Product/Index" />
+                                                                <input type="hidden" name="actionType" value="1" />
+                                                                <input type="hidden" name="resourceId" value="@package.Id" />
+                                                                <button type="submit" class="quantity-right-plus btn check_quantity btn-number" data-type="plus" data-field="">
+                                                                    <span class="fa fa-plus check_plus_minus"></span>
+                                                                </button>}
+                                                        </span>
+                                                    </div>
+                                                    <p class="text-center check_text_ylw">In-Stock</p>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="check_total table-responsive">
+                            <table class="table table-hover">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="check_volume">
+                                                <p class="bold">SubTotal <br> $@subtotal</p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="check_volume">
+                                                <p class="bold">Delivery <br> $10.00</p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="check_volume">
+                                                <p class="bold">Tax <br> $2.55</p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="check_volume">
+                                                <p class="bold text-right"> <br> TOTAL: $@(cart.Count==0?0: (totalCharges = subtotal + 2.55 + 10.00))</p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-12 pb-4 check_btn_sec">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-12 text-center pt-md-3">
+                                    <a href="#">Add a Promotional Code</a>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-12 text-center">
+                                    <a href="@Url.Action("Index","Product")" class="btn btn-shop text-white">Continue</a>
+                                </div>
+
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-12 text-center">
+                                    @if (cart.Count > 0)
+                                    {
+                                        <a href="@Url.Action("CheckOutProcess", "Cart")" class="btn btn-shop checkout_btn_ylw">Check Out</a> }
+                                    else
+                                    {
+                                        <p>Basket is Empty! </p>}
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--For Features & Benifits-->
+
+        <div class="modal" id="modal_feature_Benifits" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" style="word-break:break-all">
+                        <p>Modal body text goes here.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="~/Assets/js/slick.js"></script>
+    <script src="~/Assets/js/popper.min.js"></script>
+
+    <script src="~/Assets/js/bootstrap.min.js"></script>
+    <script src="~/Assets/js/contact.js"></script>
+    <script src="~/Assets/js/main.js"></script>
+
+    <script src="~/Assets/js/wow.js"></script>
+
+    <!--Samer Custom Script to be updatable, must have heighest priority-->
+    <script src="~/Assets/js/Site.js"></script>
+
+    @Scripts.Render("~/bundles/jqueryval")
+
+    @RenderSection("Scripts", required: false)
+
+    
+
+    <script>
+        $('#btnTargetCart').click(function (e) {
+            var cartCount = Number($(this).parents('.list-inline-item').find('count').text());
+            if (cartCount <= 0) {
+                document.location.href = "/Product/Index";
+            }
+            else {
+                $('#mycarts').modal('show');
+            }
+
+            e.preventDefault()
+        });
+
+
+        $('.fet-content').each(function () {
+            var content = $(this).find('.content');
+            if (content.text().length > 122) {
+                var readMoreBtn = $('<input type="button" value="..." title="read more" class="read-more bg-transparent border-0 text-primary font-weight-bold" />');
+                $(this).find('p').append(readMoreBtn);
+                readMoreBtn.tooltip();
+            }
+        });
+        $('.fet-content').on("click", '.read-more', function () {
+            var headerText = $(this).parents('.fet-content').find('.fet-title').text();
+            var content = $(this).parents('.fet-content').find('.content').text();
+            $('#modal_feature_Benifits').find('.modal-title').text(headerText);
+            $('#modal_feature_Benifits').find('.modal-body').text(content);
+            $('#modal_feature_Benifits').modal('show')
+        });
+
+        $('.carousel-inner').each(function () {
+            $(this).find('.carousel-item').first().addClass('active')
+        });
+
+    </script>
+
+
+    <script>
+        if (document.location.hash == "#showCartModel") {
+            $('#mycarts').modal({ 'show': true, keyboard: false })
+        }
+
+        $('[class="close"]').click(function (e) {
+            document.location.hash = "#";
+            e.preventDefault();
+        });
+
+        $('#mycarts').on('hidden.bs.modal', function (e) {
+            document.location.hash = "#";
+            e.preventDefault();
+        })
+    </script>
+</body>
+</html>

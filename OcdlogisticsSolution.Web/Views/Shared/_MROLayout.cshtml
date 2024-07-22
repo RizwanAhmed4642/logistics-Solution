@@ -1,0 +1,273 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>MRO</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="~/Assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Assets/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="~/Assets/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="~/Assets/css/slick.css">
+    <link rel="stylesheet" href="~/Assets/css/slick-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/Assets/css/animate.css" type="text/css" rel="stylesheet">
+    <link href="~/Assets/css/acordian.css" rel="stylesheet" />
+    <link href="~/Assets/css/profile.css" rel="stylesheet" />
+    <link href="~/Assets/css/home.css" rel="stylesheet" />
+    <link href="~/Assets/css/about.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="~/Assets/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="~/Assets/css/style.css">
+    @*<link href="~/Assets/css/home.css" rel="stylesheet" />*@
+    <link href="~/Assets/css/footer.css" rel="stylesheet" />
+    <link href="~/Assets/css/responsive.css" rel="stylesheet" />
+    <!-- <link rel="stylesheet" type="text/css" href="css/style1.css"> -->
+    <link rel="stylesheet" type="text/css" href="~/Assets/css/responsive.css">
+    <!--SweetAlert-->
+    <link href="~/Areas/Admin/Assets/SweetAlertBosttrap/sweetalert.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="~/Assets/rates_logo/logobg.png" />
+    <link href="~/Assets/css/mro.css" rel="stylesheet" />
+    <style>
+        .event-icons {
+            padding: 15px 0;
+            color: white;
+        }
+
+            .event-icons .fa {
+                font-size: 28px;
+                margin: 0 1px;
+                background-color: black;
+                padding: 10px 12px;
+                color: #ffffff;
+                border-radius: 50%;
+                width: 50px;
+            }
+
+            .event-icons ul li:hover .fa {
+                background-color: black;
+                color: #61f5e8;
+            }
+    </style>
+</head>
+<body>
+    <!-- notification -->
+    <section class="first-bar2 alert alert-dismissible">
+        <div class="max-wid rel">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+        </div>
+        <div class="container">
+            <a href="">
+                <p class="text-center"><i class="fa fa-bullhorn " aria-hidden="true"></i>Please note - Covid Update Here Building the Community within the Community </p>
+            </a>
+        </div>
+    </section>
+    <!-- fixed scrool -->
+    <img src="~/Assets/images/img/angle-up.png" class="fixed-caret" alt="">
+    <!-- search bar social icon and mega menu  -->
+
+    <section class="rel">
+        <!-- search bar & social icon -->
+        @Html.Action("SocialLinksHeader", "MRO")
+        <!-- mege menu -->
+        @*<section class="after-header">
+                <div class="main navbar-inverse header-box ">
+                    <div class="container-fluid p-0">
+                        <nav class="navbar navbar-expand-md p0 navbar-dark">
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar"> <span class="navbar-toggler-icon"></span> </button>
+                            <div class="collapse navbar-collapse navclose " id="collapsibleNavbar">
+                                <button type="button" class="close d-md-none d-block" data-dismiss="navclose">×</button>
+                                <div class="d-md-none d-block pink-log"> <a href="">SIGN IN/REGISTER TO SHOP TRADE <i class="fa fa-user ml-2"></i> </a> </div>
+                                <ul class="navbar-nav nav_ul_style max-wid">
+                                    <li class="nav-item nav-f"> <a class="nav-link " href="@Url.Action("MROIndex","MRO",new {area="" })">MRO  </a> </li>
+                                    <li class="nav-item nav-f"> <a class="nav-link " href="@Url.Action("StudentsAwards","Home",new {area="" })">Student Award</a> </li>
+                                    <li class="nav-item nav-f"> <a class="nav-link " href="@Url.Action("Ourteam","Home",new {area="" })">Our Team  </a> </li>
+                                    <li class="nav-item nav-f"> <a class="nav-link " href="@Url.Action("SPONSORSHIP","Home",new {area="" })">Sponsorship </a> </li>
+                                    @if (User.Identity.IsAuthenticated)
+                                    {
+                                        //if (Request.Cookies[""])
+                                        //{
+
+                                        //}
+                                        <li class="nav-item nav-f"> <a class="nav-link " href="@Url.Action("Index","AdminDashboard",new { area="AdminDashboard"})">Dashboard </a> </li>
+                                    }
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </section>*@
+    </section>
+    <!-- text slider -->
+    <section class="third-row">
+        <div class="main-name-silder cus-arrow">
+            <div>
+                <div class="text-g"><a href="@Url.Action("Advisory","MRO",new {area="" })"><h3>Advisory</h3><br class="d-block d-md-none">@*- Learn More -*@</a></div>
+            </div>
+            <div>
+                <div class="text-g"><a href="@Url.Action("Archive","MRO",new {area="" })"><h3>Archive</h3><br class="d-block d-md-none">@*- Level Up -*@</a></div>
+            </div>
+            <div>
+                <div class="text-g"><a href="@Url.Action("SponserShip","MRO",new {area="" })"><h3>SponserShip</h3><br class="d-block d-md-none">@*- Save the Date -*@</a></div>
+            </div>
+        </div>
+        @*<div class="main-name-silder cus-arrow">
+            <div>
+                <div class="text-g"><a href="@Url.Action("About","Home",new {area="" })"><h3>About</h3><br class="d-block d-md-none">- Learn More -</a></div>
+            </div>
+            <div>
+                <div class="text-g"><a href="@Url.Action("Membership","Home",new {area="" })"><h3>Membership</h3><br class="d-block d-md-none">- Level Up -</a></div>
+            </div>
+            <div>
+                <div class="text-g"><a href=""><h3>Events</h3><br class="d-block d-md-none">- Save the Date -</a></div>
+            </div>
+        </div>*@
+    </section>
+    @RenderBody()
+    <section class="footer">
+        <div class="subscribe-block">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-4 col-sm-12 col-12">
+                        <div class="d-block w-100 float-left">
+                            <div class="wid-same txt-uper">Sign up for promotions</div>
+                            <div class="wid-same input-frm">
+                                <input type="text" class="from-control" placeholder="E-mail Address" id="Email">
+                            </div>
+                            <div class="wid-same">
+                                <button type="button" class="btn btn-subcribe" id="EmailButton">Subscribe</button>
+                            </div>
+                        </div>
+                        @*  <div class="g-recaptcha" data-sitekey="6LexdroZAAAAAEtunOyG51XndhTUtlwTY6qydmJi" data-theme="light" data-size="normal" data-image="image"></div>*@
+                        <div class="d-block w-100 float-left">
+                            <label class="checkbox-cus">
+                                I'm not a robot
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-12 col-12 text-center">
+                        <button type="button" class="btn btn-shop sub">Shop Now</button>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-12 col-12 text-center">
+                        <button type="button" class="btn btn-shop sub">Directory</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FOOTER Start -->
+        <div class="footer_pageLinks_main">
+            <div class="container">
+                <div class="row pb-3 pt-4">
+                    <div id="accordion" style="width: 100%; display: contents;">
+                        <button class="accordion">About us</button>
+                        <div>
+                            <ul class="footer-links-c">
+                                <li><a href="@Url.Action("About","Home",new {area="" })">Why Us</a></li>
+                                <li><a href="#">Opportunities</a></li>
+                                <li><a href="#">Affiliates</a></li>
+                                <li><a href="#">Prefferd Partners</a></li>
+                                <li><a href="#">Rats Charity</a></li>
+                                <li><a href="#">Brand Ambassadors</a></li>
+                                <li><a href="@Url.Action("Ourteam","Home",new {area="" })">Our Team</a></li>
+                                <li><a href="#">Sell on Rats</a></li>
+                                <li><a href="#">Blog</a></li>
+                            </ul>
+                        </div>
+                        <button class="accordion">SERVICES</button>
+                        <div>
+                            <ul class="footer-links-c">
+                                <li><a href="@Url.Action("Login","Account",new {area="" })">Login</a></li>
+                                <li><a href="@Url.Action("Register","Account",new {area="" })">Sign Up</a></li>
+                                <li><a href="#">Logistics</a></li>
+                                <li><a href="#">Education</a></li>
+                                <li><a href="#">Finance </a></li>
+                                <li><a href="#">The Rats Application</a></li>
+                                <li><a href="#">The Rats Marketplace</a></li>
+                            </ul>
+                        </div>
+                        <button class="accordion">INFORMATION</button>
+                        <div>
+                            <ul class="footer-links-c">
+                                <li><a href="#">FAQ's</a></li>
+                                <li><a href="@Url.Action("Contact","Home",new { area=""})">Contact Us</a></li>
+                                <li><a href="#">Find a Professional</a></li>
+                                <li><a href="#">Events</a></li>
+                                <li><a href="#">Track My Order</a></li>
+                                <li><a href="#">Instant Rewards</a></li>
+                                <li><a href="#">Advertise With Us</a></li>
+                                <li><a href="#">Site Map</a></li>
+                            </ul>
+                        </div>
+                        <button class="accordion">CONDITIONS</button>
+                        <div>
+                            <ul class="footer-links-c">
+                                <li><a href="#">Terms & Conditions</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="#">Privacy Settings</a></li>
+                                <li><a href="#">Privacy Cookies</a></li>
+                                <li><a href="#">Term of Sales</a></li>
+                                <li><a href="#">Refund Policy</a></li>
+                                <li><a href="#">Shipping Policy</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER END -->
+        <!-- Logo Portion Start -->
+        <!-- Logo Portion End -->
+        @Html.Action("SocialLinksFooter", "Home")
+
+
+        <div class="award-block">
+            <div class="container">
+                <div class="ern-award"> <a href="">Earn Instant Rewards on all Purchases</a></div>
+            </div>
+        </div>
+    </section>
+
+    <script src="~/Assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Assets/js/slick.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="~/Assets/js/my.js"></script>
+    <script src="~/Assets/js/popper.min.js"></script>
+    <script src="~/Assets/js/bootstrap.min.js"></script>
+    <script src="~/Assets/js/main.js"></script>
+    <script src="~/Assets/js/wow.js"></script>
+    <script src="~/Assets/js/footer.js"></script>
+    <script src="~/Assets/js/contact.js"></script>
+    <!--SweetAlert-->
+    <script src="~/Areas/Admin/Assets/SweetAlertBosttrap/sweetalert.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script>
+        $('#EmailButton').on("click", function () {
+            var email = $("#Email").val();
+            if (email == "") {
+                swal("Please enter email First");
+                return;
+            }
+            $.ajax({
+                url: '/EmailSubscription/AddSubscriptionEmail',
+                method: "POST",
+                data: { data: email },
+                success: function (data) {
+                    swal("Good job!", "You are successfully subscribe our news letters", "success")
+                }
+            })
+        });
+
+    </script>
+    @Scripts.Render("~/bundles/jqueryval")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

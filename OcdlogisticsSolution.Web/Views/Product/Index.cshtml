@@ -1,0 +1,96 @@
+﻿@model IEnumerable<OcdlogisticsSolution.DomainModels.Models.Entity_Models.tbl_Product>
+@using OcdlogisticsSolution.DomainModels.Models.Entity_Models
+@{ ViewBag.Title = "Product"; Layout = "~/Views/Shared/_OcdLogisticsLayout.cshtml";
+    double subtotal = 0; double totalCharges = 0;
+    OcdlogisticsEntities ocdlogisticsEntities = new OcdlogisticsEntities();
+
+
+
+    if (Session["Carts"] == null)
+    {
+        Session["Carts"] = new List<OcdlogisticsSolution.Common.ViewModels.CartItem>();
+    }
+
+    var cart = (List<OcdlogisticsSolution.Common.ViewModels.CartItem>)Session["Carts"];
+}
+
+
+
+<!-- content -->
+<div class="container-fluid" style="padding: 0;">
+    <div class="hero"></div>
+</div>
+
+
+
+<!-- products -->
+<section class="mt-5">
+    <div class="container-fluid mt-4">
+        <div class="row max-wid justify-content-between">
+            @foreach (var item in Model)
+            {
+                var img = @item.tbl_Product_File.FirstOrDefault();
+                <div class="col-lg-3 col-md-4 col-xl-2 col-sm-4 col-6 mr-3 mb-3 p-0">
+                    <div class="product-page-box">
+                        <div href="#">
+
+                            <div class="product-page-img">
+                                <div class="p-3 text-center">
+                                    @if (img != null && img.tbl_File.IsExternal == true)
+                                    {
+                                        <img src="@img.tbl_File.PathName" alt="@img.tbl_File.PathName" style="width:100%" /> }
+                                    else
+                                    {
+                                        <img src="~/@img.tbl_File.PathName" alt="" style="width:100%" />}
+                                </div>
+                                <div class="sale-s2">new</div>
+                            </div>
+                            <div class="product-page-text ">
+                                <div class="product-page-name">
+                                    <p class="product-page-name">Hempz<span>®</span> for men dark <span>™</span></p>
+                                    <p class="product-detail">@item.Name</p>
+                                </div>
+                                <div class="brand-price-product">
+                                    <div class="row no-gutters">
+                                        <div class="col-4 col-sm-3 pl-3"><span class="fa fa-heart-o heart-cus">9.1</span></div>
+                                        <div class="col-4 col-sm-6 text-center">
+                                            <div class="product-price">
+                                                @*<div class="dis-price">$@(item.SupplyPrice * item.Markup)</div>*@
+                                                <div class="real-price">$@(item.SupplyPrice * item.Markup)</div>
+                                            </div>
+                                        </div>
+                                        @*<div class="col-12 col-sm-4 add-text-s">
+                                            <a href="#">
+                                            <img src="~/Icons/cart-img.png" width="20" />
+                                            </a>
+                                            </div>*@
+                                        <div class="col-4 col-sm-3 add-text-s text-right pr-1">
+                                            @using (Html.BeginForm("AddToCart", "Cart", new { resourceId = item.Id, resourceType = 0, src = "Product" }))
+                                            {
+                                                <button type="submit" class="white bg-transparent border-0">
+                                                    <img src="~/Icons/cart-img.png" width="26" />
+                                                </button>}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>      }
+
+
+        </div>
+    </div>
+</section>
+<!-- Load button -->
+<div class="container">
+    <div class="text-center">
+        <button type="button" class="btn btn-subcribe mb-3 mt-5">Load More</button>
+    </div>
+    <div class="text-center clr_litgrey f-20 mb-4">247 Product Found</div>
+</div>
+<!-- slider -->
+
+
+
+

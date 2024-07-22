@@ -1,0 +1,179 @@
+
+h2,h3,h4,h5,h6,p {
+    color: white !important;
+}
+.spacer {
+    height: 50px;
+}
+.hero {
+    /* position: relative; */
+    background-image: url("../images/Images_Use_OCD_Logistics/4.png");
+    width: 100%;
+    height: 491.5px !important;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+}
+.myContainer {
+    background-image: url("../images/Images_Use_OCD_Logistics/9.png");
+    width: 100%;
+    height: 820px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.title {
+    height: 100px;
+    color: black;
+    background: white;
+    text-align: center;
+    padding: 20px 0px
+}
+.banner {
+    color: white !important;
+}
+.title-first {
+   background: black;
+   opacity: 0.8;
+}
+.sec {
+    padding: 0;
+}
+.sub-title {
+    /* height: 235px; */
+    border: 2px solid black;
+}
+.sub-title h2 {
+    font-size: xx-large;
+    padding: 10px;
+}
+.sub-title h5 {
+    padding: 10px;
+}
+.tel {
+    margin: 0 5px;
+    /* background-color: black; */
+    padding: 10px 12px;
+    color: #ffffff;
+    border-radius: 50%;
+    /* width: 50px; */
+	    font-size: 14px;
+    font-weight: 800;
+}
+.tel:hover {
+    color: #f7742c;
+}
+.add:hover {
+    color: #f7742c !important;
+}
+/* .content i:hover {
+    color: white;
+    background-color: #f7742c;
+} */
+.list {
+    list-style: none;
+    flex-direction: column;
+    border: 1px solid white;
+    padding: 0;
+    margin-top: 10px;
+}
+.list-items {
+    color: white;
+    padding: 10px 50px;
+    border: 1px solid white;
+    font-weight: bold;
+}
+.list-items:hover {
+    color: white;
+    font-weight: bold;
+    background-color: #f7742c;
+    border: 1px solid white;
+}
+.title-first h3 {
+    color: red;
+}
+.title-sec {
+    background: black;
+    padding: 10px;
+}
+.title-sec h3 {
+    margin-bottom: 0px;
+}
+.title-sec p {
+    margin: 0;
+}
+.form-control {
+    background: black;
+    opacity: 0.8;
+    color: white;
+    border: 2px solid white;
+}
+::placeholder {
+    color: white !important;
+}
+.btn-form {
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    padding: 5px 30px;
+    margin-top: 3px;
+    white-space: nowrap;
+    border: 2px solid black;
+}
+.btn-form:hover {
+    background-color: #f7742c;
+    color: wheat;
+    border: 2px solid black;
+}
+
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    /* background-color: #f1f1f1; */
+} 
+.active {
+  background: #f7742c;
+}  
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    /* padding: 6px 12px; */
+    /* border: 1px solid #ccc; */
+    border-top: none;
+    text-align: center;
+}
+#optns {
+    display: none;
+}
+
+@media (max-width: 992px) {
+    .myContainer {
+        height: auto;
+    }
+}
+@media (width: 768px) {
+    .hero {
+        height: 285px;
+    }
+    
+}
+@media (min-width: 320px) and (max-width: 575px) {
+  
+    .op select option {
+        width: 100px !important;
+    }
+    #optns {
+        display: block;
+    }
+.hero {
+    background-size: cover;
+    background-position: center;
+	    padding: 40px 0;
+    height: auto !important;
+}
+
+}

@@ -1,0 +1,37 @@
+﻿@model IEnumerable<OcdlogisticsSolution.DomainModels.Models.Entity_Models.tbl_DistributionServices>
+    @{
+        Layout = "~/Views/Shared/_OcdLogisticsLayout.cshtml";
+    }
+
+    <div class=" responsive-slider-cus-4 mar-distribution">
+        <div id="newproduct" class="carousel slide w-100" data-ride="carousel">
+            <div class="carousel-inner" role="listbox">
+                <div class="carousel-item active">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-lg-4 col-md-6 col-xl-3 col-sm-4 col-6">
+                            <div class="disribute-text-main">
+                                <h2>@item.Name</h2>
+                                <p class="budget-friendly">@item.ShortText</p>
+                                <small class="bold">Starting at</small>
+                                <div class="main-distribute-price">
+                                    <p class="bold">
+                                        $@item.Cost<small>/@item.tbl_Duration.Name</small>
+                                    </p>
+                                </div>
+                                <a href="@Url.Action("Packages","Home",new {id= item.Id})" class="btn distribute-btn ">Learn more</a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <a class="carousel-control-prev bg-dark w-auto" href="#newproduct" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next bg-dark w-auto" href="#newproduct" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>

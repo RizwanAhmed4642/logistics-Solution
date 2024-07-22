@@ -1,0 +1,402 @@
+﻿@model OcdlogisticsSolution.DomainModels.Models.Entity_Models.Tbl_ContactUs
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_OcdLogisticsLayout.cshtml";
+}
+<link href="~/Assets/css/contact.css" rel="stylesheet" />
+<!-- content start -->
+<div class="container-fluid" style="padding: 0;">
+    <div class="hero" style="background-image:url(@Model.BannerImg)">
+
+        <div class="slider-overly-text2">
+            <div class="container">
+                <h2>@Model.Heading</h2>
+                <p>
+                    @Model.Contents
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid myContainer contact_banner_cust" style="background-image:url(@Model.BodyImg)">
+    <div class="spacer"></div>
+    <ul class="breadcrumb cust_crumb">
+        <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+        <li><a class="" href="#">Contact Us</a></li>
+    </ul>
+    <div class="spacer"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="col-lg-10 sec">
+                    <div class="title-first">
+                        <!-- mobile view options -->
+                        <div class="content-op">
+                            <select id="optns" class="form-control">
+                                <option selected
+                                        value="opt-1"
+                                        class="list-items controlLinks"
+                                        id="tab-1"
+                                        contact="Contact Us"
+                                        heading="Have a question, concern or feedback?"
+                                        sub-heading="Get in touch with us, we're here to help!"
+                                        tellephone="Call or Text 1-877-876-9668">
+                                    Service Desk
+
+                                </option>
+                                <option value="opt-2"
+                                        class="list-items tablinks"
+                                        id="tab-2"
+                                        contact="General Question"
+                                        heading="Our team works hard to bring the very best Distribution, Fullfilment, Logistics and Moving Solutions."
+                                        sub-heading="We'll get back to you within a day!"
+                                        mail="info@OCDLogistics.com">
+                                    Email Us
+
+                                </option>
+                                <option value="opt-3"
+                                        class="list-items tablinks"
+                                        id="tab-3"
+                                        contact="Work With Us"
+                                        heading="Interested in joining our team? Send us a message to learn more."
+                                        sub-heading="Our Human Resources team will get back to you!"
+                                        mail="Development@OCDLogistics.com">
+                                    Careers
+
+                                </option>
+                                <option value="opt-4"
+                                        class="list-items tablinks"
+                                        id="tab-4"
+                                        contact="Got Some Ideas"
+                                        heading="What to Chat with our press team to find our more about whats going on?"
+                                        sub-heading="Our Marketing team will get back to you!"
+                                        mail="Marketing@OCDLogistics.com">
+                                    Press
+
+                                </option>
+                                <option value="opt-5"
+                                        class="list-items tablinks"
+                                        id="tab-5"
+                                        contact="Let's Chat"
+                                        heading="What to partner with us?"
+                                        sub-heading="Our Consulting team will get back to you!"
+                                        mail="ThinkTank@OCDLogistics.com">
+                                    Partnership
+
+                                </option>
+                                <option value="opt-6"
+                                        class="list-items tablinks"
+                                        id="tab-6"
+                                        contact="Drop By"
+                                        heading="Come visit us at The HIVE Biz Center"
+                                        sub-heading="Our team would love to connect!"
+                                        address="14135 - 128 Avenue Edmonton, Alberta T5L 3H3 Canada">
+                                    Corporate Address
+                                </option>
+                            </select>
+                        </div>
+                        <div class="sub-title">
+                            <div id="abc"></div>
+                            <h2>Contact Us</h2>
+                            <h5>Have a question, concern or feedback?</h5>
+                            <a class="tel" href="http://">
+                                <i class="fa fa-phone"></i>
+                                Call or Text 1-877-876-9668
+                            </a>
+                        </div>
+                        <!-- Desktop view options -->
+                        <div id="list-tab" class="content-li">
+                            <ul class="list nav nav-tabs">
+                                <li class="list-items tablinks"
+                                    onclick="showForm(event, 'form-1')"
+                                    id="defaultOpen"
+                                    contact="Contact Us"
+                                    heading="Have a question, concern or feedback?"
+                                    sub-heading="Get in touch with us, we're here to help!"
+                                    tellephone="Call or Text 1-877-876-9668">
+                                    Service Desk
+                                </li>
+                                <li class="list-items tablinks"
+                                    onclick="showForm(event, 'form-2')"
+                                    id="tab-2"
+                                    contact="General Question"
+                                    heading="Our team works hard to bring the very best Distribution, Fullfilment, Logistics and Moving Solutions."
+                                    sub-heading="We'll get back to you within a day."
+                                    mail="info@OCDLogistics.com">
+                                    Email Us
+                                </li>
+                                <li class="list-items tablinks"
+                                    onclick="showForm(event, 'form-3')"
+                                    id="tab-3"
+                                    contact="Work With Us"
+                                    heading="Interested in joining our team? Send us a message to learn more."
+                                    sub-heading="Our Human Resources team will get back to you!"
+                                    mail="Development@OCDLogistics.com">
+                                    Careers
+                                </li>
+                                <li class="list-items tablinks"
+                                    onclick="showForm(event, 'form-4')"
+                                    id="tab-4"
+                                    contact="Got Some Ideas"
+                                    heading="What to Chat with our press team to find our more about whats going on?"
+                                    sub-heading="Our Marketing team will get back to you!"
+                                    mail="Marketing@OCDLogistics.com">
+                                    Press
+                                </li>
+                                <li class="list-items tablinks"
+                                    onclick="showForm(event, 'form-5')"
+                                    id="tab-5"
+                                    contact="Let's Chat"
+                                    heading="What to partner with us?"
+                                    sub-heading="Our Consulting team will get back to you!"
+                                    mail="ThinkTank@OCDLogistics.com">
+                                    Partnership
+                                </li>
+                                <li class="list-items tablinks"
+                                    onclick="showForm(event, 'form-6')"
+                                    id="tab-6"
+                                    contact="Drop By"
+                                    heading="Come visit us at The HIVE Biz Center"
+                                    sub-heading="Our team would love to connect!"
+                                    address="14135 - 128 Avenue Edmonton, Alerta T5L - 3H3 Canada">
+                                    Corporate Address
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="spacer"></div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="title-sec">
+                    <h3>Get in touch with us, we're here to help!</h3>
+                </div>
+                <div class="spacer"></div>
+
+                <!-- form 1 -->
+                <form id="form-1" class="tabcontent">
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="First Name">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Last Name">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <input type="tel" class="form-control" placeholder="Contact" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Email">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Subject">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Location">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" placeholder="How can we help?" style="min-height: 100px;" id="FormControlTextarea-1" rows="3"></textarea>
+                    </div>
+                    <button class="btn btn-form">Submit</button>
+                </form>
+
+                <!-- form 2 -->
+                <form id="form-2" class="tabcontent">
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="First Name">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Last Name">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <input type="tel" class="form-control" placeholder="Contact" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Email">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Subject">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Location">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" placeholder="How can we help?" style="min-height: 100px;" id="FormControlTextarea-2" rows="3"></textarea>
+                    </div>
+                    <button class="btn btn-form">Submit</button>
+                </form>
+
+                <!-- form 3 -->
+                <form id="form-3" class="tabcontent">
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="First Name">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Last Name">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <input type="tel" class="form-control" placeholder="Contact" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Email">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Subject">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <!-- <input type="text" class="form-control" placeholder="Position"> -->
+                                <select id="inputState" class="form-control">
+                                    <option selected>Position</option>
+                                    <option>option 1</option>
+                                    <option>option 2</option>
+                                    <option>option 3</option>
+                                    <option>option 4</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" placeholder="Tell us more?" style="min-height: 100px;" id="FormControlTextarea-3" rows="3"></textarea>
+                    </div>
+                    <button class="btn btn-form">Submit</button>
+                </form>
+
+                <!-- form 4 -->
+                <form id="form-4" class="tabcontent">
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="First Name">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Last Name">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <input type="tel" class="form-control" placeholder="Contact" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Email">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" placeholder="How can we help?" style="min-height: 100px;" id="FormControlTextarea-4" rows="3"></textarea>
+                    </div>
+                    <button class="btn btn-form">Submit</button>
+                </form>
+
+                <!-- form 5 -->
+                <form id="form-5" class="tabcontent">
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="First Name">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Last Name">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- <div class="col-md-6 col-12">
+                            <input type="tel" class="form-control" placeholder="Contact" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">
+                        </div> -->
+                        <div class="col-md-12 col-12">
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Email">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" placeholder="How can we help?" style="min-height: 100px;" id="FormControlTextarea-5" rows="3"></textarea>
+                    </div>
+                    <button class="btn btn-form">Submit</button>
+                </form>
+
+                <!-- form 6 -->
+                <div id="form-6" class="tabcontent">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2368.499841034262!2d-113.56718928457474!3d53.58454246454431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x53a023f88a514fc5%3A0xd2df6924d3a61721!2s14135%20128%20Ave%20NW%2C%20Edmonton%2C%20AB%20T5L%203H3%2C%20Canada!5e0!3m2!1sen!2s!4v1598656989744!5m2!1sen!2s"
+                            width="100%"
+                            height="432"
+                            frameborder="0"
+                            style="border:0;"
+                            allowfullscreen=""
+                            aria-hidden="false"
+                            tabindex="0">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+        <div class="spacer"></div>
+    </div>
+</div>
+
+
+
+
+
+@section Scripts{
+    <script src="~/Assets/js/contact.js"></script>
+}

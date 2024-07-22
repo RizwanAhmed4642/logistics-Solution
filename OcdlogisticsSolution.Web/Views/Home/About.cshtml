@@ -1,0 +1,459 @@
+﻿@model OcdlogisticsSolution.DomainModels.Models.Entity_Models.tbl_AboutUs
+@{
+    ViewBag.Title = "About";
+    Layout = "~/Views/Shared/_OcdLogisticsLayout.cshtml";
+}
+<link href="~/Assets/css/about.css" rel="stylesheet" />
+<div class="container-fluid" style="padding: 0;">
+    <div class="baner_about" style="background-image:url(@Model.MainSliderImg)">
+        <!-- page content -->
+        <ul class="breadcrumb cust_crumb white">
+            <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+            <li><a class="active" href="#">About us</a></li>
+        </ul>
+        <div class="slider-overly-text2" style="background-color:@Model.SliderOverlayColor">
+            <div class="container">
+                <h2>@Model.SliderOverlayHeading</h2>
+                <p>
+                    @Model.SliderOverlayContent
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 col-sm-12 pt-4 pb-4">
+                <div class="about_side_img">
+                    <h2 class="pb-2">@Model.VideoHeading</h2>
+                  
+                    <video controls
+                           width="100%"
+                           height="315"
+                           src="@Model.VideoPath"
+                           poster="~/Icons/ocd-web-video-banner.jpg"
+                           >
+                    </video>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 pad-About_diff pb-4">
+                <div class="about_side_text">
+                    <h2 class="pb-2">@Model.MainSliderBelowHeading</h2>
+                    <p>
+                        @Model.VideoContent
+                    </p>
+
+                    <h3>   @Model.VideoContentFooter<a href="" class="btn btn-black  ml-sm-3" data-toggle="modal" data-target="#Movement">Learn More </a></h3>
+                </div>
+            </div>
+            <!-- modal movement -->
+            <div class="modal fade" id="Movement" tabindex="-1" role="dialog" aria-labelledby="MovementTitle" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="MovementTitle">@Model.MainSliderBelowHeading</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>
+                                @Model.VideoContent
+                            </p>
+                         
+                        </div>
+                        <div class="modal-footer">
+                            <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                            <button type="button" class="btn btn-black">Book an Appointment</button>
+                            <button type="button" class="btn btn-black" data-dismiss="modal">Continue</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- modal movement -->
+            <div class="col-lg-6 col-md-12 col-sm-12 pt-4 pb-4">
+                <div class="about_side_text">
+                    <h2 class="pb-2">@Model.AttentionDetailHeading</h2>
+                    <p>
+                        @Model.AttentionDetailContent
+                       </p>
+
+                    <h3>@Model.AttentíonDetailFooter <a hrer="" class="btn btn-black  ml-sm-3" data-toggle="modal" data-target="#Working">Learn More </a></h3>
+                </div>
+            </div>
+            <!-- Model working -->
+            <div class="modal fade" id="Working" tabindex="-1" role="dialog" aria-labelledby="WorkingTitle" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="WorkingTitle">@Model.AttentíonDetailFooter</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>
+                                @Model.AttentionDetailContent
+                            </p>
+                           
+                        </div>
+                        <div class="modal-footer">
+                            <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                            <a href="~/Assets/ourProcess.html" target="_blank"><button type="button" class="btn btn-black">Our Process</button></a>
+                            <button type="button" class="btn btn-black" data-dismiss="modal">Continue</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Model working -->
+            <div class="col-lg-6 col-md-12 col-sm-12 pt-4 pb-4 ">
+                <div class="about_side_img rit-img">
+                    <img class="" src="@Model.AttentíonDetailImgPath">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<section>
+    <div class="parallax-window" data-parallax="scroll" style="background-image:url(@Model.FirstFullScreenImgPath)"></div>
+</section>
+
+<div class="spacer"></div>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 col-sm-12 pt-4 pb-4">
+                <div class="about_side_text">
+                    <h2 class="pb-2">@Model.FirstFullScreenBelowHeading</h2>
+                    <p>
+                        @Model.FirstFullScreenBelowContent
+                    </p>
+                    <h3>@Model.FirstFullScreenBelowFooter <a hrer="" class="btn btn-black  ml-sm-3" data-toggle="modal" data-target="#CompanyVision">Learn More </a></h3>
+                </div>
+            </div>
+            <!-- Model Vision -->
+            <div class="modal fade" id="CompanyVision" tabindex="-1" role="dialog" aria-labelledby="CompanyVisionTitle" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="CompanyVisionTitle">@Model.FirstFullScreenBelowHeading</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <h2 class="Model-bole">Every action begins with an idea</h2>
+                            <p>
+                                @Model.FirstFullScreenBelowContent
+                            </p>
+                            
+                            <h2 class="Model-bole">“We're ready when you are”</h2>
+                        </div>
+                        <div class="modal-footer">
+                            <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                            <a href="#" target="_blank"><button type="button" class="btn btn-black">Upcoming Events</button></a>
+                            <button type="button" class="btn btn-black" data-dismiss="modal">Continue</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Model Vision -->
+            <div class="col-lg-6 col-md-12 col-sm-12 pt-4 pb-4 ">
+                <div class="about_side_img rit-img">
+                    <img class="" src="@Model.FirstFullScreenBelowImgPath">
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-12 col-sm-12 pt-4 pb-4">
+                <div class="about_side_img">
+                    <div class="about_side_img rit-img">
+                        <img class="" src="@Model.FirstFullScreenBelowSecondImgPath">
+                    </div>
+                    <!-- <video
+                        autoplay
+                        width="100%"
+                        height="315"
+                        src="./vid/OCD_Logistics_Final.mp4">
+                    </video> -->
+                    <!-- <iframe
+                        width="560"
+                        height="315"
+                        src="https://www.youtube.com/embed/wcVVXUV0YUY"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe> -->
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 pt-4 pb-4">
+                <div class="about_side_text">
+                    <h2 class="pb-2">@Model.FirstFullScreenBelowSecondHeading</h2>
+                    <p class="p1">
+                        @Model.FirstFullScreenBelowSecondContent
+                    </p>
+                    <h3>@Model.FirstFullScreenBelowSecondFooter<a hrer="" class="btn btn-black  ml-sm-3" data-toggle="modal" data-target="#Team">Learn More </a></h3>
+
+
+                </div>
+                <!-- Modal Team -->
+                <div class="modal fade" id="Team" tabindex="-1" role="dialog" aria-labelledby="TeamTitle" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="TeamTitle">@Model.FirstFullScreenBelowSecondHeading</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p class="modal-p1">
+                                    @Model.FirstFullScreenBelowSecondContent
+                                </p>
+                                
+                            </div>
+                            <div class="modal-footer">
+                                <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                                <a href="@Url.Action("Ourteam","Home")" target="blank"><button type="button" class="btn btn-black">Meet our Team</button></a>
+                                <button type="button" class="btn btn-black" data-dismiss="modal">Continue</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal -->
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section>
+    <div class="parallax" data-parallax="scroll"style="background-image:url(@Model.SecondFullScreenImgPath)"></div>
+</section>
+
+
+
+<section>
+    <div class="container  padi-tb-50">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 col-sm-12 pb-4">
+                <div class="about_side_text">
+                    <h2 class="pb-2">@Model.SecondFullScreenBelowHeading</h2>
+                    <p>
+                        @Model.SecondFullScreenBelowContent
+                    </p>
+                    <!-- <p>
+                        After years of refinement, we are excited to introduce OCD Logistics. We have strategically formed alignments that have vastly expanded our product offerings, services and customer reach. Our unique ecosystem has created an environment that comprises of highly trained professionals and industry leaders that builds, maintains and grows businesses at exponential rates.
+                        Not only do we house and help sell products, we offer services that grow our clients and support our customers. OCD Logistics offers; Moving Solutions, Storage Solutions, Products & Supplies and Fulfillment & Logistics. With these services comes our Experienced Professionals and our Exceptional Client Support Team.
+                        “Some people call it OCD, we call it attention to detail.”
+                    </p> -->
+
+                    <h3>@Model.SecondFullScreenbelowfooter <a hrer="" class="btn btn-black  ml-sm-3" data-toggle="modal" data-target="#Build">Learn More </a></h3>
+                </div>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="Build" tabindex="-1" role="dialog" aria-labelledby="BuildTitle" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="BuildTitle">@Model.SecondFullScreenBelowHeading</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p class="modal-p1">
+                                @Model.SecondFullScreenBelowContent
+                            </p>
+                          
+                        </div>
+                        <div class="modal-footer">
+                            <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                            <button type="button" class="btn btn-black" data-toggle="modal" data-target="#Distribution">Stategic Partnerships</button>
+                            <button type="button" class="btn btn-black" data-dismiss="modal">Continue</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal -->
+            <!-- Modal Distribution -->
+            <div class="modal fade" id="Distribution" tabindex="-1" role="dialog" aria-labelledby="DistributionTitle" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="DistributionTitle">Distribution Page</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>
+                                We share our passion throughTRUST, COOPERATION, & COMMUNICATION. Our team aligns talents to opportunities. We collaborate and utilize each others strengths to form mutually beneficial partnerships.
+                            </p>
+                            <p>
+                                Creating the foundation to success requires investing in our team by collaborating, supporting business and team development.
+                            </p>
+                            <p>
+                                Building with trust and cooperation creates endless possibilities-it empowers everyone involved with knowledge, structure, and allows capitalization on opportunities, and inevitable growth.
+                            </p>
+                            <p>
+                                We forge partnerships with like-minded companies to–build an environment that breeds success.OUR BRAND VALUES-Integrity-Efficiency-Innovations-Solutions-Community Mentorship-Commitment to Growth-Building PeopleWHAT THIS MEAN TO USEvery problem has a solution.WE ASK THE RIGHT QUESTIONS
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                            <button type="button" class="btn btn-black" data-dismiss="modal">Back</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal Distribution -->
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="about_side_img rit-img">
+                    <img class="" src="@Model.SecondFullScreenbelowImgPath">
+                </div>
+                <!-- <div class="img">
+                    <p>400x240</p>
+                </div> -->
+            </div>
+        </div>
+        <div class="spacer"></div>
+        <div class="row" style="display: flex;">
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="about_side_img rit-img">
+                    <img class="" src="@Model.SecondFullScreenbelowSecondImgPath">
+                </div>
+                <!-- <div class="img">
+                    <p>400x240</p>
+                </div> -->
+            </div>
+            <div class="col-lg-6">
+                <div class="col-md-12 col-sm-12 col-lg-12">
+                    <div class="about_side_text">
+                        <h2 class="pb-2">@Model.SecondFullScreenbelowSecondHeading</h2>
+                        <ul class="text-list pl-3">
+                            @foreach (var item in @Model.SecondFullScreenbelowSecondContent.Split(','))
+                            {
+                                if (!string.IsNullOrWhiteSpace(item))
+                                {
+                                <li>@item</li>
+                                }
+                            }
+                        </ul>
+                        <h3>@Model.SecondFullScreenbelowSecondFooter <a hrer="" class="btn btn-black  ml-sm-3" data-toggle="modal" data-target="#Vision">Learn More </a></h3>
+                        <br>
+
+                    </div>
+
+                </div>
+                <!-- Modal -->
+                <div class="modal fade" id="Vision" tabindex="-1" role="dialog" aria-labelledby="VisionTitle" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="VisionTitle">@Model.SecondFullScreenbelowSecondFooter</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <h4 id="model-box-title" class="modelBoxTitle mb-3">
+                                   @Model.ThirdFullScreenBelowFirstLayoverColor
+                                </h4>
+                                <p id="model-box-p1">
+                                    @Model.ThirdFullScreenBelowSecondLayoverColor
+                                </p>
+                              
+                                <h2 class="boletLine" id="model-box-quote">“We’re ready when you are.”</h2>
+
+                            </div>
+                            <div class="modal-footer">
+                                <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+
+                                <button type="button" class="btn btn-black" data-dismiss="modal">Continue</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- Modal -->
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+
+<section>
+    <div class="parallax-window" data-parallax="scroll" style="background-image:url(@Model.ThirdFullScreenImg)"></div>
+</section>
+
+<div class="spacer"></div>
+<section>
+    <div class="container">
+        <div class="row" style="text-align: center;"></div>
+
+    </div>
+</section>
+<div class="spacer"></div>
+<div class="container expert-cus">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="cdeck">
+                <div class="card text-center">
+                    <div class="img">
+                        <img src="@Model.ThirdFullScreenBelowImg" alt="" srcset="">
+                        <!-- <p>400x240</p> -->
+                    </div>
+                    <div class="card-img-overlay text-white">
+                        <div class="card-title">
+                            <h4>@Model.ThirdFullScreenBelowFirstLayoverContent</h4>
+                        </div>
+                    </div>
+                </div>
+                <button class="cnt-btn btnCard ml-sm-3">Learn More</button>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="cdeck">
+                <div class="card text-center">
+                    <div class="img">
+                        <img src="@Model.FullScreenBelowSecondImg" alt="" srcset="">
+                        <!-- <p>400x240</p> -->
+                    </div>
+                    <div class="card-img-overlay text-white">
+                        <div class="card-title">
+                            <h4>@Model.ThirdFullScreenBelowSecondLayoverContent</h4>
+                        </div>
+                    </div>
+                </div>
+                <button class="cnt-btn btnCard ml-sm-3">Events</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-lg-12">
+            <h2 class="boletLine">@Model.ThirdFullScreenBelowFooterText</h2>
+        </div>
+    </div>
+</div>
+
+
+<!-- page content -->
+<div class="spacer"></div>
+<style>
+    .about_side_text {
+        padding: 0 !important;
+    }
+</style>

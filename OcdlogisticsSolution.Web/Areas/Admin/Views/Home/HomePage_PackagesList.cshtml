@@ -1,0 +1,106 @@
+﻿<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Subheader-->
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <!--begin::Notice-->
+            <!--end::Notice-->
+            <!--begin::Card-->
+            <div class="card card-custom">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h3 class="card-title">
+                        Home Page Packages Section
+                    </h3>
+                    <a href="../../Admin/Home/AddHomePage_Package">Add New Package</a>
+                </div>
+                <div class="card-body">
+                    <!--begin: Datatable-->
+                    <table class="table table-bordered table-hover table-checkable" id="kt_datatable" style="margin-top: 13px !important">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Cost</th>
+                                <th>Duration</th>
+                                <th>Icon</th>
+                                <th>Page Link</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                    </table>
+                    <!--end: Datatable-->
+                </div>
+            </div>
+            <!--end::Card-->
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+</div>
+
+@section  Scripts{
+    <script>
+        function GetList() {
+
+            var FetchItems = "../../Admin/Home/GetListHomePagePackagesList";
+
+            var oTable = $('#kt_datatable').DataTable({
+                "iDisplayLength": 50,
+                "bServerSide": true,
+                "bDestroy": true,
+                "async": false,
+                "sAjaxSource": FetchItems,
+                "bProcessing": false,
+                "aoColumns": [
+                    { "mData": "Name" },
+                    { "mData": "Cost" },
+                    { "mData": "Duration" },
+                    {
+                        "mData": "Icon",
+                        "render": function (data, type, full, meta) {
+                            return "<img src=\"" + data + "\" height=\"60\"/>";
+                        }
+                    },
+                    {
+                        "mData": "link",
+                        "render": function (data, type, full, meta) {
+                            if (data)
+                                return "<a href='" + data + "' target='_blank' >View Page</a>";
+                            return "not given yet";
+                        }
+                    },
+
+                    {
+                        "mData": "Id",
+                        "mRender": function (data, type, row, meta) {
+                            var CommitteeID = row.Id;
+                            var str = '<a class="btn btn-sm btn-warning" href="/Admin/Home/EditAddHomePage_Package?id=' + CommitteeID + '"><i class="fas fa-edit"></i >Edit</a>';
+                            str += '<a class="btn btn-sm btn-danger" style="margin-left:5px" href="/Admin/Home/Delete_Home_Packages?Id=' + CommitteeID + '"  ><i class="fas fa-trash-alt"></i>Delete</a>';
+                            return str;
+                        },
+                        "bSearchable": false,
+                        "bSortable": false
+                    }
+                ],
+                "fnServerData": function (sSource, aoData, fnCallback, oSettings) {
+                    oSettings.jqXHR = $.ajax({
+                        "dataType": 'json',
+                        "type": "GET",
+                        "url": sSource,
+                        "data": aoData,
+                        "success": fnCallback,
+                        "error": function (e) {
+                            console.log(e.message);
+                        }
+                    });
+                }
+            });
+        }
+
+        GetList();
+    </script>
+}
+
+
+

@@ -1,0 +1,85 @@
+﻿@model IEnumerable<OcdlogisticsSolution.DomainModels.Models.Entity_Models.tbl_Slider>
+
+    <section class="home-main-slider ">
+        <div id="home-s" class="carousel slide" data-ride="carousel">
+
+            <!-- Indicators -->
+            <ul class="carousel-indicators">
+                @foreach (var item in Model.Select((value, i) => new { value, i }))
+                {
+    <li data-target="#home-s" data-slide-to="@item.i" class="@if (item.i == 0) {<text>active</text>} "></li>
+}
+
+            </ul>
+            <!-- The slideshow -->
+            <div class="carousel-inner">
+                @foreach (var item in Model.Select((value, i) => new { value, i }))
+                {
+    <div class="carousel-item @if (item.i==0){<text>active</text>}">
+        <img src="@item.value.SliderImage" alt="Los Angeles">
+        <div class="ban-overlay"></div>
+        <div class="slider-overly-text">
+            <div class="container">
+                <h2>@item.value.SliderHeading</h2>
+                <p>
+                    @item.value.SliderContent
+                </p>
+            </div>
+        </div>
+    </div>}
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="carousel-control-prev" href="#home-s" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#home-s" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+        </div>
+    </section>
+
+@*<section class="home-main-slider ">
+    <div id="home-s" class="carousel slide" data-ride="carousel">
+
+         Indicators 
+        <ul class="carousel-indicators">
+            <li data-target="#home-s" data-slide-to="0" class="active"></li>
+            <li data-target="#home-s" data-slide-to="1"></li>
+            <li data-target="#home-s" data-slide-to="2"></li>
+        </ul>
+
+         The slideshow 
+        <div class="carousel-inner">
+
+            @foreach (var item in Model.Select((value,i)=>new{value,i }))
+            {
+<div class="carousel-item @if (item.i==1){<text>active</text>}">
+    <img src="@item.value.Image" alt="Los Angeles">
+    <div class="ban-overlay"></div>
+    <div class="slider-overly-text">
+        <div class="container">
+            <h2>@item.value.Heading</h2>
+            <p>
+                @item.value.Content
+            </p>
+        </div>
+    </div>
+</div>            }
+
+
+        </div>
+
+         Left and right controls 
+        <a class="carousel-control-prev" href="#home-s" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#home-s" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+
+    </div>
+</section>*@
+
+
+

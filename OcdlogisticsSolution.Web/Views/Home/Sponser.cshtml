@@ -1,0 +1,41 @@
+﻿@model IEnumerable<OcdlogisticsSolution.DomainModels.Models.Entity_Models.Tbl_Sponser>
+<section>
+    <div class="max-wid container-fluid padi-tb-50">
+        <div class="cati-head-text">
+            <h1>Our Partners</h1>
+        </div>
+        <div class="row edu-slider slick-initialized slick-slider slick-dotted">
+            <button class="slick-prev slick-arrow" aria-label="Previous" type="button" style="">Previous</button>
+            <div class="slick-list draggable">
+                <div class="slick-track">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-lg-2 col-md-3 col-xl-2 col-sm-4 col-6 slick-slide slick-cloned" data-slick-index="-6" aria-hidden="true" tabindex="-1" style="width: 240px;">
+                            <div class="cati-main-box">
+                                <a href="" tabindex="-1">
+                                    <div class="cati-img-sec">
+                                        <img src="@item.Img" alt="">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <button class="slick-next slick-arrow" aria-label="Next" type="button" style="">Next</button>
+            <ul class="slick-dots" style="" role="tablist">
+                @{ var i = 1;}
+                @foreach (var item in Model)
+                {
+                    <li class="" role="presentation">
+                        <button type="button" role="tab" id="slick-slide-control@(i-1)" aria-controls="slick-slide@(i-1)" aria-label="@(i) of @Model.Count()" tabindex="-1">@i</button>
+                    </li>
+                    i++;
+                }
+            </ul>
+        </div>
+        <div class="cati-head-text">
+            <button class="btn-sol">Become a partner</button>
+        </div>
+    </div>
+</section>

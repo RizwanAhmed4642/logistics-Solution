@@ -1,0 +1,73 @@
+﻿@using OcdlogisticsSolution.Web.Models
+@model OcdlogisticsSolution.Web.Models.LoginViewModel
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_OcdLogisticsLayout.cshtml";
+  
+}
+@*<link rel="stylesheet" href="~/Assets/css/login.css">*@
+<style>
+    .form-control{
+        border-color:white;
+    }
+</style>
+
+
+
+
+
+<div id="contact_us">
+    <!-- BreadCrumbs -->
+    <ul class="breadcrumb cust_crumb">
+        <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+        <li><a class="active" href="#">Login</a></li>
+    </ul>
+    <div class="container">
+        <div class="row d-flex h-100">
+            <div class="col-12 col-lg-12 col-md-12 col-xl-12 ">
+                <div id="e_msg"></div>
+                <div class="form-main login_main_div pt-md-5 pb-md-5 cont_text">
+
+                    <p class="text-center log_mint_p bg_transp">OCD LOGISTICS LOGIN</p>
+                    @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+
+                    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "login-form cust_cntct_input", id = "login", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary("", new { @class = "text-danger" })
+                        <div class=" justify-center">
+
+
+                            <div class="text-center pt-3 pb-2">
+                                <div class="form-group">
+                                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control orange-place", placeholder = "Username", required = "required", id = "username" })
+                                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="text-center pt-3 pb-2">
+                                <div class="form-group">
+                                    @Html.TextBoxFor(m => m.Password, new { @class = "form-control orange-place", placeholder = "Password", required = "required", @type = "password", id = "password" })
+                                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-center pt-md-3 pb-2">
+                            <button class="btn btn-black  login_social_btn">Login</button>
+                        </div>
+
+                        <div class=" pt-md-3 pb-2">
+                            <div class="d-flex justify-content-center d-mbl-block">
+                                <a href="@Url.Action("ForgotPassword", "Account")" class="btn btn-black login_social_btn">FORGOT PASSWORD?</a>
+                                <a href="@Url.Action("Register", "Account")" class="btn btn-black login_social_btn">    CREATE AN ACCOUNT</a>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    </div>

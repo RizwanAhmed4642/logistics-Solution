@@ -1,0 +1,95 @@
+h1, h2 {
+    color: black !important;
+}
+.pre-box {
+    /* height: 160px; */
+    position: relative;
+    margin-bottom: 20px;
+}
+.pre-box img {
+    /* height: 160px; */
+    /* object-fit: unset; */
+    width: 100%;
+}
+/* features and banefits */
+.fet-card {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.fet-icon {
+    border: 1px solid black;
+    height: 60px;
+    width: 60px;
+    border-radius: 30px;
+}
+.fet-content p {
+    padding: 10px;
+}
+.fet-icon img {
+    height: 60px;
+    width: 60px;
+    border-radius: 30px;
+}
+.p-info {
+    margin: auto;
+    width: 90%;
+   
+}
+.form-control {
+    background:#212529;
+    /* opacity: .7; */
+    border: 1px solid black;
+    color: white;
+}
+.btn-black:hover {
+    background-color: #f7742c;
+    color: white;
+    /* border: 2px solid black; */
+}
+.btn-testimonial {
+    background-color: black;
+    color: white!important;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 10px;
+    padding: 5px 170px;
+    margin-top: 3px;
+    white-space: nowrap;
+    border: 2px solid black;
+}
+.btn-testimonial:hover {
+    background-color: #f7742c;
+    color: white;
+}
+.add-text-s {
+    text-align: end;
+}
+.edu-sec {
+    position: relative;
+    margin-bottom: 20px;
+    height: auto;
+}
+
+@media (min-width: 320px) and (max-width: 520px){
+    .btn-testimonial {
+        padding: 5px 30px;
+    }
+}
+
+
+.panel-title > a:before {
+    float: right !important;
+    font-family: FontAwesome;
+    content:"\f068";
+    padding-right: 5px;
+}
+.panel-title > a.collapsed:before {
+    float: right !important;
+    content:"\f067";
+}
+.panel-title > a:hover, 
+.panel-title > a:active, 
+.panel-title > a:focus  {
+    text-decoration:none;
+}

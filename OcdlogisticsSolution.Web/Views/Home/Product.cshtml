@@ -1,0 +1,250 @@
+﻿@model  IEnumerable<OcdlogisticsSolution.DomainModels.Models.Entity_Models.tbl_Product>
+@{
+    ViewBag.Title = "Product";
+    Layout = "~/Views/Shared/_OcdLogisticsLayout.cshtml";
+}
+
+
+<!-- content -->
+<div class="container-fluid" style="padding: 0;">
+    <div class="hero"></div>
+</div>
+
+
+
+
+<!-- products -->
+<section class="">
+    <div class="container-fluid mt-4">
+        <div class="row max-wid">
+            @foreach (var item in Model)
+            {
+                var img = @item.tbl_Product_File.FirstOrDefault();
+                <div class="col-lg-3 col-md-4 col-xl-2 col-sm-4 col-6">
+                    <div class="product-page-box">
+                        <a href="">
+                            <div class="p-3 text-center">
+                                @if (img != null && img.tbl_File.IsExternal == true)
+                                {
+                                    <img src="@img.tbl_File.PathName" alt="@img.tbl_File.PathName" class="mb-2">
+                                }
+                                else
+                                {
+                                    <img src="~/@img.tbl_File.PathName" alt="" class="mb-2">
+                                }
+                            </div>
+                            <div class="product-page-img">
+                                <img src="~/Assets/images/4k.jpg" alt="">
+                                <div class="sale-s2">new</div>
+                            </div>
+                            <div class="product-page-text">
+                                <div class="product-page-name">
+                                    <p class="product-page-name">Hempz<span>®</span> for men dark <span>™</span></p>
+                                    <p class="product-detail">color correcting bronze</p>
+                                </div>
+                                <div class="brand-price-product">
+                                    <div class="row no-gutters">
+                                        <div class="col-4 col-sm-3 px-3"><span class="fa fa-heart-o heart-cus">9.1</span></div>
+                                        <div class="col-8 col-sm-5 text-center">
+                                            <div class="product-price">
+                                                <div class="dis-price">$126</div>
+                                                <div class="real-price">$126</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-4 add-text-s">Add <i class="fa fa-plus"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            }
+
+
+
+
+        </div>
+    </div>
+</section>
+<!-- Load button -->
+<div class="container">
+    <div class="text-center">
+        <button type="button" class="btn btn-subcribe mb-3 mt-5">Load More</button>
+    </div>
+    <div class="text-center clr_litgrey f-20 mb-4">247 Product Found</div>
+</div>
+<!-- slider -->
+<!-- main banner 3 start -->
+<!-- main banner 3 end -->
+<!-- The Cart Modal -->
+<div class="modal fade p-0" id="mycarts">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header check_mdl_head mb-3">
+                <h2 class="modal-title">YOUR BASKET</h2>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <h4 class="modal-title text-center mb-3">You are <span class="check_price_span">$5.04</span> away from FREE delivery</h4>
+            <div class="check_main_table table-responsive">
+                <table class="table table-bordered check_table">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="d-flex justify-content-center check_fa_cntr">
+                                    <span class="fa fa-times"></span>
+                                </div>
+                            </td>
+                            <td>
+                                <img class="checkout_modl_img" src="images/img/Footer_MobileView.png">
+                            </td>
+                            <td>
+                                <div class="check_volume">
+                                    <p class="bold">LUXE Volume Mix Tray D Curl</p>
+                                </div>
+                                <div class="check_row">
+                                    <p class="bold">13-17mm-16 rows</p>
+                                </div>
+                                <div class="check_size">
+                                    <p class="bold">SIZE <span>12 mm</span></p>
+                                </div>
+                                <div class="check_option">
+                                    <p class="bold">OPTION <span>12 mm</span></p>
+                                </div>
+                                <div>
+                                    <p><img src="images/img/color.png" alt=""> <span class="text_green bold">$3.75 CAD</span></p>
+                                </div>
+                            </td>
+                            <td class="count_cust">
+                                <p class="text-center check_text_ylw">$19.9</p>
+                                <div class="input-group check_input">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="quantity-left-minus btn check_quantity btn-number" data-type="minus" data-field="">
+                                            <span class="fa fa-minus check_plus_minus"></span>
+                                        </button>
+                                    </span>
+                                    <input type="text" name="quantity" class="form-control input-sst quantity input-number" value="10" min="1" max="100">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="quantity-right-plus btn check_quantity btn-number" data-type="plus" data-field="">
+                                            <span class="fa fa-plus check_plus_minus"></span>
+                                        </button>
+                                    </span>
+                                </div>
+                                <p class="text-center check_text_ylw">In-Stock</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="check_main_table table-responsive">
+                <table class="table table-bordered check_table">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="d-flex justify-content-center check_fa_cntr">
+                                    <span class="fa fa-times"></span>
+                                </div>
+                            </td>
+                            <td>
+                                <img class="checkout_modl_img" src="images/img/Footer_MobileView.png">
+                            </td>
+                            <td>
+                                <div class="check_volume">
+                                    <p class="bold">LUXE Volume Mix Tray D Curl</p>
+                                </div>
+                                <div class="check_row">
+                                    <p class="bold">13-17mm-16 rows</p>
+                                </div>
+                                <div class="d-block">
+                                    <div class="check_size float-left ">
+                                        <p class="bold">SIZE </p>
+                                    </div>
+                                    <div class="check_dropdwn float-left">
+                                        <form action="/action_page.php ">
+                                            <div class="form-group">
+                                                <select class="form-control mycart_select" id="sel1" name="sellist1">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                </select>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="check_option">
+                                    <p class="bold">OPTION <span>12 mm</span></p>
+                                </div>
+                                <div>
+                                    <p><img src="images/img/color.png" alt=""> <span class="text_green bold">$3.75 CAD</span></p>
+                                </div>
+                            </td>
+                            <td class="count_cust">
+                                <p class="text-center check_text_ylw">$19.9</p>
+                                <div class="input-group check_input">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="quantity-left-minus btn check_quantity btn-number" data-type="minus" data-field="">
+                                            <span class="fa fa-minus check_plus_minus"></span>
+                                        </button>
+                                    </span>
+                                    <input type="text" name="quantity" class="form-control input-sst quantity input-number" value="10" min="1" max="100">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="quantity-right-plus btn check_quantity btn-number" data-type="plus" data-field="">
+                                            <span class="fa fa-plus check_plus_minus"></span>
+                                        </button>
+                                    </span>
+                                </div>
+                                <p class="text-center check_text_ylw">In-Stock</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="check_total table-responsive">
+                <table class="table table-hover">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="check_volume">
+                                    <p class="bold">SubTotal <br> $34.99</p>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="check_volume">
+                                    <p class="bold">Delivery <br> $10.00</p>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="check_volume">
+                                    <p class="bold">Tax <br> $2.55</p>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="check_volume">
+                                    <p class="bold text-right"> <br> TOTAL: $45.66</p>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-12 pb-4 check_btn_sec">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 text-center pt-md-3">
+                        <a href="#">Add a Promotional Code</a>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 text-center">
+                        <button type="button" class="btn btn-shop">Continue</button>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 text-center">
+                        <button type="button" class="btn btn-shop checkout_btn_ylw">Check Out</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

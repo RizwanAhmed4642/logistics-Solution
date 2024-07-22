@@ -1,0 +1,79 @@
+﻿@model OcdlogisticsSolution.Web.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_OcdLogisticsLayout.cshtml";
+
+}
+<!-- Login START  -->
+<style>
+    .form-control {
+        border-color: white;
+    }
+</style>
+
+
+
+
+<div id="signup-bg">
+    <!-- BreadCrumbs -->
+    <ul class="breadcrumb cust_crumb">
+        <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+        <li><a class="active" href="#">Sign Up</a></li>
+    </ul>
+    <div class="container">
+        <div class="row d-flex h-100">
+            <div class="col-12 col-lg-12 col-md-12 col-xl-12 ">
+                <div id="e_msg"></div>
+                <div class="form-main login_main_div pt-md-5 pb-md-5 cont_text">
+                    @using (Html.BeginForm("Register", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "login-form cust_cntct_input", id = "login", required = "required" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary("", new { @class = "text-danger" })
+                    <div class=" justify-center">
+                        <p class="text-center log_mint_p bg_transp">Create an Account </p>
+                        <div class="spacer"></div>
+                        <div class="text-center">
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control  orange-place", placeholder = "  First Name", id = "firstname", required = "required" })
+                            </div>
+                        </div>
+                        <div class="text-center ">
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control  orange-place", placeholder = "  Last Name", id = "lastname", required = "required" })
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control  orange-place", placeholder = "  Email", id = "email", required = "required" })
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <div class="form-group">
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control  orange-place", placeholder = "  Password", id = "password", type = "password", required = "required", autocomplete = "off" })
+
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <div class="form-group">
+                                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control  orange-place", placeholder = "Confirm  Password", id = "password", type = "password", required = "required", autocomplete = "off" })
+                            </div>
+                        </div>
+                    </div>
+
+                        <div class="text-center pt-md-3 pb-2">
+                            <button class="btn btn-black mint_cntct_btn login_social_btn">Create</button>
+                        </div>
+                        <div class="text-center pb-2">
+                            <a href="@Url.Action("Index","Home")" class="btn btn-black login_social_btn mint_cntct_btn">Return To Marketplace</a>
+                        </div>
+
+                    }
+
+
+
+              
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

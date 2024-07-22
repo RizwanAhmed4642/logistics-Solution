@@ -1,0 +1,40 @@
+﻿@*@model OcdlogisticsSolution.Web.Models.LoginViewModel*@
+
+@*@model System.Web.Mvc.HandleErrorInfo*@
+
+@{
+    ViewBag.Title = "Error";
+    Layout = "~/Views/Shared/_RatsLayout.cshtml";
+
+}
+
+<div id="contact_us">
+    <!-- BreadCrumbs -->
+    <ul class="breadcrumb cust_crumb">
+        <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+        <li><a class="" href="#">Login</a></li>
+    </ul>
+    <div class="container">
+        <div class="row d-flex h-100">
+            <div class="col-12 col-lg-12 col-md-12 col-xl-12 ">
+                <div id="e_msg"></div>
+                <div class="form-main login_main_div pt-md-5 pb-md-5 cont_text">
+                    <h1 class="text-danger" style="text-align:center">Error.</h1>
+
+                    @if (String.IsNullOrEmpty(ViewBag.errorMessage))
+                    {
+                        <h2 class="text-danger" style="text-align:center">An error occurred while processing your request.</h2>
+                    }
+                    else
+                    {
+                        <h2 class="text-danger" style="text-align:center;color:white !important">@ViewBag.errorMessage</h2>
+                        <h2 class="text-danger" style="text-align:center;color:white !important">
+                            @Html.ActionLink("Resend Email", "ResesendEmailConfirmation", "Account", new { email = ViewBag.email },null)
+                        </h2>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

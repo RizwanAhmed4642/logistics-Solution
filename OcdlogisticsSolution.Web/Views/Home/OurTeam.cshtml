@@ -1,0 +1,168 @@
+﻿@model OcdlogisticsSolution.Web.Models.OurTeamPageViewModel
+@{
+    ViewBag.Title = "Ourteam";
+    Layout = "~/Views/Shared/_OcdLogisticsLayout.cshtml";
+    var positions = Model.tbl_TeamProfilesList.Select(e => e.Position).Distinct().ToList();
+}
+<link href="~/fonts/Alaskan Malamute.css" rel="stylesheet" />
+<link rel="stylesheet" href="~/Assets/css/ourTeam.css">
+<link rel="stylesheet" href="~/Assets/css/about.css">
+<div class="container-fluid" style="padding: 0;">
+
+    <div class="hero team_banner" style="background:@(!string.IsNullOrWhiteSpace(Model.tbl_OurTeamPage.BannerImgColor)?@Model.tbl_OurTeamPage.BannerImgColor:"url(\'"+@Model.tbl_OurTeamPage.Bannerimg+"\')")">
+
+        <!-- <img src="./images/Images_Use_OCD_Logistics/18.png" alt="" srcset=""> -->
+        <!-- <div class="main-detail-border ourTeam-Banner"> -->
+        <div class="slider-overly-text2">
+            <div class="container">
+                <h2>@Model.tbl_OurTeamPage.BannerImgHeading</h2>
+                <p>
+                    @Model.tbl_OurTeamPage.BannerImgText
+                </p>
+            </div>
+        </div>
+        <!-- <div class="banner-headi-pro-detail">
+            <h2 class="white">Our Team</h2>
+            <p>Have a question, concern or feedback?
+            </p>
+        </div> -->
+        <!-- </div> -->
+    </div>
+</div>
+<div class="container-fluid myContainer contact_banner_cust bg_img_styling padi-tb-50"
+     style="background-image: url('@Url.Content(Model.tbl_OurTeamPage.OurTeamBackimg)');">
+    <!-- <div class="spacer"></div> -->
+    <div class="container padi-tb-50">
+        <!-- BreadCrumbs -->
+        <ul class="breadcrumb cust_crumb">
+            <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+            <li><a class="active" href="#">Our Team</a></li>
+        </ul>
+        <!-- <div class="spacer"></div> -->
+        <!-- <div class="col-md-12 col-sm-12 col-lg-12 text-center">
+            <h2 class="banner">
+                <i class="fa fa-home"></i>
+                Home /  Our Team
+            </h2>
+        </div> -->
+        <div class="filter-btn">
+            <ul id="buttons">
+                <li data-target="all">All</li>
+                @foreach (var item in positions.Select((value, i) => new { value, i }))
+                {
+                    <li data-target="@item.value">@item.value</li>
+                }
+
+            </ul>
+        </div>
+        <!-- <div class="spacer"></div> -->
+        <div class="row" id="product-items">
+            @foreach (var obj in Model.tbl_TeamProfilesList.Select((item, index) => new { item, index }))
+            {
+
+                @Html.Raw("<div class='col-lg-4 col-md-4 col-xl-4 col-sm-4 col-6 my-3' data-id='" + obj.item.Position + "'>")
+
+                <a href="@Url.Action("Profile","Home", new { area = "", profId = obj.item.ProfileId })">
+                    <div class="pic">
+                        <div class="img-container">
+                            @if (!string.IsNullOrEmpty(obj.item.TeamImage) || obj.item.TeamImage != "")
+                            {
+                                <img style="height:350px;width:100%" src="@obj.item.TeamImage" alt="" class="card-img-top product-img">
+                                @*<img style="height:350px;width:100%" src="@obj.item.TeamImage" alt="">*@
+                            }
+                            else
+                            {
+                                <img style="height:350px;width:100%" src="~/Areas/Admin/Assets/media/users/blank.png" alt="">
+                            }
+
+                        </div>
+                    </div>
+                </a>
+                <div class="proInfo text-center">
+                    <h3>@obj.item.ProfileName</h3>
+                    <span>@obj.item.Position </span>
+                </div>
+                <div class="connect">
+                    <a href="@Url.Action("Profile", "Home", new { area = "", profId = obj.item.ProfileId })"><button class="cnt-btn btnCard">Connect</button></a>
+                </div>
+
+                @Html.Raw("</div>")
+                @*if ((obj.index + 1) % 2 == 0 /*|| obj.index + 1 == Model.tbl_TeamProfilesList.Count()*/)
+                    {
+                        @Html.Raw("</div>")
+                    }*@
+            }
+
+        </div>
+    </div>
+    <!-- <div class="spacer"></div> -->
+
+</div>
+<!-- <div class="spacer"></div> -->
+@if (Model.tbl_OurTeamPage != null)
+{
+    <div class="container expert-cus padi-tb-50">
+        <div class="row">
+            @if (Model.tbl_OurTeamPage.ExpertImage != null)
+            {
+
+                <div class="col-sm-12 col-md-6">
+                    <div class="cdecki">
+                        <div class="card text-center">
+                            <div class="img">
+                                <img src="@Model.tbl_OurTeamPage.ExpertImage" alt="" srcset="">
+
+                                <!-- <p>540x540</p> -->
+                            </div>
+                            <div class="card-img-overlay text-white">
+                                <div class="card-title">
+                                    <h4>@Model.tbl_OurTeamPage.Expertimgtext</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="cnt-btn btnCard">Learn More</button>
+                    </div>
+                </div>
+            }
+            @if (Model.tbl_OurTeamPage.SeminarImage != null)
+            {
+                <div class="col-sm-12 col-md-6">
+                    <div class="cdecki">
+                        <div class="card text-center">
+                            <div class="img">
+                                <img src="@Model.tbl_OurTeamPage.SeminarImage" alt="" srcset="">
+
+                                <!-- <p>540x540</p> -->
+                            </div>
+                            <div class="card-img-overlay text-white">
+                                <div class="card-title">
+                                    <h4>@Model.tbl_OurTeamPage.semenarimgtext</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="cnt-btn btnCard">Events</button>
+                    </div>
+                </div>
+            }
+        </div>
+
+    </div>
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-lg-12">
+            <h2 class="last-banner text-center">@Model.tbl_OurTeamPage.OurTeamPageQuote</h2>
+        </div>
+    </div>
+</div>
+<div class="spacer"></div>
+<style>
+    .proInfo{
+        background:transparent!important;
+    }
+    .proInfo h3 {
+        font-family: 'AlaskanMalamute';
+        font-size: 2.5em;
+    }
+</style>

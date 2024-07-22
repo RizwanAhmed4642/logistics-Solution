@@ -1,0 +1,166 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_OcdLogisticsLayout.cshtml";
+}
+<link href="~/Content/style.css" rel="stylesheet" />
+<!-- text slider -->
+<!-- content start -->
+<!-- main slider start -->
+@Html.Action("slider", "Home")
+<!-- main slider end -->
+
+<div class="spacer"></div>
+
+<!-- Solutions -->
+@Html.Action("OurSolution", "Home")
+
+
+<!-- our Mission -->
+@Html.Action("OurMission", "Home")
+
+
+<!-- Why Choose Us -->
+<section>
+    <div class="container-fluid padi-tb-50">
+        <div class="cati-head-text">
+            <h1>Why Choose Us</h1>
+        </div>
+        <div class="row">
+
+            <div class="col-lg-2 col-md-3 col-sm-4 text-center">
+                <div id="circleOne" class="circle_percent percent_more" data-percent="95">
+                    <div class="circle_inner">
+                        <div class="round_per" style="transform: rotate(522deg);"></div>
+                    </div>
+                    <div class="circle_inbox">
+                        <span class="percent_text">95</span>
+                    </div>
+                </div>
+                <div class="text">total Unique skus</div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-4 text-center">
+                <div id="circleTwo" class="circle_percent percent_ship" data-percent="75">
+                    <div class="circle_inner">
+                        <div class="round_per ship" style="transform: rotate(450deg);"></div>
+                    </div>
+                    <div class="circle_inbox">
+                        <span class="percent_text">75</span>
+                    </div>
+                </div>
+                <div class="text">Total items shipped out today</div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-4 text-center">
+                <div id="circleThree" class="circle_percent percent_tsale" data-percent="66">
+                    <div class="circle_inner">
+                        <div class="round_per tsale" style="transform: rotate(417deg);"></div>
+                    </div>
+                    <div class="circle_inbox">
+                        <span class="percent_text">66</span>
+                    </div>
+                </div>
+                <div class="text">total sales</div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-4 text-center">
+                <div id="circleFour" class="circle_percent" data-percent="45">
+                    <div class="circle_inner">
+                        <div class="round_per shipped" style="transform: rotate(342deg);"></div>
+                    </div>
+                    <div class="circle_inbox">
+                        <span class="percent_text">45</span>
+                    </div>
+                </div>
+                <div class="text">total shippment to date</div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-4 text-center">
+                <div id="circleFive" class="circle_percent" data-percent="15">
+                    <div class="circle_inner">
+                        <div class="round_per pending" style="transform: rotate(234deg);"></div>
+                    </div>
+                    <div class="circle_inbox">
+                        <span class="percent_text">15</span>
+                    </div>
+                </div>
+                <div class="text">total pending</div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-4 text-center">
+                <div id="circleSix" class="circle_percent percent_customer" data-percent="80">
+                    <div class="circle_inner">
+                        <div class="round_per customer" style="transform: rotate(468deg);"></div>
+                    </div>
+                    <div class="circle_inbox">
+                        <span class="percent_text">80</span>
+                    </div>
+                </div>
+                <div class="text">Total satisfied customers</div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- features & benefits -->
+<section>
+    <div class="max-wid container-fluid padi-tb-50">
+        <div class="cati-head-text">
+            <h1>Features & Benefits</h1>
+        </div>
+        <div class="row">
+            @Html.Action("HomePage_Fetures_Benifits", "Home")
+
+
+        </div>
+    </div>
+</section>
+
+
+
+
+<!-- Packages -->
+<section>
+    <div class="max-wid padi-tb-50">
+        <div class="cati-head-text">
+            <h1>Packages</h1>
+        </div>
+        <div class=" responsive-slider-cus ">
+            <div id="newproducts" class="carousel slide w-100" data-ride="carousel">
+                <div class="carousel-inner  " role="listbox">
+                    @Html.Action("HomePage_Packages")
+                </div>
+                <a class="carousel-control-prev bg-dark w-auto" href="#newproducts" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next bg-dark w-auto" href="#newproducts" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+        <div class="cati-head-text">
+            <button class="btn-sol">Learn More</button>
+        </div>
+    </div>
+</section>
+
+
+<!-- faqs -->
+<!-- faqs -->
+<div class="acc-tabs ">
+    <div class="container padi-tb-50">
+        <h2 class="text-center">FAQs</h2>
+        <div class=" pb-lg-3 pt-lg-4">
+            <div id="accordionFaq" class="myaccordionFaq">
+                @Html.Action("_FAQ")
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@Html.Action("Sponser", "Home")
+
+
+
+
